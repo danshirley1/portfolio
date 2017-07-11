@@ -3,13 +3,7 @@
  * required based on the env variable. This component is typically one
  * surrounded by a <Provider>.
  */
+const prodModule = require('./Root.prod.js');
+const devModule = require('./Root.dev.js');
 
-let loadedModule = null;
-
-if (process.env.NODE_ENV === 'production') {
-  loadedModule = require('./Root.prod.js');
-} else {
-  loadedModule = require('./Root.dev.js');
-}
-
-export const Root = loadedModule;
+export const Root = process.env.NODE_ENV === 'production' ? prodModule : devModule;
