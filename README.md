@@ -1,6 +1,8 @@
 # Showcase Portfolio
 A personal showcase portfolio demonstrating a range of techniques and technologies.
 
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+
 ## What is it?
 An opportunity to demonstrate my technical skills, by presenting various aspects of my development experience all in one place.
 
