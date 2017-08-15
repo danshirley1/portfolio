@@ -1,16 +1,8 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import logo from '../assets/images/logo.svg';
+import '../assets/styles/css/App.css';
 
 import {Nav, Navbar, NavDropdown, MenuItem, NavItem, Grid, Row, Col} from 'react-bootstrap';
-
-const navInstance = (
-  <Nav bsStyle="pills" activeKey={1} onSelect="">
-    <NavItem eventKey={1} href="/home">NavItem 1 content</NavItem>
-    <NavItem eventKey={2} title="Item">NavItem 2 content</NavItem>
-    <NavItem eventKey={3} disabled>NavItem 3 content</NavItem>
-  </Nav>
-);
 
 class App extends Component {
   render() {
