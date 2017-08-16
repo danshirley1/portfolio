@@ -1,39 +1,19 @@
 import React, { Component } from 'react';
-import logo from '../assets/images/logo.svg';
+import Header from '../components/Header';
 import '../assets/styles/css/App.css';
+import {Grid, Row, Col, Button} from 'react-bootstrap';
 
-import {Nav, Navbar, NavDropdown, MenuItem, NavItem, Grid, Row, Col} from 'react-bootstrap';
+
+function doIncrementCounter(e) {
+  e.preventDefault();
+  alert('The link was clicked');
+}
 
 class App extends Component {
   render() {
     return (
       <div>
-        {/* Navigation */}
-        <Navbar inverse collapseOnSelect>
-          <Navbar.Header>
-            <Navbar.Brand>
-              <a href="#">React-Bootstrap</a>
-            </Navbar.Brand>
-            <Navbar.Toggle />
-          </Navbar.Header>
-          <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1} href="#">Link</NavItem>
-              <NavItem eventKey={2} href="#">Link</NavItem>
-              <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-                <MenuItem eventKey={3.1}>Action</MenuItem>
-                <MenuItem eventKey={3.2}>Another action</MenuItem>
-                <MenuItem eventKey={3.3}>Something else here</MenuItem>
-                <MenuItem divider />
-                <MenuItem eventKey={3.3}>Separated link</MenuItem>
-              </NavDropdown>
-            </Nav>
-            <Nav pullRight>
-              <NavItem eventKey={1} href="#">Link Right</NavItem>
-              <NavItem eventKey={2} href="#">Link Right</NavItem>
-            </Nav>
-          </Navbar.Collapse>
-        </Navbar>        
+        <Header />
 
         {/* Page Content */}
         <Grid>
@@ -49,7 +29,7 @@ class App extends Component {
               <Row>
                 <Col xs={6}>
                   <div className="content-container">
-                    6 col (1 of 2)
+                    <Button bsStyle="primary" onClick={doIncrementCounter}>Increment counter</Button>
                   </div>
                 </Col>
                 <Col xs={6}>

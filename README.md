@@ -37,6 +37,10 @@ A comparison between Webpack + Gulp, Browserify + Gulp and Webpack + NPM:
 This project is a personal website/portfolio starter. It includes all of the boilerplate code necessary for setting up React with Webpack, and has a beautiful, responsive design:
 (https://github.com/react-portfolio/react-portfolio)
 
+React Router help pages:
+https://reacttraining.com/react-router/web/guides/philosophy
+https://css-tricks.com/react-router-4/
+
 ## Notes
 
 
