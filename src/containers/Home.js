@@ -4,10 +4,12 @@ import { push } from 'react-router-redux'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-function doIncrementCounter(e) {
-  e.preventDefault();
-  alert('The link was clicked');
-}
+import {
+  increment,
+  incrementAsync,
+  decrement,
+  decrementAsync
+} from '../components/Counter'
 
 class Home extends Component {
   constructor(props) {
@@ -31,12 +33,30 @@ class Home extends Component {
               <Row>
                 <Col xs={6}>
                   <div className="content-container">
-                    <Button bsStyle="primary" onClick={doIncrementCounter}>Increment counter</Button>
+
+                    <div>
+                      <Button
+                        bsStyle="primary"
+                        onClick={this.props.increment}
+                        disabled={this.props.isIncrementing}>
+                        Increment counter
+                      </Button>
+                    </div>
+
+                    <div>
+                      <Button
+                        bsStyle="primary"
+                        onClick={this.props.incrementAsync}
+                        disabled={this.props.isIncrementing}>
+                        Increment counter (async)
+                      </Button>
+                    </div>
+
                   </div>
                 </Col>
                 <Col xs={6}>
                   <div className="content-container">
-                    6 col (2 of 2)
+                    {this.props.count}
                     <Button bsStyle="primary" onClick={this.props.changePage}>Go to About page</Button>
                   </div>
                 </Col>
@@ -49,11 +69,21 @@ class Home extends Component {
   }
 }
 
+const mapStateToProps = state => ({
+  count: state.counter.count,
+  isIncrementing: state.counter.isIncrementing,
+  isDecrementing: state.counter.isDecrementing
+})
+
 const mapDispatchToProps = dispatch => bindActionCreators({
+  increment,
+  incrementAsync,
+  decrement,
+  decrementAsync,
   changePage: () => push('/about')
 }, dispatch)
 
 export default connect(
-  null, 
+  mapStateToProps, 
   mapDispatchToProps
 )(Home)
