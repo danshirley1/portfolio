@@ -11,12 +11,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Header />        
+        <header>
+          <Header />        
+        </header>
 
-        <div>
+        <main>
           <Route path="/" exact component={Home}/>
           <Route path="/about" component={About}/>
-        </div>
+        </main>
 
         {/* Footer */}
         <footer className="py-5 bg-dark">

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { push } from 'react-router-redux'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 
 function doIncrementCounter(e) {
   e.preventDefault();
@@ -7,6 +10,10 @@ function doIncrementCounter(e) {
 }
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <div>
@@ -30,6 +37,7 @@ class Home extends Component {
                 <Col xs={6}>
                   <div className="content-container">
                     6 col (2 of 2)
+                    <Button bsStyle="primary" onClick={this.props.changePage}>Go to About page</Button>
                   </div>
                 </Col>
               </Row>
@@ -41,4 +49,11 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapDispatchToProps = dispatch => bindActionCreators({
+  changePage: () => push('/about')
+}, dispatch)
+
+export default connect(
+  null, 
+  mapDispatchToProps
+)(Home)
