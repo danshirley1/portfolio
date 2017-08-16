@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-
-import {Nav, Navbar, NavDropdown, MenuItem, NavItem} from 'react-bootstrap';
+import {Nav, Navbar, NavDropdown, MenuItem, NavItem, Button} from 'react-bootstrap';
+import { IndexLinkContainer, LinkContainer } from 'react-router-bootstrap';
 
 class Header extends Component {
   render() {
@@ -14,8 +14,15 @@ class Header extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
           <Nav>
-            <NavItem eventKey={1} href="#">Link</NavItem>
-            <NavItem eventKey={2} href="#">Link</NavItem>
+
+            <IndexLinkContainer to="/">
+              <NavItem eventKey={1} href="#">Home</NavItem>
+            </IndexLinkContainer>
+
+            <LinkContainer to="/about">
+              <NavItem eventKey={2} href="#">About</NavItem>
+            </LinkContainer>
+
             <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
               <MenuItem eventKey={3.1}>Action</MenuItem>
               <MenuItem eventKey={3.2}>Another action</MenuItem>
