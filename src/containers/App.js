@@ -4,6 +4,7 @@ import { Route } from 'react-router-dom';
 import Header from '../components/Header';
 import About from '../containers/About';
 import Home from '../containers/Home';
+import Portfolio from '../containers/Portfolio';
 
 import '../assets/styles/css/App.css';
 
@@ -18,6 +19,7 @@ class App extends Component {
         <main>
           <Route path="/" exact component={Home}/>
           <Route path="/about" component={About}/>
+          <Route path="/portfolio" component={Portfolio}/>
         </main>
 
         {/* Footer */}
