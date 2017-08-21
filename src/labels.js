@@ -3,7 +3,7 @@ module.exports = {
     ALPHAWAVE: {
       title: 'SoMotion',
       description: 'Full-service digital agency, produced an interactive Facebook Canvas'
-        + 'application for the \'Go-eSussex\' campaign.',
+        + ' application for the \'Go-eSussex\' campaign.',
     },
     MOTORTRAK: {
       title: 'Motortrak',
