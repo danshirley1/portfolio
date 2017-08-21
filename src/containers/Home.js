@@ -19,14 +19,6 @@ class Home extends Component {
   render() {
     return (
       <div>
-        {/* Page Content */}
-        <Grid>
-          <Row className="show-grid">
-            <Col xs={12}>
-            </Col>
-          </Row>
-        </Grid>
-
         <Grid>
           <Row className="show-grid">
             <Col xs={12}>
