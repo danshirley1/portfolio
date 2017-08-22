@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import { Parallax } from 'react-parallax';
 import Reveal from 'react-reveal'; // this package
+import 'animate.css/animate.css'; // CSS animation effects library
 
 import codeHeroImage from '../assets/images/code-bg-grayscale.png';
 

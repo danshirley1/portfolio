@@ -31,5 +31,12 @@ module.exports = {
         + ' Completely website redesign, enhancing the customer journey and a'
         + ' major code base re-factor.',
     },
+    IP: {
+      title: 'Intelligent Positioning',
+      description: 'Working as primary front-end developer on the SEO platform \'Pi Datametrics\','
+        + ' a business intelligence tool which provides the real-time analysis of search performance'
+        + ' across competitor sets. Working on a Zend PHP application, provided a library of robust'
+        + ' and configurable UI components. Implemented a full re-skin using atomic design and OO SASS.',
+    },
   },
 };
