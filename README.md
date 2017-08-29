@@ -3,6 +3,26 @@ A personal showcase portfolio demonstrating a range of techniques and technologi
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
+The Node server was created by adapting the tutorial:
+https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/
+
+## Install
+```
+npm install
+```
+
+## To run locally
+
+```
+npm start
+```
+
+To restart server back-end (until I work out how to make it 'hot'):
+
+```
+npm start
+```
+
 ## What is it?
 An opportunity to demonstrate my technical skills, by presenting various aspects of my development experience all in one place.
 

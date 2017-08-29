@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-import Header from '../components/Header';
+import Portfolio from '../containers/Portfolio';
 import About from '../containers/About';
 import Home from '../containers/Home';
-import Portfolio from '../containers/Portfolio';
+
+import Header from '../components/Header';
+import SpotifyAuthenticated from '../components/spotify/SpotifyAuthenticated';
 
 import '../assets/styles/css/App.css';
 
@@ -20,6 +22,8 @@ class App extends Component {
           <Route path="/" exact component={Home}/>
           <Route path="/about" component={About}/>
           <Route path="/portfolio" component={Portfolio}/>
+          <Route path="/spotify-authentication-success/:accessToken/:refreshToken" component={SpotifyAuthenticated} />
+          <Route path="/spotify-authentication-error/:errorMsg" component={Error} />
         </main>
 
         {/* Footer */}

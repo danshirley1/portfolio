@@ -11,6 +11,8 @@ import {
   decrementAsync
 } from '../components/Counter'
 
+import SpotifyPlayer from '../components/spotify/SpotifyPlayer';
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -20,7 +22,7 @@ class Home extends Component {
     return (
       <div>
         <Grid>
-          <Row className="show-grid">
+          <Row>
             <Col xs={12}>
               <Row>
                 <Col xs={6}>
@@ -53,6 +55,13 @@ class Home extends Component {
                   </div>
                 </Col>
               </Row>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col xs={12}>
+              <h2>Spotify Player</h2>
+              <SpotifyPlayer />
             </Col>
           </Row>
         </Grid>     
