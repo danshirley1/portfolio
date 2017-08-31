@@ -6,32 +6,36 @@ import {
 } from '../../actions/spotify/';
 
 class SpotifyAuthenticated extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   /** When we mount, get the tokens from react-router and initiate loading the info */
   componentDidMount() {
-
-    console.log('this.props:', this.props);
-
     // params injected via react-router, dispatch injected via connect
-    const {dispatch, params} = this.props;
+    const {dispatch} = this.props;
+    const {params} = this.props.match;
     const {accessToken, refreshToken} = params;
+
     dispatch(setTokens({accessToken, refreshToken}));
     dispatch(getMyInfo());
   }
 
   /** Render the user's info */
   render() {
+    const {dispatch} = this.props;
+    const {params} = this.props.match;
 
-const {dispatch, params} = this.props;
-
+    /*
     return (
-      <div>{JSON.stringify(params)}</div>
+      <div>{JSON.stringify(this.props.spotifySession.user)}</div>
     );
+    */
 
-    console.log('this.props:', this.props);
-
-    const { accessToken, refreshToken, user } = this.props;
+    const { accessToken, refreshToken, user } = this.props.spotifySession;
     const { loading, display_name, images, id, email, external_urls, href, country, product } = user;
-    const imageUrl = images[0] ? images[0].url : "";
+    const imageUrl = images[0] ? images[0].url : '';
+
     // if we're still loading, indicate such
     if (loading) {
       return <h2>Loading...</h2>;
@@ -57,4 +61,10 @@ const {dispatch, params} = this.props;
   }
 }
 
-export default connect(state => state)(SpotifyAuthenticated);
+const mapStateToProps = state => ({
+  spotifySession: state.spotifySession
+})
+
+export default connect(
+  mapStateToProps
+)(SpotifyAuthenticated);

@@ -7,5 +7,5 @@ import spotifyReducer from './spotify/'
 export default combineReducers({
   routing: routerReducer,
   counter,
-  spotifyReducer,
+  spotifySession: spotifyReducer,
 })
