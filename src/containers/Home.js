@@ -14,10 +14,6 @@ import {
 import SpotifyPlayer from '../components/spotify/SpotifyPlayer';
 
 class Home extends Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
       <div>

@@ -1,5 +1,6 @@
 import {
-  SPOTIFY_TOKENS, SPOTIFY_ME_BEGIN, SPOTIFY_ME_SUCCESS, SPOTIFY_ME_FAILURE
+  SPOTIFY_TOKENS, SPOTIFY_ME_BEGIN, SPOTIFY_ME_SUCCESS, SPOTIFY_ME_FAILURE,
+    SPOTIFY_USER_TEST_LOG_OUT
 } from '../../actions/spotify/';
 
 /** The initial state; no tokens and no user info */
@@ -27,28 +28,31 @@ const initialState = {
  */
 export default function reduce(state = initialState, action) {
   switch (action.type) {
-  // when we get the tokens... set the tokens!
-  case SPOTIFY_TOKENS:
-    const {accessToken, refreshToken} = action;
-    return Object.assign({}, state, {accessToken, refreshToken});
+    // when we get the tokens... set the tokens!
+    case SPOTIFY_TOKENS:
+      const {accessToken, refreshToken} = action;
+      return Object.assign({}, state, {accessToken, refreshToken});
 
-  // set our loading property when the loading begins
-  case SPOTIFY_ME_BEGIN:
-    return Object.assign({}, state, {
-      user: Object.assign({}, state.user, {loading: true})
-    });
+    // set our loading property when the loading begins
+    case SPOTIFY_ME_BEGIN:
+      return Object.assign({}, state, {
+        user: Object.assign({}, state.user, {loading: true})
+      });
 
-  // when we get the data merge it in
-  case SPOTIFY_ME_SUCCESS:
-    return Object.assign({}, state, {
-      user: Object.assign({}, state.user, action.data, {loading: false})
-    });
+    // when we get the data merge it in
+    case SPOTIFY_ME_SUCCESS:
+      return Object.assign({}, state, {
+        user: Object.assign({}, state.user, action.data, {loading: false})
+      });
 
-  // currently no failure state :(
-  case SPOTIFY_ME_FAILURE:
-    return state;
+    // currently no failure state :(
+    case SPOTIFY_ME_FAILURE:
+      return state;
 
-  default:
-    return state;
+    case SPOTIFY_USER_TEST_LOG_OUT:
+      return initialState;
+
+    default:
+      return state;
   }
 }

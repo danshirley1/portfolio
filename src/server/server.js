@@ -39,8 +39,6 @@ app.get('/api/spotify-authenticate', (req, res) => {
   }
   */
 
-  console.log('PPPPPPPPPP PPPPPPPPPP PPPPPPPPPP PPPPPPPPPP PPPPPPPPPP ');
-
   SpotifyAuth.authorize(res);
 });
 
