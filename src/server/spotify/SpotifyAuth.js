@@ -17,18 +17,12 @@ const generateRandomString = N => (Math.random().toString(36)+Array(N).join('0')
 
 const authorize = (res) => {
   const state = generateRandomString(16);
-
-  console.log('HERE AT A!!!');
   
   res.cookie(STATE_KEY, state);
   res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
-
-  console.log('HERE AT B!!!');
 };
 
 const authorizeCallback = (req, res) => {
-  console.log('HERE AT C!!!');
-
   const { code, state } = req.query;
   const storedState = req.cookies ? req.cookies[STATE_KEY] : null;
 

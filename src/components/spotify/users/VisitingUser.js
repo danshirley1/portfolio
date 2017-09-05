@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
@@ -34,7 +34,7 @@ class VisitingUser extends Component {
           <div className="user">
             <h2>{`Logged in as ${this.props.user.display_name}`}</h2>
             <div className="user-content">
-              <img src={imageUrl} />
+              <img src={imageUrl} alt='User avatar' />
               <ul>
                 <li>
                   <span>Display name</span>

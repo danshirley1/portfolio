@@ -1,26 +1,29 @@
 import {
   SPOTIFY_TOKENS, SPOTIFY_ME_BEGIN, SPOTIFY_ME_SUCCESS, SPOTIFY_ME_FAILURE,
-    SPOTIFY_USER_TEST_LOG_OUT
+    SPOTIFY_USER_BEGIN, SPOTIFY_USER_SUCCESS, SPOTIFY_USER_FAILURE, SPOTIFY_USER_TEST_LOG_OUT
 } from '../../actions/spotify/';
+
+const spotifyUserInitialState = {
+  loading: false,
+  country: null,
+  display_name: null,
+  email: null,
+  external_urls: {},
+  followers: {},
+  href: null,
+  id: null,
+  images: [],
+  product: null,
+  type: null,
+  uri: null,
+};
 
 /** The initial state; no tokens and no user info */
 const initialState = {
   accessToken: null,
   refreshToken: null,
-  user: {
-    loading: false,
-    country: null,
-    display_name: null,
-    email: null,
-    external_urls: {},
-    followers: {},
-    href: null,
-    id: null,
-    images: [],
-    product: null,
-    type: null,
-    uri: null,
-  }
+  visitingUser: Object.assign({}, spotifyUserInitialState),
+  myUser: Object.assign({}, spotifyUserInitialState),
 };
 
 /**
@@ -33,19 +36,35 @@ export default function reduce(state = initialState, action) {
       const {accessToken, refreshToken} = action;
       return Object.assign({}, state, {accessToken, refreshToken});
 
-    // set our loading property when the loading begins
+    // set our loading property when the loading begins (visiting user)
+    case SPOTIFY_USER_BEGIN:
+      return Object.assign({}, state, {
+        visitingUser: Object.assign({}, state.visitingUser, {loading: true})
+      });
+
+    // set our loading property when the loading begins (my user)
     case SPOTIFY_ME_BEGIN:
       return Object.assign({}, state, {
-        user: Object.assign({}, state.user, {loading: true})
+        myUser: Object.assign({}, state.myUser, {loading: true})
       });
 
-    // when we get the data merge it in
+    // when we get the data merge it in (visiting user)
+    case SPOTIFY_USER_SUCCESS:
+      return Object.assign({}, state, {
+        visitingUser: Object.assign({}, state.visitingUser, action.data, {loading: false})
+      });
+
+    // when we get the data merge it in (my user)
     case SPOTIFY_ME_SUCCESS:
       return Object.assign({}, state, {
-        user: Object.assign({}, state.user, action.data, {loading: false})
+        myUser: Object.assign({}, state.myUser, action.data, {loading: false})
       });
 
-    // currently no failure state :(
+    // user fetch failed (visiting user)
+    case SPOTIFY_USER_FAILURE:
+      return state;
+
+    // user fetch failed (my user)
     case SPOTIFY_ME_FAILURE:
       return state;
 

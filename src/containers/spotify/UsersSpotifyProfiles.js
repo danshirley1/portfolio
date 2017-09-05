@@ -7,25 +7,30 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Grid, Row, Col, Button } from 'react-bootstrap';
-import { bindActionCreators } from 'redux'
+import { Grid, Row, Col } from 'react-bootstrap';
 
 import MeUser from '../../components/spotify/users/MeUser';
 import VisitingUser from '../../components/spotify/users/VisitingUser';
 
 class UsersSpotifyProfiles extends Component {
   componentDidUpdate() {
-    const { user } = this.props.spotifySession;
+    const { visitingUser } = this.props.spotifySession;
 
-    if (!user.loading) {
-      if (user.id === null) {
+    if (!visitingUser.loading) {
+      if (visitingUser.id === null) {
         return window.location ='http://localhost:3001/api/spotify-authenticate';
       }
     }
   }
 
   render() {
-    const visitingUser = this.props.spotifySession.user;
+    const { visitingUser, myUser } = this.props.spotifySession;
+
+    /*
+    return (
+      <div>{JSON.stringify(this.props.spotifySession)}</div>
+    );
+    */
 
     return (
       <Grid>
@@ -36,7 +41,7 @@ class UsersSpotifyProfiles extends Component {
           </Col>
           <Col xs={6}>
             <h3>Me User</h3>
-            <VisitingUser user={visitingUser} />
+            <MeUser user={myUser} />
           </Col>
         </Row>
       </Grid>
