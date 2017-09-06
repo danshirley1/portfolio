@@ -5,17 +5,6 @@ import {
 
 const spotifyUserInitialState = {
   loading: false,
-  country: null,
-  display_name: null,
-  email: null,
-  external_urls: {},
-  followers: {},
-  href: null,
-  id: null,
-  images: [],
-  product: null,
-  type: null,
-  uri: null,
 };
 
 /** The initial state; no tokens and no user info */

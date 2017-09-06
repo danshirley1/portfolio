@@ -1,6 +1,7 @@
 import Spotify from 'spotify-web-api-js';
 
 const spotifyApi = new Spotify();
+const myUserName = '113543697';
 
 // our constants
 export const SPOTIFY_TOKENS = 'SPOTIFY_TOKENS';
@@ -20,27 +21,44 @@ export function setTokens({accessToken, refreshToken}) {
   return { type: SPOTIFY_TOKENS, accessToken, refreshToken };
 }
 
-/* get logged in user's info from the /me api */
+/* get logged in user's profile info */
 export function getUserInfo() {
   return dispatch => {
+    const userData = {};
+
     dispatch({ type: SPOTIFY_USER_BEGIN});
+
     spotifyApi.getMe().then(data => {
-      dispatch({ type: SPOTIFY_USER_SUCCESS, data: data });
+      userData.profileData = data;
+      
+      dispatch({ type: SPOTIFY_USER_SUCCESS, data: userData });
     }).catch(e => {
       dispatch({ type: SPOTIFY_USER_FAILURE, error: e });
     });
   };
 }
 
-/* get my info from the /me api */
+/* get my profile info */
 export function getMyInfo() {
   return dispatch => {
+    const userData = {};
+
     dispatch({ type: SPOTIFY_ME_BEGIN});
-    spotifyApi.getUser('cowboyfromhull').then(data => {
-      dispatch({ type: SPOTIFY_ME_SUCCESS, data: data });
-    }).catch(e => {
-      dispatch({ type: SPOTIFY_ME_FAILURE, error: e });
-    });
+    
+    spotifyApi.getUser(myUserName)
+      .then(data => {
+        userData.profileData = data;
+
+        return spotifyApi.getUserPlaylists(myUserName)        
+      })
+      .then(data => {
+        userData.playlistData = data;
+      })
+      .then(() => {
+        dispatch({ type: SPOTIFY_ME_SUCCESS, data: userData });
+      }).catch(e => {
+        dispatch({ type: SPOTIFY_ME_FAILURE, error: e });
+      });
   };
 }
 

@@ -17,8 +17,8 @@ class UsersSpotifyProfiles extends Component {
     const { visitingUser } = this.props.spotifySession;
 
     if (!visitingUser.loading) {
-      if (visitingUser.id === null) {
-        return window.location ='http://localhost:3001/api/spotify-authenticate';
+      if (!visitingUser.hasOwnProperty('profileData')) {
+        return window.location = 'http://localhost:3001/api/spotify-authenticate';
       }
     }
   }
@@ -26,11 +26,9 @@ class UsersSpotifyProfiles extends Component {
   render() {
     const { visitingUser, myUser } = this.props.spotifySession;
 
-    /*
-    return (
-      <div>{JSON.stringify(this.props.spotifySession)}</div>
-    );
-    */
+    if (!visitingUser.hasOwnProperty('profileData')) {
+      return null;
+    }
 
     return (
       <Grid>
