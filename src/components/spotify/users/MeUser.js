@@ -32,19 +32,15 @@ class MeUser extends Component {
                 <img src={imageUrl} alt='User avatar' />
                 <ul>
                   <li>
-                    <span>Display name</span>
+                    <span>Display name </span>
                     <span>{user.profileData.display_name}</span>
                   </li>
                   <li>
-                    <span>Id</span>
+                    <span>Id </span>
                     <span>{user.profileData.id}</span>
                   </li>
                   <li>
-                    <span>Email</span>
-                    <span>{user.profileData.email}</span>
-                  </li>
-                  <li>
-                    <span>Spotify URI</span>
+                    <span>Spotify URI </span>
                     <span>
                       <a href={user.profileData.external_urls.spotify}>
                         {user.profileData.external_urls.spotify}
@@ -52,7 +48,7 @@ class MeUser extends Component {
                     </span>
                   </li>
                   <li>
-                    <span>Link</span>
+                    <span>Link </span>
                     <span>
                       <a href={user.profileData.href}>
                         {user.profileData.href}
@@ -60,26 +56,16 @@ class MeUser extends Component {
                     </span>
                   </li>
                   <li>
-                    <span>Profile Image</span><span>
-                    <a href={user.profileData.imageUrl}>
-                      {user.profileData.imageUrl}
+                    <span>Profile Image </span><span>
+                    <a href={imageUrl}>
+                      {imageUrl}
                     </a>
                     </span>
-                  </li>
-                  <li>
-                    <span>Country</span>
-                    <span>
-                      {user.profileData.country}
-                    </span>
-                  </li>
-                  <li>
-                    <span>Product</span>
-                    <span>{user.profileData.product}</span>
                   </li>
                 </ul>
               </div>
               <div>
-                {JSON.stringify(user.playlistData)}
+                <strong>PLAYLISTS:{user.playlistData.items.length}</strong>
               </div>
             </div>
           }

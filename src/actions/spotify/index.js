@@ -1,7 +1,7 @@
 import Spotify from 'spotify-web-api-js';
 
 const spotifyApi = new Spotify();
-const myUserName = '113543697';
+const myUserName = 'cowboyfromhull';
 
 // our constants
 export const SPOTIFY_TOKENS = 'SPOTIFY_TOKENS';
@@ -51,9 +51,7 @@ export function getMyInfo() {
 
         return spotifyApi.getUserPlaylists(myUserName)        
       })
-      .then(data => {
-        userData.playlistData = data;
-      })
+      .then(data => userData.playlistData = data)
       .then(() => {
         dispatch({ type: SPOTIFY_ME_SUCCESS, data: userData });
       }).catch(e => {

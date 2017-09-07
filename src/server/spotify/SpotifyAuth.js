@@ -1,6 +1,8 @@
 const Spotify = require('spotify-web-api-node');
 
-const scopes = ['user-read-private', 'user-read-email'];
+const scopes = [
+  'user-read-private'
+];
 const STATE_KEY = 'spotify_auth_state';
 
 const baseUrl_client = 'http://localhost:3000';
