@@ -38,6 +38,43 @@ export function getUserInfo() {
   };
 }
 
+const getUserProfile = (userName, data) =>
+  spotifyApi.getUser(userName)
+    .then((profileData) => data.profileData = profileData);
+
+const getUserPlaylists = (userName, data) =>
+  spotifyApi.getUserPlaylists(userName)
+    .then((playlistData) => data.playlistData = playlistData);
+
+const getUserPlaylistTracks = (userName, playlistTrackItems, data) => {
+  const playlistCalls = [];
+  const queryOptions = {};
+
+  for (let playlistTrackItem of playlistTrackItems) {
+    playlistCalls.push(new Promise((resolve, reject) =>
+      spotifyApi.getPlaylistTracks(userName, playlistTrackItem.id, queryOptions)
+        .then((playlistTrackData) => {
+          resolve(playlistTrackData);
+        })
+        .catch(error => {
+          resolve(true)
+          //reject(error)
+        })
+      )
+    )
+  }
+
+  return Promise.all(playlistCalls)
+    .then((trackData) => {
+      console.log('PLAYLISTS DATA:', trackData);
+
+      return data.playlistTrackData = trackData
+    })
+    .catch(reason => { 
+      console.log('ERROR B!', reason)
+    });
+}
+
 /* get my profile info */
 export function getMyInfo() {
   return dispatch => {
@@ -45,18 +82,11 @@ export function getMyInfo() {
 
     dispatch({ type: SPOTIFY_ME_BEGIN});
     
-    spotifyApi.getUser(myUserName)
-      .then(data => {
-        userData.profileData = data;
-
-        return spotifyApi.getUserPlaylists(myUserName)        
-      })
-      .then(data => userData.playlistData = data)
-      .then(() => {
-        dispatch({ type: SPOTIFY_ME_SUCCESS, data: userData });
-      }).catch(e => {
-        dispatch({ type: SPOTIFY_ME_FAILURE, error: e });
-      });
+    getUserProfile(myUserName, userData)
+      .then(() => getUserPlaylists(myUserName, userData))
+      .then(() => getUserPlaylistTracks(myUserName, userData.playlistData.items, userData))
+      .then(() => dispatch({ type: SPOTIFY_ME_SUCCESS, data: userData }))
+      .catch(e => dispatch({ type: SPOTIFY_ME_FAILURE, error: e }));
   };
 }
 
