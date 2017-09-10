@@ -5,12 +5,11 @@ import Portfolio from '../containers/Portfolio';
 import About from '../containers/About';
 import Home from '../containers/Home';
 
-import SpotifyAuthenticate from '../components/spotify/SpotifyAuthenticate'
 import { doSpotifyAuthenticatedCheck } from '../containers/spotify/SpotifyAuth';
+import SpotifyAuthenticate from './spotify/SpotifyAuthenticate'
+import SpotifyAuthenticated from './spotify/SpotifyAuthenticated';
 import SpotifyProfiles from '../containers/spotify/UsersSpotifyProfiles';
-
 import Header from '../components/Header';
-import SpotifyAuthenticated from '../components/spotify/SpotifyAuthenticated';
 
 import '../assets/styles/css/App.css';
 
