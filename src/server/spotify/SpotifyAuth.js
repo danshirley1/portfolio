@@ -18,13 +18,23 @@ const spotifyApi = new Spotify({
 const generateRandomString = N => (Math.random().toString(36)+Array(N).join('0')).slice(2, N+2);
 
 const authorize = (res) => {
+  console.log('SERVER LOG A');
+
   const state = generateRandomString(16);
   
+  try {
+    spotifyApi.createAuthorizeURL(scopes, state)
+  } catch (err) {
+    console.log('SERVER ERROR 1', err);
+  } 
+
   res.cookie(STATE_KEY, state);
   res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
 };
 
 const authorizeCallback = (req, res) => {
+  console.log('SERVER LOG B');
+
   const { code, state } = req.query;
   const storedState = req.cookies ? req.cookies[STATE_KEY] : null;
 
@@ -48,7 +58,7 @@ const authorizeCallback = (req, res) => {
 
       // use the access token to access the Spotify Web API
       spotifyApi.getMe().then(({ body }) => {
-        console.log(body);
+        //console.log(body);
       });
 
       // we can also pass the token to the browser to make requests from there

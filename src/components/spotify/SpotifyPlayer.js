@@ -35,12 +35,8 @@ class SpotifyPlayer extends Component {
     return (
       <div>
         <p>THIS IS THE PLAYER MARKUP</p>
-        <Button
-          bsStyle="primary"
-          onClick={this.props.doAuthenticate}>
-          Check it out!
-        </Button>
-        <a href="http://localhost:3001/api/spotify-authenticate">
+        
+        <a href="/spotify-profiles">
           THIS IS THE LINK VERSION!
         </a>
       </div>
@@ -54,5 +50,6 @@ const mapDispatchToProps = dispatch => bindActionCreators({
 }, dispatch)
 
 export default connect(
+  null,
   mapDispatchToProps
 )(SpotifyPlayer);

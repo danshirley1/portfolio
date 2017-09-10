@@ -1,5 +1,8 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+
+import { isSpotifyAuthenticated } from '../../containers/spotify/SpotifyAuth';
+
 import {
   getUserInfo,
   getMyInfo,
@@ -7,21 +10,36 @@ import {
 } from '../../actions/spotify/';
 
 class SpotifyAuthenticated extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const {dispatch} = this.props;
     const {params} = this.props.match;
     const {accessToken, refreshToken} = params;
 
+    console.log('AAAAAA AAAAAA AAAAAA AAAAAA AAAAAA AAAAAA ');
+
     dispatch(setTokens({accessToken, refreshToken}));
     dispatch(getUserInfo());
     dispatch(getMyInfo());
+  }
 
-    this.props.history.replace('/spotify-profiles');
+  componentWillReceiveProps() {
+    console.log('YYYYY YYYYY YYYYY YYYYY ', this.props.spotifySession);
+
+    if (isSpotifyAuthenticated(this.props.spotifySession)) {
+      this.props.history.replace('/spotify-profiles');
+    }
   }
 
   render() {
-    return null
+    return null;
   }
 }
 
-export default connect()(SpotifyAuthenticated);
+const mapStateToProps = state => ({
+  spotifySession: state.spotifySession
+})
+
+export default connect(
+  mapStateToProps,
+  null
+)(SpotifyAuthenticated);

@@ -13,16 +13,6 @@ import MeUser from '../../components/spotify/users/MeUser';
 import VisitingUser from '../../components/spotify/users/VisitingUser';
 
 class UsersSpotifyProfiles extends Component {
-  componentDidUpdate() {
-    const { visitingUser } = this.props.spotifySession;
-
-    if (!visitingUser.loading) {
-      if (!visitingUser.hasOwnProperty('profileData')) {
-        return window.location = 'http://localhost:3001/api/spotify-authenticate';
-      }
-    }
-  }
-
   render() {
     const { visitingUser, myUser } = this.props.spotifySession;
 
@@ -53,4 +43,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
+  null
 )(UsersSpotifyProfiles);
