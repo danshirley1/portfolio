@@ -15,16 +15,12 @@ class SpotifyAuthenticated extends Component {
     const {params} = this.props.match;
     const {accessToken, refreshToken} = params;
 
-    console.log('AAAAAA AAAAAA AAAAAA AAAAAA AAAAAA AAAAAA ');
-
     dispatch(setTokens({accessToken, refreshToken}));
     dispatch(getUserInfo());
     dispatch(getMyInfo());
   }
 
   componentWillReceiveProps() {
-    console.log('YYYYY YYYYY YYYYY YYYYY ', this.props.spotifySession);
-
     if (isSpotifyAuthenticated(this.props.spotifySession)) {
       this.props.history.replace('/spotify-profiles');
     }

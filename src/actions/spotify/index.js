@@ -66,8 +66,6 @@ const getUserPlaylistTracks = (userName, playlistTrackItems, data) => {
 
   return Promise.all(playlistCalls)
     .then((trackData) => {
-      console.log('PLAYLISTS DATA:', trackData);
-
       return data.playlistTrackData = trackData
     })
     .catch(reason => { 
