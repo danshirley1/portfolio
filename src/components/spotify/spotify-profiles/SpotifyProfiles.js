@@ -9,8 +9,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 
-import MeUser from '../../components/spotify/users/MeUser';
-import VisitingUser from '../../components/spotify/users/VisitingUser';
+import MeUser from './MeUser';
+import VisitingUser from './VisitingUser';
 
 class SpotifyProfiles extends Component {
   render() {

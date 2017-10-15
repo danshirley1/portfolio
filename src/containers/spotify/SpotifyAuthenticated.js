@@ -2,7 +2,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 
-import { isSpotifyAuthenticated } from '../../containers/spotify/SpotifyAuth';
+import { isSpotifyAuthenticated } from '../../components/spotify/SpotifyAuth';
 
 import {
   getUserInfo,
