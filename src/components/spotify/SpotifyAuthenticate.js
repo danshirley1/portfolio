@@ -1,13 +1,7 @@
-import { Component } from 'react';
+function SpotifyAuthenticate () {
+  window.location = 'http://localhost:3001/api/spotify-authenticate';
 
-class SpotifyAuthenticate extends Component {
-  componentDidMount() {
-    window.location = 'http://localhost:3001/api/spotify-authenticate';
-  }
-
-  render() {
-    return null;
-  }
+  return null;
 }
 
 export default SpotifyAuthenticate;
