@@ -8,7 +8,8 @@ import Home from '../containers/Home';
 import { doSpotifyAuthenticatedCheck } from '../containers/spotify/SpotifyAuth';
 import SpotifyAuthenticate from './spotify/SpotifyAuthenticate'
 import SpotifyAuthenticated from './spotify/SpotifyAuthenticated';
-import SpotifyProfiles from '../containers/spotify/UsersSpotifyProfiles';
+import SpotifyProfiles from '../containers/spotify/SpotifyProfiles';
+
 import Header from '../components/Header';
 
 import '../assets/styles/css/App.css';
@@ -26,6 +27,7 @@ class App extends Component {
           <Route path="/about" component={About}/>
           <Route path="/portfolio" component={Portfolio}/>
 
+          {/* Spotify auth restricted route: */}
           <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfiles)} />
 
           <Route path="/do-spotify-authenticate" component={SpotifyAuthenticate} />

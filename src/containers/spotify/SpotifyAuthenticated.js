@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux'
 
 import { isSpotifyAuthenticated } from '../../containers/spotify/SpotifyAuth';
 
@@ -11,16 +12,15 @@ import {
 
 class SpotifyAuthenticated extends Component {
   componentWillMount() {
-    const {dispatch} = this.props;
-    const {params} = this.props.match;
-    const {accessToken, refreshToken} = params;
+    const {match, setTokens, getUserInfo, getMyInfo} = this.props;
+    const {accessToken, refreshToken} = match.params;
 
-    dispatch(setTokens({accessToken, refreshToken}));
-    dispatch(getUserInfo());
-    dispatch(getMyInfo());
+    setTokens({accessToken, refreshToken});
+    getUserInfo(); // TODO: invoke this on arrival at spotify-profiles (use a spinner there?)
+    getMyInfo(); // TODO: invoke this on arrival at spotify-profiles (use a spinner there?)
   }
 
-  componentWillReceiveProps() {
+  componentDidUpdate() {
     if (isSpotifyAuthenticated(this.props.spotifySession)) {
       this.props.history.replace('/spotify-profiles');
     }
@@ -35,7 +35,13 @@ const mapStateToProps = state => ({
   spotifySession: state.spotifySession
 })
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+  setTokens,
+  getUserInfo,
+  getMyInfo
+}, dispatch)
+
 export default connect(
   mapStateToProps,
-  null
+  mapDispatchToProps
 )(SpotifyAuthenticated);

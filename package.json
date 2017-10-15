@@ -23,6 +23,7 @@
     "react-scripts": "1.0.11",
     "redux": "^3.7.2",
     "redux-auth-wrapper": "^2.0.1",
+    "redux-persist": "^4.9.1",
     "redux-thunk": "^2.2.0",
     "spotify-web-api-js": "^0.22.0",
     "spotify-web-api-node": "^2.4.0"

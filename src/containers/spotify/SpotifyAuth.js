@@ -2,7 +2,6 @@ import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
 
 export const isSpotifyAuthenticated = (spotifySession) => {
   if (spotifySession.hasOwnProperty('accessToken')) {
-    console.log('XXXXX XXXXX XXXXX XXXXX XXXXX ', spotifySession);
     return spotifySession.accessToken !== null;
   }
 
@@ -10,10 +9,10 @@ export const isSpotifyAuthenticated = (spotifySession) => {
 };
 
 export const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
-   // The url to redirect user to if they fail
+  // The url to redirect user to if they fail
   redirectPath: () => '/do-spotify-authenticate',
 
-   // Determine if the user is authenticated or not
+  // Determine if the user is authenticated or not  
   authenticatedSelector: state => isSpotifyAuthenticated(state.spotifySession),
 
   // A nice display name for this check

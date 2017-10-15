@@ -12,7 +12,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import MeUser from '../../components/spotify/users/MeUser';
 import VisitingUser from '../../components/spotify/users/VisitingUser';
 
-class UsersSpotifyProfiles extends Component {
+class SpotifyProfiles extends Component {
   render() {
     const { visitingUser, myUser } = this.props.spotifySession;
 
@@ -44,4 +44,4 @@ const mapStateToProps = state => ({
 export default connect(
   mapStateToProps,
   null
-)(UsersSpotifyProfiles);
+)(SpotifyProfiles);
