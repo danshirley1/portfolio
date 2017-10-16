@@ -12,34 +12,6 @@ export const SPOTIFY_ME_BEGIN = 'SPOTIFY_ME_BEGIN';
 export const SPOTIFY_ME_SUCCESS = 'SPOTIFY_ME_SUCCESS';
 export const SPOTIFY_ME_FAILURE = 'SPOTIFY_ME_FAILURE';
 
-/** set the app's access and refresh tokens */
-export function setTokens({accessToken, refreshToken}) {
-  if (accessToken) {
-    spotifyApi.setAccessToken(accessToken);
-  }
-
-  return dispatch => {
-    dispatch({ type: SPOTIFY_TOKENS, accessToken, refreshToken });
-  };
-}
-
-/* get logged in user's profile info */
-export function getUserInfo() {
-  return dispatch => {
-    const userData = {};
-
-    dispatch({ type: SPOTIFY_USER_BEGIN});
-
-    spotifyApi.getMe().then(data => {
-      userData.profileData = data;
-      
-      dispatch({ type: SPOTIFY_USER_SUCCESS, data: userData });
-    }).catch(e => {
-      dispatch({ type: SPOTIFY_USER_FAILURE, error: e });
-    });
-  };
-}
-
 const getUserProfile = (userName, data) =>
   spotifyApi.getUser(userName)
     .then((profileData) => data.profileData = profileData);
@@ -73,6 +45,32 @@ const getUserPlaylistTracks = (userName, playlistTrackItems, data) => {
     .catch(reason => { 
       console.log('ERROR B!', reason)
     });
+}
+
+/** set the app's access and refresh tokens */
+export function setTokens({accessToken, refreshToken}) {
+  if (accessToken) {
+    spotifyApi.setAccessToken(accessToken);
+  }
+
+  return { type: SPOTIFY_TOKENS, accessToken, refreshToken };
+}
+
+/* get logged in user's profile info */
+export function getUserInfo() {
+  return dispatch => {
+    const userData = {};
+
+    dispatch({ type: SPOTIFY_USER_BEGIN});
+
+    spotifyApi.getMe().then(data => {
+      userData.profileData = data;
+      
+      dispatch({ type: SPOTIFY_USER_SUCCESS, data: userData });
+    }).catch(e => {
+      dispatch({ type: SPOTIFY_USER_FAILURE, error: e });
+    });
+  };
 }
 
 /* get my profile info */
