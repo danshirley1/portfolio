@@ -6,10 +6,11 @@ import About from '../containers/About';
 import Home from '../containers/Home';
 
 import { doSpotifyAuthenticatedCheck } from '../components/spotify/SpotifyAuth';
-import SpotifyAuthenticate from '../components/spotify/SpotifyAuthenticate'
-import SpotifyProfiles from '../components/spotify/spotify-profiles/SpotifyProfiles';
 
-import SpotifyAuthenticated from './spotify/SpotifyAuthenticated';
+import SpotifyProfilesContainer from './spotify/SpotifyProfilesContainer';
+import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticatedContainer';
+
+import SpotifyAuthenticate from '../components/spotify/SpotifyAuthenticate'
 
 import Header from '../components/Header';
 
@@ -24,22 +25,23 @@ class App extends Component {
         </header>
 
         <main>
-          <Route path="/" exact component={Home}/>
-          <Route path="/about" component={About}/>
-          <Route path="/portfolio" component={Portfolio}/>
+          <Route path='/' exact component={Home}/>
+          <Route path='/about' component={About}/>
+          <Route path='/portfolio' component={Portfolio}/>
 
           {/* Spotify auth restricted route: */}
-          <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfiles)} />
+          <Route path='/spotify-profiles' component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
 
-          <Route path="/do-spotify-authenticate" component={SpotifyAuthenticate} />
-          <Route path="/spotify-authentication-success/:accessToken/:refreshToken" component={SpotifyAuthenticated} />
-          <Route path="/spotify-authentication-error/:errorMsg" component={Error} />
+          <Route path='/do-spotify-authenticate' component={SpotifyAuthenticate} />
+          <Route path='/spotify-authentication-success/:accessToken/:refreshToken'
+            component={SpotifyAuthenticatedContainer} />
+          <Route path='/spotify-authentication-error/:errorMsg' component={Error} />
         </main>
 
         {/* Footer */}
-        <footer className="py-5 bg-dark">
-            <div className="container">
-                <p className="m-0 text-center text-white">Copyright &copy; www.danshirley.co.uk 2017</p>
+        <footer className='py-5 bg-dark'>
+            <div className='container'>
+                <p className='m-0 text-center text-white'>Copyright &copy; www.danshirley.co.uk 2017</p>
             </div>
         </footer>
 
