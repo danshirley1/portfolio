@@ -11,14 +11,16 @@ export const SPOTIFY_USER_FAILURE = 'SPOTIFY_USER_FAILURE';
 export const SPOTIFY_ME_BEGIN = 'SPOTIFY_ME_BEGIN';
 export const SPOTIFY_ME_SUCCESS = 'SPOTIFY_ME_SUCCESS';
 export const SPOTIFY_ME_FAILURE = 'SPOTIFY_ME_FAILURE';
-export const SPOTIFY_USER_TEST_LOG_OUT = 'SPOTIFY_USER_TEST_LOG_OUT';
 
 /** set the app's access and refresh tokens */
 export function setTokens({accessToken, refreshToken}) {
   if (accessToken) {
     spotifyApi.setAccessToken(accessToken);
   }
-  return { type: SPOTIFY_TOKENS, accessToken, refreshToken };
+
+  return dispatch => {
+    dispatch({ type: SPOTIFY_TOKENS, accessToken, refreshToken });
+  };
 }
 
 /* get logged in user's profile info */
@@ -85,11 +87,5 @@ export function getMyInfo() {
       .then(() => getUserPlaylistTracks(myUserName, userData.playlistData.items, userData))
       .then(() => dispatch({ type: SPOTIFY_ME_SUCCESS, data: userData }))
       .catch(e => dispatch({ type: SPOTIFY_ME_FAILURE, error: e }));
-  };
-}
-
-export function testUserLoggedOut() {
-  return dispatch => {
-    dispatch({ type: SPOTIFY_USER_TEST_LOG_OUT});
   };
 }

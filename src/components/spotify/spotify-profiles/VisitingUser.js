@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 
-function VisitingUser ({handleLogOutUser, user}: props) {
+function VisitingUser ({user}: props) {
   // if we're still loading, indicate such
   if (user.loading) {
     return <h2>Loading...</h2>;
@@ -17,14 +17,6 @@ function VisitingUser ({handleLogOutUser, user}: props) {
         <h1>
           Visiting User Component
         </h1>
-
-        <div>
-          <Button
-            bsStyle="primary"
-            onClick={handleLogOutUser}>
-            logout user
-          </Button>
-        </div>
 
         {user.profileData &&
           <div className="user">

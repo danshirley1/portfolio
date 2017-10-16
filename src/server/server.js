@@ -18,32 +18,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 app.get('/api/spotify-authenticate', (req, res) => {
-  /*
-  const param = req.query.q;
-
-  if (!param) {
-    res.json({
-      error: "Missing required parameter `q`"
-    });
-    return;
-  }
-
-  if (true) {
-    res.json({
-      someGoodKey: 'someGoodVal',
-    });
-  } else {
-    res.json({
-      someBadKey: 'someBadVal',
-    });
-  }
-  */
-
   SpotifyAuth.authorize(res);
 });
 
 app.get('/api/spotify-auth-callback', (req, res) => {
-
   SpotifyAuth.authorizeCallback(req, res)
 });
 

@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
 
 import { isSpotifyAuthenticated } from '../../components/spotify/SpotifyAuth';
 
@@ -35,13 +34,11 @@ const mapStateToProps = state => ({
   spotifySession: state.spotifySession
 })
 
-const mapDispatchToProps = dispatch => bindActionCreators({
-  setTokens,
-  getUserInfo,
-  getMyInfo
-}, dispatch)
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    setTokens,
+    getUserInfo,
+    getMyInfo
+  }
 )(SpotifyAuthenticated);

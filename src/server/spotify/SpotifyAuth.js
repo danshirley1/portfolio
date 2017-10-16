@@ -41,7 +41,7 @@ const authorizeCallback = (req, res) => {
   // first do state validation
   if (state === null || state !== storedState) {
 
-/// TEMP
+  // TEMP
     res.redirect('http://www.google.com');
     //res.redirect('/#/error/state mismatch');
   } else {
@@ -53,8 +53,8 @@ const authorizeCallback = (req, res) => {
       const { expires_in, access_token, refresh_token } = data.body;
 
       // Set the access token on the API object to use it in later calls
-      spotifyApi.setAccessToken(access_token);
-      spotifyApi.setRefreshToken(refresh_token);
+      //spotifyApi.setAccessToken(access_token);
+      //spotifyApi.setRefreshToken(refresh_token);
 
       // use the access token to access the Spotify Web API
       spotifyApi.getMe().then(({ body }) => {

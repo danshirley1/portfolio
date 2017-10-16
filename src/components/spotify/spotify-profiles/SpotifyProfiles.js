@@ -12,11 +12,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import MeUser from './MeUser';
 import VisitingUser from './VisitingUser';
 
-import {
-  testUserLoggedOut
-} from '../../../actions/spotify/';
-
-function SpotifyProfiles ({spotifySession}: props) {
+function SpotifyProfiles ({ spotifySession }: props) {
   const { visitingUser, myUser } = spotifySession;
 
   if (!visitingUser.hasOwnProperty('profileData')) {
@@ -28,7 +24,7 @@ function SpotifyProfiles ({spotifySession}: props) {
       <Row>
         <Col xs={6}>
           <h3>Visiting User</h3>
-          <VisitingUser handleLogOutUser={testUserLoggedOut} user={visitingUser} />
+          <VisitingUser user={visitingUser} />
         </Col>
         <Col xs={6}>
           <h3>Me User</h3>
@@ -38,7 +34,6 @@ function SpotifyProfiles ({spotifySession}: props) {
     </Grid>
   );
 }
-
 
 const mapStateToProps = state => ({
   spotifySession: state.spotifySession
