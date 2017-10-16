@@ -5,37 +5,40 @@
  * API calls.
  */
 
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { Grid, Row, Col } from 'react-bootstrap';
 
 import MeUser from './MeUser';
 import VisitingUser from './VisitingUser';
 
-class SpotifyProfiles extends Component {
-  render() {
-    const { visitingUser, myUser } = this.props.spotifySession;
+import {
+  testUserLoggedOut
+} from '../../../actions/spotify/';
 
-    if (!visitingUser.hasOwnProperty('profileData')) {
-      return null;
-    }
+function SpotifyProfiles ({spotifySession}: props) {
+  const { visitingUser, myUser } = spotifySession;
 
-    return (
-      <Grid>
-        <Row>
-          <Col xs={6}>
-            <h3>Visiting User</h3>
-            <VisitingUser user={visitingUser} />
-          </Col>
-          <Col xs={6}>
-            <h3>Me User</h3>
-            <MeUser user={myUser} />
-          </Col>
-        </Row>
-      </Grid>
-    );
+  if (!visitingUser.hasOwnProperty('profileData')) {
+    return null;
   }
+
+  return (
+    <Grid>
+      <Row>
+        <Col xs={6}>
+          <h3>Visiting User</h3>
+          <VisitingUser handleLogOutUser={testUserLoggedOut} user={visitingUser} />
+        </Col>
+        <Col xs={6}>
+          <h3>Me User</h3>
+          <MeUser user={myUser} />
+        </Col>
+      </Row>
+    </Grid>
+  );
 }
+
 
 const mapStateToProps = state => ({
   spotifySession: state.spotifySession

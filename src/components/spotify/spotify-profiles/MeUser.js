@@ -1,83 +1,69 @@
-import React, { Component } from 'react';
-import {} from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
+import React from 'react';
 
-import {} from '../../../actions/spotify/';
+function MeUser ({user}: props) {
+  // if we're still loading, indicate such
+  if (user.loading) {
+    return <h2>Loading...</h2>;
+  } else if (!user.hasOwnProperty('profileData')) {
+    return null;
+  } else {
+    const imageUrl = user.profileData.images[0]
+      ? user.profileData.images[0].url
+      : '';
 
-class MeUser extends Component {
-  render() {
-    const user = this.props.user;
+    return (
+      <div>
+        <h1>
+          My User Component
+        </h1>
 
-    // if we're still loading, indicate such
-    if (user.loading) {
-      return <h2>Loading...</h2>;
-    } else if (!user.hasOwnProperty('profileData')) {
-      return null;
-    } else {
-      const imageUrl = user.profileData.images[0]
-        ? user.profileData.images[0].url
-        : '';
-
-      return (
-        <div>
-          <h1>
-            My User Component
-          </h1>
-
-          {user.profileData &&
-            <div className="user">
-              <h2>{`My user is ${user.profileData.display_name}`}</h2>
-              <div className="user-content">
-                <img src={imageUrl} alt='User avatar' />
-                <ul>
-                  <li>
-                    <span>Display name </span>
-                    <span>{user.profileData.display_name}</span>
-                  </li>
-                  <li>
-                    <span>Id </span>
-                    <span>{user.profileData.id}</span>
-                  </li>
-                  <li>
-                    <span>Spotify URI </span>
-                    <span>
-                      <a href={user.profileData.external_urls.spotify}>
-                        {user.profileData.external_urls.spotify}
-                      </a>
-                    </span>
-                  </li>
-                  <li>
-                    <span>Link </span>
-                    <span>
-                      <a href={user.profileData.href}>
-                        {user.profileData.href}
-                      </a>
-                    </span>
-                  </li>
-                  <li>
-                    <span>Profile Image </span><span>
-                    <a href={imageUrl}>
-                      {imageUrl}
+        {user.profileData &&
+          <div className="user">
+            <h2>{`My user is ${user.profileData.display_name}`}</h2>
+            <div className="user-content">
+              <img src={imageUrl} alt='User avatar' />
+              <ul>
+                <li>
+                  <span>Display name </span>
+                  <span>{user.profileData.display_name}</span>
+                </li>
+                <li>
+                  <span>Id </span>
+                  <span>{user.profileData.id}</span>
+                </li>
+                <li>
+                  <span>Spotify URI </span>
+                  <span>
+                    <a href={user.profileData.external_urls.spotify}>
+                      {user.profileData.external_urls.spotify}
                     </a>
-                    </span>
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <strong>PLAYLISTS:{user.playlistData.items.length}</strong>
-              </div>
+                  </span>
+                </li>
+                <li>
+                  <span>Link </span>
+                  <span>
+                    <a href={user.profileData.href}>
+                      {user.profileData.href}
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>Profile Image </span><span>
+                  <a href={imageUrl}>
+                    {imageUrl}
+                  </a>
+                  </span>
+                </li>
+              </ul>
             </div>
-          }
-        </div>
-      );
-    }
+            <div>
+              <strong>PLAYLISTS:{user.playlistData.items.length}</strong>
+            </div>
+          </div>
+        }
+      </div>
+    );
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch)
-
-export default connect(
-  null,
-  mapDispatchToProps
-)(MeUser);
+export default MeUser;
