@@ -1,5 +1,18 @@
 const spotifyWebApiNode = jest.genMockFromModule('spotify-web-api-node');
 
-spotifyWebApiNode.prototype.createAuthorizeURL = jest.fn().mockImplementation(() => 'fooBarAuthorizeURL');
+spotifyWebApiNode.prototype = {
+  ...spotifyWebApiNode.prototype,
+
+  createAuthorizeURL: jest.fn().mockImplementation(() => 'fooBarAuthorizeURL'),
+
+  authorizationCodeGrant: jest.fn().mockImplementation(() =>
+    new Promise(resolve => resolve({
+      body: {
+        expires_in: 'expires_in_foobar',
+        access_token: 'access_token_foobar',
+        refresh_token: 'refresh_token_foobar',
+      },
+    }))),
+};
 
 export { spotifyWebApiNode as default };

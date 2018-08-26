@@ -8,11 +8,36 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 
-const spotifyAuthenticate = (req, res) => {
+export const spotifyAuthorize = (req, res) => {
   const scopes = ['user-read-private'];
   const state = {};
 
   res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
 };
 
-export { spotifyAuthenticate as default };
+export const spotifyAuthorizeCallback = (req, res) => {
+  // const { code, state } = req.query; // TODO state?
+  const { code } = req.query;
+
+  // Retrieve an access token and a refresh token
+  return spotifyApi.authorizationCodeGrant(code).then((data) => {
+    const { expires_in, access_token, refresh_token } = data.body;
+
+    //donotcommit (temp)
+    res.body = { expires_in, access_token, refresh_token };
+
+    /*
+    // use the access token to access the Spotify Web API
+    // THIS NEEDS SPLITTING IN TO SOME FURTHER CALL OR OTHER - DS
+    spotifyApi.getMe().then(({ body }) => {
+      //console.log(body);
+    });
+    */
+
+    return res;
+  }).catch(err => console.log('BOOM!', err));
+
+  // we can also pass the token to the browser to make requests from there
+  // OLD NOW - DS
+  // res.redirect(`${baseUrl_client}/spotify-authentication-success/${access_token}/${refresh_token}`);
+};

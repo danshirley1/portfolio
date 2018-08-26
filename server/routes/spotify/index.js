@@ -1,9 +1,11 @@
 import express from 'express';
 
-import spotifyAuthenticate from '../../controllers/spotify/spotifyAuth';
+import { spotifyAuthorize, spotifyAuthorizeCallback } from '../../controllers/spotify/spotifyAuth';
 
 const router = express.Router();
 
-router.get('/authenticate', spotifyAuthenticate);
+router.get('/authorize', spotifyAuthorize);
+
+router.get('/authorize-callback', spotifyAuthorizeCallback);
 
 module.exports = router;
