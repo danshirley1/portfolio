@@ -9,6 +9,9 @@
   ],
   env: {
     node: true,
-    'jest/globals': true,
+    'jest/globals': true
+  },
+  rules: {
+    "max-len": [2, {code: 120}]
   }
 }

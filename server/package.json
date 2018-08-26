@@ -15,5 +15,8 @@
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
     "spotify-web-api-node": "^3.1.1"
+  },
+  "devDependencies": {
+    "babel-plugin-transform-object-rest-spread": "^6.26.0"
   }
 }
