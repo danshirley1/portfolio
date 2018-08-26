@@ -4,14 +4,19 @@
   "private": true,
   "scripts": {
     "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "test-server": "jest --config config/jest.server.json",
+    "test-server-watch": "jest --config config/jest.server.json --watch",
+    "test-server-coverage": "jest --coverage --config config/jest.server.json"
   },
   "devDependencies": {
     "concurrently": "3.1.0",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "14.1.0",
     "eslint-plugin-import": "2.2.0",
+    "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-jsx-a11y": "4.0.0",
-    "eslint-plugin-react": "6.9.0"
+    "eslint-plugin-react": "6.9.0",
+    "jest": "^23.5.0"
   }
 }

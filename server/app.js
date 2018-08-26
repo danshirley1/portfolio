@@ -1,4 +1,4 @@
-require('babel-register')({ presets: ['env'] });
+require('babel-register');
 
 const createError = require('http-errors');
 const express = require('express');
