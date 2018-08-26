@@ -5,6 +5,8 @@
   "scripts": {
     "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
     "lint": "eslint .",
+    "test-client": "cd client && npm test",
+    "test-client-coverage": "cd client && npm run coverage",
     "test-server": "jest --config config/jest.server.json",
     "test-server-watch": "jest --config config/jest.server.json --watch",
     "test-server-coverage": "jest --coverage --config config/jest.server.json"
