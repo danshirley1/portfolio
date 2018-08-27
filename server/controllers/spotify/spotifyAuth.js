@@ -1,10 +1,11 @@
 import SpotifyWebApi from 'spotify-web-api-node';
 
+const baseUrlClient = 'http://localhost:3000';
 const baseUrlServer = 'http://localhost:3001';
 const spotifyApi = new SpotifyWebApi({
   clientId: 'd2a3bf4fd63748edace443314d41508d',
   clientSecret: 'ce9d75db2df34b5aa09fa371c2f03ac1',
-  redirectUri: `${baseUrlServer}/api/spotify-auth-callback`,
+  redirectUri: `${baseUrlServer}/spotify/authorize-callback`,
 });
 
 
@@ -12,7 +13,7 @@ export const spotifyAuthorize = (req, res) => {
   const scopes = ['user-read-private'];
   const state = {};
 
-  res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
+  return res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
 };
 
 export const spotifyAuthorizeCallback = (req, res) => {
@@ -23,8 +24,8 @@ export const spotifyAuthorizeCallback = (req, res) => {
   return spotifyApi.authorizationCodeGrant(code).then((data) => {
     const { expires_in, access_token, refresh_token } = data.body;
 
-    //donotcommit (temp)
-    res.body = { expires_in, access_token, refresh_token };
+    // donotcommit (temp)
+    // res.body = { expires_in, access_token, refresh_token };
 
     /*
     // use the access token to access the Spotify Web API
@@ -34,7 +35,7 @@ export const spotifyAuthorizeCallback = (req, res) => {
     });
     */
 
-    return res;
+    return res.redirect(`${baseUrlClient}/spotify-authentication-success/${access_token}/${refresh_token}`);
   }).catch(err => console.log('BOOM!', err));
 
   // we can also pass the token to the browser to make requests from there
