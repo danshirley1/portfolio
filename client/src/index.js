@@ -4,19 +4,20 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
+import { PersistGate } from 'redux-persist/lib/integration/react';
 
 import './index.css';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
-import store, { history } from './store/';
-
-console.log('ENTERING APP');
+import store, { persister, history } from './store/';
 
 ReactDOM.render(
   (
     <Provider store={store}>
       <ConnectedRouter history={history}>
-        <App />
+        <PersistGate persistor={persister}>
+          <App />
+        </PersistGate>
       </ConnectedRouter>
     </Provider>
   ), document.getElementById('root'));

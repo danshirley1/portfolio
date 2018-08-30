@@ -13,7 +13,7 @@ export const spotifyAuthorize = (req, res) => {
   const scopes = ['user-read-private'];
   const state = {};
 
-  return res.redirect(spotifyApi.createAuthorizeURL(scopes, state));
+  return res.send({ authorizeUrl: spotifyApi.createAuthorizeURL(scopes, state) });
 };
 
 export const spotifyAuthorizeCallback = (req, res) => {

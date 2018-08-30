@@ -12,9 +12,11 @@
     "test-server-coverage": "jest --coverage --config config/jest.server.json"
   },
   "devDependencies": {
+    "babel-plugin-module-resolver": "^3.1.1",
     "concurrently": "3.1.0",
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^16",
+    "eslint-import-resolver-babel-module": "^4.0.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",

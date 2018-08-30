@@ -3,6 +3,8 @@
 // const spotifyApi = new Spotify();
 // const myUserName = 'cowboyfromhull';
 
+// import { push } from 'connected-react-router';
+
 // our constants
 export const SPOTIFY_TOKENS = 'SPOTIFY_TOKENS';
 export const SPOTIFY_USER_BEGIN = 'SPOTIFY_USER_BEGIN';
@@ -12,15 +14,19 @@ export const SPOTIFY_ME_BEGIN = 'SPOTIFY_ME_BEGIN';
 export const SPOTIFY_ME_SUCCESS = 'SPOTIFY_ME_SUCCESS';
 export const SPOTIFY_ME_FAILURE = 'SPOTIFY_ME_FAILURE';
 
-/** set the app's access and refresh tokens */
-export function setTokens({ accessToken, refreshToken }) {
-  /*
-  if (accessToken) {
-    spotifyApi.setAccessToken(accessToken);
-  }
-  */
+export const AUTHORIZE_SPOTIFY_USER = 'AUTHORIZE_SPOTIFY_USER';
+export const NAV_AUTHORIZED_USER_TO_SPOTIFY_PROFILES_VIEW = 'NAV_AUTHORIZED_USER_TO_SPOTIFY_PROFILES_VIEW';
 
+export function setTokens({ accessToken, refreshToken }) {
   return { type: SPOTIFY_TOKENS, accessToken, refreshToken };
+}
+
+export function authorizeSpotifyUser() {
+  return { type: AUTHORIZE_SPOTIFY_USER };
+}
+
+export function navigateAuthorizedUserToSpotifyProfilesView(history) {
+  return { type: NAV_AUTHORIZED_USER_TO_SPOTIFY_PROFILES_VIEW, payload: { history } };
 }
 
 /*

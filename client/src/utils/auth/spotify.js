@@ -1,9 +1,5 @@
 const isSpotifyAuthenticated = (spotifySession) => {
-  console.log('XXX', spotifySession);
-
-  if (spotifySession.hasOwnProperty('accessToken')) {
-
-    console.log('YYY', spotifySession.accessToken !== null);
+  if (spotifySession.accessToken) {
     return spotifySession.accessToken !== null;
   }
 

@@ -1,19 +1,26 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
-import { persistStore, autoRehydrate } from 'redux-persist';
+import { createEpicMiddleware } from 'redux-observable';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import createBrowserHistory from 'history/createBrowserHistory';
-import rootReducer from '../reducers/';
 
-/** TODO Upgrade redux-persist to v5.n.n, see: https://github.com/rt2zz/redux-persist/issues/547 **/
+import spotifyReducer from '../reducers/spotify/';
+import rootEpic from '../epics';
 
 export const history = createBrowserHistory();
 
+const epicMiddleware = createEpicMiddleware(rootEpic);
+
 const initialState = {};
-const enhancers = [autoRehydrate()];
+const enhancers = [];
 const middleware = [
   routerMiddleware(history),
+  epicMiddleware,
 ];
 
+// dev tools
+/*
 if (process.env.NODE_ENV === 'development') {
   const devToolsExtension = window.devToolsExtension;
 
@@ -21,21 +28,30 @@ if (process.env.NODE_ENV === 'development') {
     enhancers.push(devToolsExtension());
   }
 }
+*/
 
 const composedEnhancers = compose(
   applyMiddleware(...middleware),
   ...enhancers,
 );
 
+const rootPersistConfig = {
+  key: 'root',
+  storage,
+};
+
+const rootReducer = combineReducers({
+  spotifySession: spotifyReducer,
+});
+
+const persistedRootReducer = persistReducer(rootPersistConfig, rootReducer);
+
 const store = createStore(
-  connectRouter(history)(rootReducer),
+  connectRouter(history)(persistedRootReducer),
   initialState,
   composedEnhancers,
 );
 
-// begin periodically persisting the store
-persistStore(store, {
-  whitelist: ['spotifySession'],
-}, () => {}); // .purge()
+export const persister = persistStore(store);
 
 export default store;

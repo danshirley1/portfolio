@@ -6,10 +6,6 @@ import React from 'react';
 function SpotifyProfiles (props) {
   const { visitingUser, myUser } = props;
 
-  if (!visitingUser.profileData) {
-    return null;
-  }
-
   return (
     <div>
       <h3>Visiting User</h3>

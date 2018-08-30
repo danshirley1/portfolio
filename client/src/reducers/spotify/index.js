@@ -1,7 +1,12 @@
-import { REHYDRATE } from 'redux-persist/constants';
+import { REHYDRATE } from 'redux-persist';
 import {
-  SPOTIFY_TOKENS, SPOTIFY_ME_BEGIN, SPOTIFY_ME_SUCCESS, SPOTIFY_ME_FAILURE,
-  SPOTIFY_USER_BEGIN, SPOTIFY_USER_SUCCESS, SPOTIFY_USER_FAILURE,
+  SPOTIFY_TOKENS,
+  SPOTIFY_ME_BEGIN,
+  SPOTIFY_ME_SUCCESS,
+  SPOTIFY_ME_FAILURE,
+  SPOTIFY_USER_BEGIN,
+  SPOTIFY_USER_SUCCESS,
+  SPOTIFY_USER_FAILURE,
 } from '../../actions/spotify/';
 
 const spotifyUserInitialState = {
@@ -16,17 +21,16 @@ const initialState = {
 };
 
 export default function reduce(state = initialState, action) {
+  const { accessToken, refreshToken } = action;
+
   switch (action.type) {
     // redux-persist rehydration occured
     case REHYDRATE:
-      console.log('REHYDRATE OCCURED');
-
       return state;
 
     // when we get the tokens... set the tokens!
     case SPOTIFY_TOKENS:
-      const { accessToken, refreshToken } = action;
-      return Object.assign({}, state, { accessToken, refreshToken });
+      return { ...state, accessToken, refreshToken };
 
     // set our loading property when the loading begins (visiting user)
     case SPOTIFY_USER_BEGIN:

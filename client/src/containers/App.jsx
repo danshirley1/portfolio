@@ -1,19 +1,25 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router';
 import { connect } from 'react-redux';
-import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
+import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
 
 import SpotifyProfilesContainer from './spotify/SpotifyProfiles';
 import HomeContainer from './Home';
-import SpotifyAuthenticate from '../components/spotify/SpotifyAuthenticate';
-import SpotifyAuthenticatedContainer from '../containers/spotify/SpotifyAuthenticatedContainer';
+import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticatedContainer';
+import PageNotFoundContainer from './PageNotFound';
 import isSpotifyAuthenticated from '../utils/auth/spotify';
+
+import { authorizeSpotifyUser } from '../actions/spotify';
 
 /* SEE: https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/react-router-4/auth.js */
 /* Maybe I need to use loading, as per the above example, and/ or connectedAuthWrapper? */
-const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
+const doSpotifyAuthenticatedCheck = connectedReduxRedirect({
   // The url to redirect user to if they fail
-  redirectPath: () => '/do-spotify-authenticate',
+  // redirectPath: () => '/do-spotify-authenticate',
+
+  redirectPath: () => '/',
+
+  redirectAction: authorizeSpotifyUser,
 
   // Determine if the user is authenticated or not
   authenticatedSelector: state => isSpotifyAuthenticated(state.spotifySession),
@@ -29,13 +35,15 @@ const App = () => (
     </header>
 
     <main>
-      <Route path="/" exact component={HomeContainer} />
-      <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
-      <Route path="/do-spotify-authenticate" component={SpotifyAuthenticate} />
-      <Route
-        path="/spotify-authentication-success/:accessToken/:refreshToken"
-        component={SpotifyAuthenticatedContainer}
-      />
+      <Switch>
+        <Route path="/" exact component={HomeContainer} />
+        <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
+        <Route
+          path="/spotify-authentication-success/:accessToken/:refreshToken"
+          component={SpotifyAuthenticatedContainer}
+        />
+        <Route component={PageNotFoundContainer} />
+      </Switch>
     </main>
 
     <div>
