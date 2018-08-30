@@ -20,6 +20,8 @@ ReactDOM.render(
         </PersistGate>
       </ConnectedRouter>
     </Provider>
-  ), document.getElementById('root'));
+  ),
+  document.getElementById('root'),
+);
 
 registerServiceWorker();

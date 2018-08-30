@@ -1,9 +1,9 @@
 import { Observable } from 'rxjs';
 // import createBrowserHistory from 'history/createBrowserHistory';
 
-import { AUTHORIZE_SPOTIFY_USER, NAV_AUTHORIZED_USER_TO_SPOTIFY_PROFILES_VIEW } from '../../actions/spotify';
+import { AUTHORIZE_SPOTIFY_USER } from '../../actions/spotify';
 
-export function doSomething(action$) {
+export default function authorizeSpotifyUser(action$) {
   return action$.ofType(AUTHORIZE_SPOTIFY_USER)
     .switchMap(() => Observable.ajax({
       url: 'http://localhost:3001/spotify/authorize',
@@ -15,12 +15,4 @@ export function doSomething(action$) {
         return { type: 'DUMMY' };
       })
       .catch(err => console.log('ERROR IN SPOTIFY EPIC:', err)));
-}
-
-export function navAuthorizedUserToSpotifyProfilesView(action$) {
-  return action$.ofType(NAV_AUTHORIZED_USER_TO_SPOTIFY_PROFILES_VIEW)
-    .map((action) => {
-      action.payload.history.replace('/spotify-profiles');
-      return { type: 'DUMMY' };
-    });
 }

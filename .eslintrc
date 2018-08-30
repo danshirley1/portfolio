@@ -9,7 +9,8 @@
   ],
   env: {
     node: true,
-    'jest/globals': true
+    browser: true,
+    jest: true
   },
   "settings": {
     "import/resolver": {

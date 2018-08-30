@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import {
-  setTokens,
-  navigateAuthorizedUserToSpotifyProfilesView,
-} from '../../actions/spotify/';
+import { setTokens } from '../../actions/spotify/';
 
 class SpotifyAuthenticated extends Component {
   componentDidMount() {
@@ -24,10 +21,4 @@ const mapStateToProps = state => ({
   spotifySession: state.spotifySession,
 });
 
-export default connect(
-  mapStateToProps,
-  {
-    setTokens,
-    navigateAuthorizedUserToSpotifyProfilesView,
-  },
-)(SpotifyAuthenticated);
+export default connect(mapStateToProps, { setTokens })(SpotifyAuthenticated);
