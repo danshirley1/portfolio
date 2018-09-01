@@ -1,4 +1,4 @@
-const isSpotifyAuthenticated = (spotifySession) => {
+const isSpotifyAuthorized = (spotifySession) => {
   if (spotifySession.accessToken) {
     return spotifySession.accessToken !== null;
   }
@@ -6,4 +6,4 @@ const isSpotifyAuthenticated = (spotifySession) => {
   return false;
 };
 
-export { isSpotifyAuthenticated as default };
+export { isSpotifyAuthorized as default };

@@ -7,7 +7,7 @@ import SpotifyProfilesContainer from './spotify/SpotifyProfiles';
 import HomeContainer from './Home';
 import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticatedContainer';
 import PageNotFoundContainer from './PageNotFound';
-import isSpotifyAuthenticated from '../utils/auth/spotify';
+import isSpotifyAuthorized from '../utils/auth/spotify';
 
 import { authorizeSpotifyUser } from '../actions/spotify';
 
@@ -22,10 +22,10 @@ const doSpotifyAuthenticatedCheck = connectedReduxRedirect({
   redirectAction: authorizeSpotifyUser,
 
   // Determine if the user is authenticated or not
-  authenticatedSelector: state => isSpotifyAuthenticated(state.spotifySession),
+  authenticatedSelector: state => isSpotifyAuthorized(state.spotifySession),
 
   // A nice display name for this check
-  wrapperDisplayName: 'UserIsSpotifyAuthenticated',
+  wrapperDisplayName: 'UserisSpotifyAuthorized',
 });
 
 const App = () => (

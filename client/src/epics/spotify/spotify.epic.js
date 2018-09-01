@@ -1,5 +1,6 @@
 import { Observable } from 'rxjs';
-// import createBrowserHistory from 'history/createBrowserHistory';
+import { showError } from '../../actions/app/';
+import { errorHandler } from '../../utils/errorHandler';
 
 import { AUTHORIZE_SPOTIFY_USER } from '../../actions/spotify';
 
@@ -14,5 +15,5 @@ export default function authorizeSpotifyUser(action$) {
         window.location.assign(data.response.authorizeUrl);
         return { type: 'DUMMY' };
       })
-      .catch(err => console.log('ERROR IN SPOTIFY EPIC:', err)));
+      .catch(errorHandler([], showError('Failed to authorise Spotify user!'))));
 }
