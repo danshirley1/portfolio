@@ -19,11 +19,9 @@ function SpotifyProfilesContainer(props) {
   );
 }
 
-const mapStateToProps = state => ({
-  spotifySession: state.spotifySession,
-});
-
 export default connect(
-  mapStateToProps,
+  state => ({
+    spotifySession: state.spotifySession,
+  }),
   null,
 )(SpotifyProfilesContainer);

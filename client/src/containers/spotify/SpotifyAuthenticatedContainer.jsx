@@ -17,8 +17,9 @@ class SpotifyAuthenticated extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  spotifySession: state.spotifySession,
-});
-
-export default connect(mapStateToProps, { setTokens })(SpotifyAuthenticated);
+export default connect(
+  state => ({
+    spotifySession: state.spotifySession,
+  }),
+  { setTokens },
+)(SpotifyAuthenticated);
