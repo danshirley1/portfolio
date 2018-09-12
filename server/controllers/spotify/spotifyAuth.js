@@ -24,6 +24,8 @@ export const spotifyAuthorizeCallback = (req, res) => {
   return spotifyApi.authorizationCodeGrant(code).then((data) => {
     const { expires_in, access_token, refresh_token } = data.body;
 
+    console.log('ACCESS TOKEN FROM SPOTIFY AUTHORISATION:', access_token);
+
     // donotcommit (temp)
     // res.body = { expires_in, access_token, refresh_token };
 
