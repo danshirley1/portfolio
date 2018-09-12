@@ -15,7 +15,7 @@ import SpotifyProfiles from '../../components/spotify/SpotifyProfiles';
 
 const GET_VISITING_USER = gql`
   query getVisitingUser {
-    spotifyUser(accessToken: "BQC2WJhdyQrQNkDgtPfSFBkU5BQrawiebyUiJtO12PzrI0xVrfBz9gJHMrYAmLxg7A2TVMUaOgAV1WkRD5qsuSuBsI-zprKJGLGlYvWyXv0stvW4PCh13NTzbTnN8OMGWj2OHI5rjOiJpe8DAgAkK168Ma1ZTcQcW8KJXCk") {
+    spotifyUser(accessToken: "BQA0ZUGU6zW8DZ_t27o9zVf0k8bm1FFD22DjEiGuF-yeafpf7NjP-L-YstVeFBv2qvgGBstdsSg3GFaieFSnTpSBZ62vfkjrCj8YO4nGn0q3mHeHbuZMtPh3y9eea61CDurlmZbnO5ACYxE8LlwyOV733Zu-yQ58e_qqiJY") {
       display_name
       external_urls { spotify }
       images { url }
