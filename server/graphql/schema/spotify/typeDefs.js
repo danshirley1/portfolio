@@ -13,7 +13,8 @@ const typeDefs = `
   type Query {
     "A simple type for getting started!"
     sayHello: String
-    spotifyUser(accessToken: String!): SpotifyUserProfile
+    visitingSpotifyUser(accessToken: String!): SpotifyUserProfile
+    mySpotifyUser: SpotifyUserProfile
   }
 `;
 

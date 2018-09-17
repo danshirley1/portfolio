@@ -1,17 +1,17 @@
 import React from 'react';
 
-// import MeUser from './MeUser';
-import VisitingUser from './VisitingUser';
+import UserSummary from './UserSummary';
 
 function SpotifyProfiles(props) {
   const { visitingUser, myUser } = props;
 
   return (
     <div>
-      <h3>Visiting User</h3>
-      <VisitingUser user={visitingUser} />
-      <h3>Me User</h3>
-      TODO
+      <h1>Visiting User</h1>
+      <UserSummary user={visitingUser} />
+  
+      <h1>Me User</h1>
+      <UserSummary user={myUser} />
     </div>
   );
 }
