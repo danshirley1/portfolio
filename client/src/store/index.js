@@ -20,7 +20,6 @@ const middleware = [
 ];
 
 // dev tools
-/*
 if (process.env.NODE_ENV === 'development') {
   const devToolsExtension = window.devToolsExtension;
 
@@ -28,7 +27,6 @@ if (process.env.NODE_ENV === 'development') {
     enhancers.push(devToolsExtension());
   }
 }
-*/
 
 const composedEnhancers = compose(
   applyMiddleware(...middleware),

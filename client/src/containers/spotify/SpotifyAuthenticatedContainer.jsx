@@ -13,7 +13,7 @@ class SpotifyAuthenticated extends Component {
   }
 
   render() {
-    return <Redirect to="/spotify-profiles" />;
+    return <Redirect to="/auth-success" />;
   }
 }
 

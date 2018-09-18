@@ -1,10 +1,12 @@
 import React from 'react';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, withRouter } from 'react-router';
 import { connect } from 'react-redux';
-import { connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect';
+import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 
 import SpotifyProfilesContainer from './spotify/SpotifyProfiles';
 import HomeContainer from './Home';
+import AuthHub from './authentication/AuthHub';
+import AuthSuccess from './authentication/AuthSuccess';
 import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticatedContainer';
 import PageNotFoundContainer from './PageNotFound';
 import isSpotifyAuthorized from '../utils/auth/spotify';
@@ -13,13 +15,8 @@ import { authorizeSpotifyUser } from '../actions/spotify';
 
 /* SEE: https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/react-router-4/auth.js */
 /* Maybe I need to use loading, as per the above example, and/ or connectedAuthWrapper? */
-const doSpotifyAuthenticatedCheck = connectedReduxRedirect({
-  // The url to redirect user to if they fail
-  // redirectPath: () => '/do-spotify-authenticate',
-
-  redirectPath: () => '/',
-
-  redirectAction: authorizeSpotifyUser,
+const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
+  redirectPath: () => '/auth-hub',
 
   // Determine if the user is authenticated or not
   authenticatedSelector: state => isSpotifyAuthorized(state.spotifySession),
@@ -37,6 +34,8 @@ const App = () => (
     <main>
       <Switch>
         <Route path="/" exact component={HomeContainer} />
+        <Route path="/auth-hub" component={AuthHub} />
+        <Route path="/auth-success" component={AuthSuccess} />
         <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
         <Route
           path="/spotify-authentication-success/:accessToken/:refreshToken"
@@ -60,6 +59,6 @@ const App = () => (
   </div>
 );
 
-export default connect(state => ({
+export default withRouter(connect(state => ({
   spotifySession: state.spotifySession,
-}))(App);
+}))(App));
