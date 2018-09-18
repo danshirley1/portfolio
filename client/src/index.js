@@ -11,19 +11,21 @@ import { ApolloProvider } from 'react-apollo';
 import './index.css';
 import App from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
-import store, { persister, history } from './store/';
+import store, { persistor, history } from './store/';
 
-const apolloClient = new ApolloClient({ uri: 'http://localhost:4000/graphql' });
+const apolloClient = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+});
 
 ReactDOM.render(
   (
     <Provider store={store}>
       <ApolloProvider client={apolloClient}>
-        <ConnectedRouter history={history}>
-          <PersistGate persistor={persister}>
+        <PersistGate persistor={persistor}>
+          <ConnectedRouter history={history}>
             <App />
-          </PersistGate>
-        </ConnectedRouter>
+          </ConnectedRouter>
+        </PersistGate>
       </ApolloProvider>
     </Provider>
   ),

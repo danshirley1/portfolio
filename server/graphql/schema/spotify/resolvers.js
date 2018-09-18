@@ -1,4 +1,5 @@
 import SpotifyWebApi from 'spotify-web-api-node';
+import { createError } from 'apollo-errors';
 
 // const baseUrlClient = 'http://localhost:3000';
 const baseUrlServer = 'http://localhost:3001';
@@ -6,6 +7,10 @@ const spotifyApi = new SpotifyWebApi({
   clientId: 'd2a3bf4fd63748edace443314d41508d',
   clientSecret: 'ce9d75db2df34b5aa09fa371c2f03ac1',
   redirectUri: `${baseUrlServer}/spotify/authorize-callback`,
+});
+
+const SpotifyUnauthenticatedError = createError('SpotifyUnauthenticatedError', {
+  message: 'The provided Spotify credentials are invalid.',
 });
 
 export default {
@@ -24,12 +29,22 @@ export default {
       // return spotifyApi.getUser('cowboyfromhull')
       return spotifyApi.getMe()
         .then((data) => { console.log('XX1 data.body:', data.body); return data.body; })
-        .catch((err) => { console.log('XX2 BOOM, err:', err); });
+        .catch((err) => { console.log('XX2 BOOM, err:', err);  });
     },
     mySpotifyUser: (root, args, context, info) => {
       return spotifyApi.getUser('cowboyfromhull')
-        .then((data) => { console.log('YY1 data.body:', data.body); return data.body; })
-        .catch((err) => { console.log('YY2 BOOM, err:', err); });
+        .then((data) => {
+          console.log('YY1 data.body:', data.body); return data.body;
+        })
+        .catch((err) => {
+          console.log('YY2 BOOM, err:', err);
+
+          if (err.statusCode === 401) {
+            return new SpotifyUnauthenticatedError();
+          }
+
+          return err;
+        });
     },
   },
 };

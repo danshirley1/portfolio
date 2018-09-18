@@ -11,8 +11,6 @@ import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticatedContain
 import PageNotFoundContainer from './PageNotFound';
 import isSpotifyAuthorized from '../utils/auth/spotify';
 
-import { authorizeSpotifyUser } from '../actions/spotify';
-
 /* SEE: https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/react-router-4/auth.js */
 /* Maybe I need to use loading, as per the above example, and/ or connectedAuthWrapper? */
 const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
