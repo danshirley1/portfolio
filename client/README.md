@@ -1,6 +1,6 @@
 ## DS Notes:
 
-After running a build, you can serve that locallY if you like:
+After running a build, you can serve that locally if you like:
 
 ```
 yarn global add serve

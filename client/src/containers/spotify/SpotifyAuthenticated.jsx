@@ -4,12 +4,12 @@ import { Redirect } from 'react-router-dom';
 
 import { setTokens } from '../../actions/spotify/';
 
-class SpotifyAuthenticated extends Component {
+export class SpotifyAuthenticated extends Component {
   componentDidMount() {
-    const { match, setTokens } = this.props;
+    const { match, onSetTokens } = this.props;
     const { accessToken, refreshToken } = match.params;
 
-    setTokens({ accessToken, refreshToken });
+    onSetTokens({ accessToken, refreshToken });
   }
 
   render() {
@@ -21,5 +21,5 @@ export default connect(
   state => ({
     spotifySession: state.spotifySession,
   }),
-  { setTokens },
+  { onSetTokens: setTokens },
 )(SpotifyAuthenticated);
