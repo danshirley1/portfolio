@@ -8,7 +8,7 @@ import HomeContainer from './Home';
 import AuthHub from './authentication/AuthHub';
 import AuthSuccess from './authentication/AuthSuccess';
 import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticated';
-import PageNotFoundContainer from './PageNotFound';
+import PageNotFound from './PageNotFound';
 import isSpotifyAuthorized from '../utils/auth/spotify';
 
 /* SEE: https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/react-router-4/auth.js */
@@ -39,7 +39,7 @@ export const App = () => (
           path="/spotify-authentication-success/:accessToken/:refreshToken"
           component={SpotifyAuthenticatedContainer}
         />
-        <Route component={PageNotFoundContainer} />
+        <Route component={PageNotFound} />
       </Switch>
     </main>
 
