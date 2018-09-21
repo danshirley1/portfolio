@@ -23,10 +23,10 @@ const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
   wrapperDisplayName: 'UserisSpotifyAuthorized',
 });
 
-const App = () => (
+export const App = () => (
   <div>
     <header>
-      Header
+      Header (todo - write a test for this in app.spec)
     </header>
 
     <main>
@@ -45,13 +45,13 @@ const App = () => (
 
     <div>
       <a href="/">
-        HOME &gt;
+        HOME &gt; (todo - write a test for this in app.spec)
       </a>
     </div>
 
     <div>
       <a href="/spotify-profiles">
-        VIEW SPOTIFY PROFILES &gt;
+        VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
       </a>
     </div>
   </div>

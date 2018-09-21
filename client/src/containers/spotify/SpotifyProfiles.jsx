@@ -27,7 +27,7 @@ export function SpotifyProfiles(props) {
 
         if (error) {
           if (error.graphQLErrors.find(err => err.name === 'SpotifyUnauthenticatedError')) {
-            return <Redirect to="auth-hub" />;
+            return <Redirect to="/auth-hub" />;
           }
 
           return 'Error!';

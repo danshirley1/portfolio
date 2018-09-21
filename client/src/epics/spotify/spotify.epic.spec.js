@@ -59,7 +59,7 @@ describe('spotify epics', () => {
           type: AUTHORIZE_SPOTIFY_USER,
         },
         { type: [], error: true, payload: { message: 'message', status: 500 } },
-        { type: 'SHOW_ALERT', message: 'Failed to authorise Spotify user!', status: 'error' },
+        { type: 'SHOW_ALERT', message: 'Failed to authorise Spotify user', status: 'error' },
       ]);
     });
   });

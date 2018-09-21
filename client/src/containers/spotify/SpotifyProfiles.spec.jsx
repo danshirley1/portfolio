@@ -88,7 +88,7 @@ describe('SpotifyProfiles Container', () => {
     });
     await wait(0);
     component.update();
-    expect(redirectSpy).toHaveBeenLastCalledWith({ to: 'auth-hub' }, {});
+    expect(redirectSpy).toHaveBeenLastCalledWith({ to: '/auth-hub' }, {});
     redirectSpy.mockRestore();
   });
 
