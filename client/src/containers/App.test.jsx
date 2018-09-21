@@ -11,7 +11,7 @@ const history = createBrowserHistory();
 
 it('renders without crashing', () => {
   shallow((
-    <ConnectedRouter history={history} store={mockStore({ runtime: {} })}>
+    <ConnectedRouter history={history} store={mockStore({})}>
       <App />
     </ConnectedRouter>
   ));
