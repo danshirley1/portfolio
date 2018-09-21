@@ -6,5 +6,3 @@ export const GET_VISITING_AND_MY_SPOTIFY_USER = `
     ${MY_SPOTIFY_USER}
   }
 `;
-
-export const DUMMY = [GET_VISITING_AND_MY_SPOTIFY_USER];

@@ -13,5 +13,3 @@ export const MY_SPOTIFY_USER = `
     images { url }
   }
 `;
-
-export const DUMMY = [VISITING_SPOTIFY_USER, MY_SPOTIFY_USER];

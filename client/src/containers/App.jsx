@@ -7,7 +7,7 @@ import SpotifyProfilesContainer from './spotify/SpotifyProfiles';
 import HomeContainer from './Home';
 import AuthHub from './authentication/AuthHub';
 import AuthSuccess from './authentication/AuthSuccess';
-import SpotifyAuthenticated from './spotify/SpotifyAuthenticated';
+import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticated';
 import PageNotFoundContainer from './PageNotFound';
 import isSpotifyAuthorized from '../utils/auth/spotify';
 
@@ -37,7 +37,7 @@ const App = () => (
         <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
         <Route
           path="/spotify-authentication-success/:accessToken/:refreshToken"
-          component={SpotifyAuthenticated}
+          component={SpotifyAuthenticatedContainer}
         />
         <Route component={PageNotFoundContainer} />
       </Switch>

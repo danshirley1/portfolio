@@ -11,10 +11,10 @@ import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 import { Redirect } from 'react-router-dom';
 
-import SpotifyProfiles from '../../components/spotify/SpotifyProfiles';
+import SpotifyProfilesView from '../../components/spotify/SpotifyProfiles';
 import { GET_VISITING_AND_MY_SPOTIFY_USER } from '../../graphql/queries/spotify';
 
-function SpotifyProfilesContainer(props) {
+export function SpotifyProfiles(props) {
   const { spotifySession } = props;
   const { accessToken } = spotifySession;
 
@@ -29,10 +29,12 @@ function SpotifyProfilesContainer(props) {
           if (error.graphQLErrors.find(err => err.name === 'SpotifyUnauthenticatedError')) {
             return <Redirect to="auth-hub" />;
           }
+
+          return 'Error!';
         }
 
         return (
-          <SpotifyProfiles visitingUser={data.visitingSpotifyUser} myUser={data.mySpotifyUser} />
+          <SpotifyProfilesView visitingUser={data.visitingSpotifyUser} myUser={data.mySpotifyUser} />
         );
       }}
     </Query>
@@ -44,4 +46,4 @@ export default connect(
     spotifySession: state.spotifySession,
   }),
   null,
-)(SpotifyProfilesContainer);
+)(SpotifyProfiles);

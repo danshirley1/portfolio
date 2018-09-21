@@ -32,7 +32,10 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "apollo-errors": "^1.9.0",
     "enzyme": "^3.6.0",
-    "enzyme-adapter-react-16": "^1.5.0"
+    "enzyme-adapter-react-16": "^1.5.0",
+    "test-utils": "^1.1.1",
+    "waait": "^1.0.2"
   }
 }
