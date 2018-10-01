@@ -6,7 +6,7 @@ const AuthHub = (props) => {
   return (
     <div>
       <h1>AUTH HUB</h1>
-      <button onClick={onAuthorize}>LOGIN TO SPOTIFY</button>
+      <button data-test="on-authorize-button" onClick={onAuthorize}>LOGIN TO SPOTIFY</button>
       <br />
       <br />
     </div>

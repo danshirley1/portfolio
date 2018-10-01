@@ -4,7 +4,7 @@ const AuthSuccess = (props) => {
   return (
     <div>
       <h1>AUTH SUCCESS</h1>
-      <a href="/spotify-profiles">VIEW SPOTIFY PROFILES</a>
+      <a data-test="view-spotify-profiles-link" href="/spotify-profiles">VIEW SPOTIFY PROFILES</a>
       <br />
       <br />
     </div>

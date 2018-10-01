@@ -25,11 +25,11 @@ export function mountWithState(component, state) {
 }
 */
 
-/*
-export function test(s) {
+export function dataTestTag(s) {
   return `[data-test="${s}"]`;
 }
 
+/*
 export function testStarts(s) {
   return n => {
     return n.prop('data-test') ? n.prop('data-test').startsWith(s) : false;
