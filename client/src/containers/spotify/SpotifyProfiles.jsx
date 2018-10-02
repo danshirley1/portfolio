@@ -12,7 +12,7 @@ import { Query } from 'react-apollo';
 import { Redirect } from 'react-router-dom';
 
 import SpotifyProfilesView from '../../components/spotify/SpotifyProfiles';
-import { GET_VISITING_AND_MY_SPOTIFY_USER } from '../../graphql/queries/spotify';
+import GET_VISITING_AND_MY_SPOTIFY_USER from '../../graphql/queries/spotify';
 
 export function SpotifyProfiles(props) {
   const { spotifySession } = props;
