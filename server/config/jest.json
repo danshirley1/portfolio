@@ -1,21 +1,21 @@
 {
   "rootDir": "../",
-  "transform": {
-    ".*": "<rootDir>/client/node_modules/babel-jest"
-  },
   "coverageDirectory": "<rootDir>/coverage",
   "moduleFileExtensions": [
-    "js"
+    "js",
+    "jsx",
+    "json"
   ],
   "moduleDirectories": [
     "node_modules"
   ],
-  "testRegex": "/server/.*?\\.(test|spec)\\.js$",
+  "testRegex": ".*?\\.(test|spec)\\.js$",
   "collectCoverage": false,
   "collectCoverageFrom": [
-    "server/**/*.{js}",
+    "**/*.{js,jsx}",
     "!**/node_modules/**"
   ],
   "testEnvironment": "node",
   "verbose": true
 }
+

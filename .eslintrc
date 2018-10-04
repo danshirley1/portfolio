@@ -20,6 +20,7 @@
     }
   },
   rules: {
-    "max-len": [2, {code: 125}]
+    "max-len": [2, {code: 125}],
+    "no-multi-str": 0
   }
 }
