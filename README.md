@@ -2,6 +2,12 @@
 
 A personal showcase portfolio demonstrating a range of techniques and technologies.
 
+## NOTE DS 10/10/18
+
+A lot of this early work is experimental, so I've been lazy with commit messages etc. This readme is for my use really but am keeping the repo public for, well, no reason.
+
+A v0.0.1 will be cut soon to tidy things up.
+
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) at v1.1.5 (25/8/2018).
 
 The Node server was created by adapting the tutorial:
