@@ -15,30 +15,25 @@ const SpotifyUnauthenticatedError = createError('SpotifyUnauthenticatedError', {
 
 export default {
   Query: {
-    sayHello: () => 'Hello!',
     visitingSpotifyUser: (root, args, context, info) => {
-    // TODO: look for params - grab the accessToken from the graphql request and setTokens?      console.log();
-
       spotifyApi.setAccessToken(args.accessToken);
 
-      // console.log('AAAAA [1]', root);
-      console.log('AAAAA [2]', args);
-      // console.log('AAAAA [3]', context);
-      // console.log('AAAAA [4]', info);
-
-      // return spotifyApi.getUser('cowboyfromhull')
       return spotifyApi.getMe()
-        .then((data) => { console.log('XX1 data.body:', data.body); return data.body; })
-        .catch((err) => { console.log('XX2 BOOM, err:', err);  });
+        .then(data => ({
+          ...data.body,
+          profileImage: data.body.images[0],
+        }))
+        .catch((err) => { console.log('XX2 BOOM, err:', err); });
     },
     mySpotifyUser: (root, args, context, info) => {
       return spotifyApi.getUser('cowboyfromhull')
         .then((data) => {
-          console.log('YY1 data.body:', data.body); return data.body;
+          return {
+            ...data.body,
+            profileImage: data.body.images[0],
+          };
         })
         .catch((err) => {
-          console.log('YY2 BOOM, err:', err);
-
           if (err.statusCode === 401) {
             return new SpotifyUnauthenticatedError();
           }

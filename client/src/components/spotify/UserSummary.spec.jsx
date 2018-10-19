@@ -52,15 +52,4 @@ describe('UserSummary Component', () => {
     expect(comp.prop('href')).toBe(defaultProps.user.external_urls.spotify);
     expect(comp.text()).toBe(defaultProps.user.external_urls.spotify);
   });
-
-  it('renders an empty user avatar when no avatar supplied', () => {
-    component = getComponent({
-      user: {
-        ...defaultProps.user,
-        images: [],
-      },
-    });
-    const comp = component.find(dataTestTag('summary-user-avatar'));
-    expect(comp.prop('src')).toBe('');
-  });
 });

@@ -13,6 +13,22 @@ spotifyWebApiNode.prototype = {
         refresh_token: 'refresh_token_foobar',
       },
     }))),
+
+  setAccessToken: jest.fn(),
+
+  getMe: jest.fn().mockImplementation(() => new Promise(resolve => resolve({
+    body: {
+      foo: 'bar',
+      images: [{ url: 'http://ww.example.com/foobar.jpg' }],
+    },
+  }))),
+
+  getUser: jest.fn().mockImplementation(() => new Promise(resolve => resolve({
+    body: {
+      foo: 'bar',
+      images: [{ url: 'http://ww.example.com/foobar.jpg' }],
+    },
+  }))),
 };
 
 export { spotifyWebApiNode as default };

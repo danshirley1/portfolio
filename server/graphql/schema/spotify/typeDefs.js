@@ -8,11 +8,9 @@ const typeDefs = `
   type SpotifyUserProfile {
     display_name: String
     external_urls: SpotifyUserProfileExternalUrls
-    images: [SpotifyUserProfileImage]
+    profileImage: SpotifyUserProfileImage
   }
   type Query {
-    "A simple type for getting started!"
-    sayHello: String
     visitingSpotifyUser(accessToken: String!): SpotifyUserProfile
     mySpotifyUser: SpotifyUserProfile
   }
