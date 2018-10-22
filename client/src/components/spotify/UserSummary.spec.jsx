@@ -10,7 +10,7 @@ describe('UserSummary Component', () => {
   const defaultProps = {
     user: {
       display_name: 'Jane Doe',
-      images: [
+      profileImage: [
         {
           url: 'www.example.com/foo.jpg',
         },
@@ -19,6 +19,11 @@ describe('UserSummary Component', () => {
         spotify: 'www.example.com/foobar',
       },
     },
+    playlists: [
+      {
+        foo: 'bar',
+      },
+    ],
   };
 
   const getComponent = (moreProps = {}) => {
@@ -43,7 +48,7 @@ describe('UserSummary Component', () => {
 
   it('renders a user avatar with correct props', () => {
     const comp = component.find(dataTestTag('summary-user-avatar'));
-    expect(comp.prop('src')).toBe(defaultProps.user.images[0].url);
+    expect(comp.prop('src')).toBe(defaultProps.user.profileImage.url);
     expect(comp.prop('alt')).toBe('User avatar');
   });
 
@@ -51,5 +56,10 @@ describe('UserSummary Component', () => {
     const comp = component.find(dataTestTag('summary-spotify-uri'));
     expect(comp.prop('href')).toBe(defaultProps.user.external_urls.spotify);
     expect(comp.text()).toBe(defaultProps.user.external_urls.spotify);
+  });
+
+  it('renders correct amount of playlists', () => {
+    const comp = component.find(dataTestTag('playlists-length'));
+    expect(comp.text()).toBe('1');
   });
 });

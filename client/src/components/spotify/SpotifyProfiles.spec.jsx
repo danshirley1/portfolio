@@ -13,6 +13,12 @@ describe('SpotifyProfiles Component', () => {
     myUser: {
       flim: 'flam',
     },
+    visitingUserPlaylists: {
+      bar: 'foo',
+    },
+    myUserPlaylists: {
+      flam: 'flim',
+    },
   };
 
   const getComponent = (moreProps = {}) => {
@@ -34,11 +40,13 @@ describe('SpotifyProfiles Component', () => {
     const summaryComponent = component.find('UserSummary').at(0);
     expect(summaryComponent).toHaveLength(1);
     expect(summaryComponent.prop('user')).toEqual(defaultProps.visitingUser);
+    expect(summaryComponent.prop('playlists')).toEqual(defaultProps.visitingUserPlaylists);
   });
 
   it("renders a UserSummary component with expected props for 'my user'", () => {
     const summaryComponent = component.find('UserSummary').at(1);
     expect(summaryComponent).toHaveLength(1);
     expect(summaryComponent.prop('user')).toEqual(defaultProps.myUser);
+    expect(summaryComponent.prop('playlists')).toEqual(defaultProps.myUserPlaylists);
   });
 });

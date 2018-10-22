@@ -21,7 +21,7 @@ function UserSummary(props) {
           Playlists
         </dt>
         <dd>
-          User has { playlists.length } playlists
+          User has <span data-test="playlists-length">{ playlists.length }</span> playlists
         </dd>
       </dl>
     </Fragment>
