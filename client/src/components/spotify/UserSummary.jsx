@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import { isEmpty } from 'lodash';
 
 function UserSummary(props) {
-  const { user } = props;
+  const { user, playlists } = props;
 
   return (
     <Fragment>
@@ -16,6 +16,12 @@ function UserSummary(props) {
           <a data-test="summary-spotify-uri" href={user.external_urls.spotify}>
             {user.external_urls.spotify}
           </a>
+        </dd>
+        <dt>
+          Playlists
+        </dt>
+        <dd>
+          User has { playlists.length } playlists
         </dd>
       </dl>
     </Fragment>

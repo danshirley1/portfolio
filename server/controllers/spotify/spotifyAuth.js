@@ -10,7 +10,11 @@ const spotifyApi = new SpotifyWebApi({
 
 
 export const spotifyAuthorize = (req, res) => {
-  const scopes = ['user-read-private'];
+  const scopes = [
+    'user-read-private',
+    'playlist-read-collaborative',
+    'playlist-read-private',
+  ];
   const state = {};
 
   return res.send({ authorizeUrl: spotifyApi.createAuthorizeURL(scopes, state) });

@@ -12,14 +12,14 @@ import { Query } from 'react-apollo';
 import { Redirect } from 'react-router-dom';
 
 import SpotifyProfilesView from '../../components/spotify/SpotifyProfiles';
-import GET_VISITING_AND_MY_SPOTIFY_USER from '../../graphql/queries/spotify';
+import GET_SPOTIFY_PROFILES_USER_DATA from '../../graphql/queries/spotify';
 
 export function SpotifyProfiles(props) {
   const { spotifySession } = props;
   const { accessToken } = spotifySession;
 
   return (
-    <Query query={gql(GET_VISITING_AND_MY_SPOTIFY_USER)} variables={{ accessToken }}>
+    <Query query={gql(GET_SPOTIFY_PROFILES_USER_DATA)} variables={{ accessToken }}>
       {({ loading, error, data }) => {
         if (loading) {
           return 'Loading...';
@@ -34,7 +34,11 @@ export function SpotifyProfiles(props) {
         }
 
         return (
-          <SpotifyProfilesView visitingUser={data.visitingSpotifyUser} myUser={data.mySpotifyUser} />
+          <SpotifyProfilesView
+            visitingUser={data.visitingSpotifyUser}
+            myUser={data.mySpotifyUser}
+            visitingUserPlaylists={data.visitingSpotifyUserPlaylists}
+          />
         );
       }}
     </Query>
