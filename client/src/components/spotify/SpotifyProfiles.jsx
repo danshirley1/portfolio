@@ -7,7 +7,7 @@ function SpotifyProfiles(props) {
     visitingUser,
     myUser,
     visitingUserPlaylists,
-    myUserPlaylists = [],
+    myUserPlaylists,
   } = props;
 
   return (

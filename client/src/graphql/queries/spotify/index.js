@@ -14,6 +14,9 @@ export const GET_SPOTIFY_PROFILES_USER_DATA = `
     visitingSpotifyUserPlaylists(accessToken: $accessToken) {
       ${SPOTIFY_PLAYLIST}
     }
+    mySpotifyUserPlaylists {
+      ${SPOTIFY_PLAYLIST}
+    }
   }
 `;
 

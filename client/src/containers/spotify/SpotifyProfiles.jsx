@@ -38,6 +38,7 @@ export function SpotifyProfiles(props) {
             visitingUser={data.visitingSpotifyUser}
             myUser={data.mySpotifyUser}
             visitingUserPlaylists={data.visitingSpotifyUserPlaylists}
+            myUserPlaylists={data.mySpotifyUserPlaylists}
           />
         );
       }}

@@ -78,5 +78,41 @@ export default {
 
       return Promise.all(playlistCalls);
     },
+    mySpotifyUserPlaylists: async () => {
+      const user = await spotifyApi.getUser('cowboyfromhull')
+        .catch((err) => {
+          if (err.statusCode === 401) {
+            return new SpotifyUnauthenticatedError();
+          }
+
+          return err;
+        });
+
+      const playlists = await spotifyApi.getUserPlaylists(user.id);
+      const playlistCalls = playlists.body.items.map(async (playlist) => {
+        const playlistData = {
+          id: playlist.id,
+          name: playlist.name,
+          tracks: [],
+        };
+        const playlistTracks = await spotifyApi.getPlaylistTracks(user.id, playlist.id);
+
+        playlistTracks.body.items.forEach((trackData) => {
+          // TODO: log if null?
+          if (trackData.track.id) {
+            playlistData.tracks.push({
+              id: trackData.track.id,
+              name: trackData.track.name,
+              album: trackData.track.album,
+              artists: trackData.track.artists,
+            });
+          }
+        });
+
+        return playlistData;
+      });
+
+      return Promise.all(playlistCalls);
+    },
   },
 };

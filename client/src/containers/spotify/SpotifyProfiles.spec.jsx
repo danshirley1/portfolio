@@ -76,6 +76,42 @@ describe('SpotifyProfiles Container', () => {
                 ],
               },
             ],
+            mySpotifyUserPlaylists: [
+              {
+                id: 10,
+                name: 'flim',
+                tracks: [
+                  {
+                    album: {
+                      id: 100,
+                      name: 'flimmer',
+                    },
+                    artists: [
+                      {
+                        id: 1000,
+                        name: 'abba',
+                      },
+                    ],
+                    id: 10,
+                    name: 'fooflam',
+                  },
+                  {
+                    album: {
+                      id: 110,
+                      name: 'flammer',
+                    },
+                    artists: [
+                      {
+                        id: 1001,
+                        name: 'jason',
+                      },
+                    ],
+                    id: 20,
+                    name: 'fooflam',
+                  },
+                ],
+              },
+            ],
           },
         },
       },
@@ -140,5 +176,7 @@ describe('SpotifyProfiles Container', () => {
     expect(spotifyProfilesView.prop('myUser')).toEqual(defaultProps.graphQlMocks[0].result.data.mySpotifyUser);
     expect(spotifyProfilesView.prop('visitingUserPlaylists'))
       .toEqual(defaultProps.graphQlMocks[0].result.data.visitingSpotifyUserPlaylists);
+    expect(spotifyProfilesView.prop('myUserPlaylists'))
+      .toEqual(defaultProps.graphQlMocks[0].result.data.mySpotifyUserPlaylists);
   });
 });

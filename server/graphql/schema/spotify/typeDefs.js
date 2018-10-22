@@ -33,6 +33,7 @@ const typeDefs = `
     visitingSpotifyUser(accessToken: String!): SpotifyUserProfile
     mySpotifyUser: SpotifyUserProfile
     visitingSpotifyUserPlaylists(accessToken: String!): [SpotifyUserPlaylist]!
+    mySpotifyUserPlaylists: [SpotifyUserPlaylist]!
   }
 `;
 
