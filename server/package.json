@@ -11,8 +11,6 @@
   "dependencies": {
     "apollo-errors": "^1.9.0",
     "apollo-server-express": "^2.0.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "debug": "~2.6.9",
@@ -22,10 +20,18 @@
     "http-errors": "~1.6.2",
     "morgan": "~1.9.0",
     "pug": "2.0.0-beta11",
-    "spotify-web-api-node": "^3.1.1"
+    "spotify-web-api-node": "^3.1.1",
+    "@babel/register": "^7.0.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "supertest": "^3.3.0"
+    "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-runtime": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/runtime": "^7.1.2",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "regenerator-runtime": "^0.12.1",
+    "supertest": "^3.3.0",
+    "jest": "^23.4.1"
   }
 }

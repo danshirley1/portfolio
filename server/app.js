@@ -1,4 +1,4 @@
-require('babel-register');
+require('@babel/register');
 
 const { ApolloServer } = require('apollo-server-express');
 const { createError } = require('http-errors');
