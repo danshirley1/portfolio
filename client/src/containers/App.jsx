@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 
 import SpotifyProfilesContainer from './spotify/SpotifyProfiles';
+import SpotifyUserPlaylistsContainer from './spotify/SpotifyUserPlaylists';
 import HomeContainer from './Home';
 import AuthHub from './authentication/AuthHub';
 import AuthSuccess from './authentication/AuthSuccess';
@@ -35,6 +36,7 @@ export const App = () => (
         <Route path="/auth-hub" component={AuthHub} />
         <Route path="/auth-success" component={AuthSuccess} />
         <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
+        <Route path="/spotify-user-playlists" component={doSpotifyAuthenticatedCheck(SpotifyUserPlaylistsContainer)} />
         <Route
           path="/spotify-authentication-success/:accessToken/:refreshToken"
           component={SpotifyAuthenticatedContainer}
