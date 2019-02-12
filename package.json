@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
+    "install-deps": "yarn install && cd client && yarn install && cd ../server && yarn install && cd ..",
     "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
     "lint": "eslint .",
     "test:client": "cd client && npm test",
@@ -24,5 +25,3 @@
     "jest": "^23.5.0"
   }
 }
-
-

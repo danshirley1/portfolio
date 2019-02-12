@@ -13,19 +13,19 @@ https://www.fullstackreact.com/articles/using-create-react-app-with-a-server/
 
 ## Install
 ```
-npm i && cd client && npm i && cd ../server && npm i && cd..
+yarn run install-deps
 ```
 
 ## To run locally
 
 ```
-npm start
+yarn start
 ```
 
 To restart server back-end (until I work out how to make it 'hot'):
 
 ```
-npm start
+yarn start
 ```
 
 ## What is it?
