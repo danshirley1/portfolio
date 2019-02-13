@@ -45,16 +45,24 @@ export const App = () => (
       </Switch>
     </main>
 
-    <div>
-      <a href="/">
-        HOME &gt; (todo - write a test for this in app.spec)
-      </a>
-    </div>
+    <div style={{ marginTop: '40px' }}>
+      <div>
+        <a href="/">
+          HOME &gt; (todo - write a test for this in app.spec)
+        </a>
+      </div>
 
-    <div>
-      <a href="/spotify-profiles">
-        VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
-      </a>
+      <div>
+        <a href="/spotify-profiles">
+          VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
+        </a>
+      </div>
+
+      <div>
+        <a href="/spotify-user-playlists">
+          VIEW SPOTIFY USER PLAYLISTS &gt; (todo - write a test for this in app.spec)
+        </a>
+      </div>
     </div>
   </div>
 );
