@@ -3,14 +3,17 @@ import { Switch, Route, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 
+import Grid from '@material-ui/core/Grid';
+
 import SpotifyProfilesContainer from './spotify/SpotifyProfiles';
 import SpotifyUserPlaylistsContainer from './spotify/SpotifyUserPlaylists';
 import HomeContainer from './Home';
 import AuthHub from './authentication/AuthHub';
 import AuthSuccess from './authentication/AuthSuccess';
 import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticated';
-import PageNotFound from './PageNotFound';
+// TODO import PageNotFound from './PageNotFound';
 import isSpotifyAuthorized from '../utils/auth/spotify';
+import Header from '../components/Header';
 
 /* SEE: https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/react-router-4/auth.js */
 /* Maybe I need to use loading, as per the above example, and/ or connectedAuthWrapper? */
@@ -26,9 +29,11 @@ const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
 
 export const App = () => (
   <div>
-    <header>
-      Header (todo - write a test for this in app.spec)
-    </header>
+    <Grid spacing={0} container>
+      <Grid item xs>
+        <Header />
+      </Grid>
+    </Grid>
 
     <main>
       <Switch>
@@ -41,7 +46,7 @@ export const App = () => (
           path="/spotify-authentication-success/:accessToken/:refreshToken"
           component={SpotifyAuthenticatedContainer}
         />
-        <Route component={PageNotFound} />
+        {/* TODO <Route component={PageNotFound} /> */}
       </Switch>
     </main>
 

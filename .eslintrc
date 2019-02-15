@@ -5,8 +5,10 @@
   ],
   plugins: [
     "import",
-    "jest"
+    "jest",
+    "babel"
   ],
+  parser: "babel-eslint",
   env: {
     node: true,
     browser: true,
@@ -21,6 +23,7 @@
   },
   rules: {
     "max-len": [2, {code: 125}],
-    "no-multi-str": 0
+    "no-multi-str": 0,
+    "react/forbid-prop-types": 1
   }
 }
