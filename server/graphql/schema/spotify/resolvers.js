@@ -9,6 +9,8 @@ const spotifyApi = new SpotifyWebApi({
   redirectUri: `${baseUrlServer}/spotify/authorize-callback`,
 });
 
+// TODO: farm out to some type of errors collection
+// TODO: catch this on front-end > redirerct user to login?
 const SpotifyUnauthenticatedError = createError('SpotifyUnauthenticatedError', {
   message: 'The provided Spotify credentials are invalid.',
 });
@@ -78,6 +80,7 @@ export default {
 
       return Promise.all(playlistCalls);
     },
+    // TODO: visitingSpotifyUserPlaylists() and mySpotifyUserPlaylists() have alot of commonality - refactor
     mySpotifyUserPlaylists: async () => {
       const user = await spotifyApi.getUser('cowboyfromhull')
         .catch((err) => {

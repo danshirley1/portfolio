@@ -12,7 +12,7 @@ const schema = require('./graphql/schema').default;
 const indexRouter = require('./routes/index');
 const spotifyRouter = require('./routes/spotify/index');
 
-/* GRAPHQL SERVER */
+// GRAPHQL SERVER
 const apolloServer = new ApolloServer({
   schema,
   formatError: err => ({
@@ -20,7 +20,6 @@ const apolloServer = new ApolloServer({
     name: err.extensions.exception.name,
   }),
 });
-/**/
 
 const app = express();
 
