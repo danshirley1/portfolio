@@ -6,23 +6,25 @@ import { withStyles } from '@material-ui/styles';
 import Typography from '@material-ui/core/Typography';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
-import MenuItem from '@material-ui/core/MenuItem';
-import Button from '@material-ui/core/Button';
 import AppBar from '@material-ui/core/AppBar';
+import Drawer from '@material-ui/core/Drawer';
 import CloseIcon from '@material-ui/icons/Close';
 import MenuIcon from '@material-ui/icons/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
-const styles = (theme) => ({
+const styles = theme => ({
   appBar: {
-    zIndex: theme.zIndex.modal + 1,
+    // zIndex: theme.zIndex.modal + 1,
+  },
+  drawerPaper: {
+    paddingTop: 20, // todo: use default-spacing class when available
+    width: 240,
   },
 });
 
 class Menu extends React.Component {
-
   static propTypes = {
     classes: PropTypes.object.isRequired,
-    isAuthenticated: PropTypes.bool.isRequired
   };
 
   constructor(props) {
@@ -37,10 +39,10 @@ class Menu extends React.Component {
   handleToggle = () => this.setState({ open: !this.state.open });
 
   render() {
-    const { classes, isAuthenticated } = this.props;
+    const { classes } = this.props;
 
     return (
-      <div>
+      <div>  {/* TODO use Fragment */}
         <AppBar className={classes.appBar}>
           <Toolbar>
             {this.state.open ?
@@ -50,7 +52,7 @@ class Menu extends React.Component {
                 aria-label="Menu"
                 onClick={this.handleToggle}
               >
-                <CloseIcon data-test="menu-nav-close"/>
+                <CloseIcon data-test="menu-nav-close" />
               </IconButton>
               :
               <IconButton
@@ -59,13 +61,36 @@ class Menu extends React.Component {
                 aria-label="Menu"
                 onClick={this.handleToggle}
               >
-                <MenuIcon data-test="menu-nav-open"/>
+                <MenuIcon data-test="menu-nav-open" />
               </IconButton>
             }
 
             <Typography variant="headline" color="inherit" style={{ flex: 1 }}>
-              Hello World
+              PORTFOLIO APP
             </Typography>
+
+            <Drawer
+              open={this.state.open}
+              onBackdropClick={this.handleToggle}
+              classes={{
+                paper: classes.drawerPaper,
+              }}
+            >
+              <NavLink
+                to="/"
+                onClick={() => this.handleToggle()}
+                data-test="TODO"
+              >
+                <MenuItem>Home</MenuItem>
+              </NavLink>
+              <NavLink
+                to="/spotify-profiles"
+                onClick={() => this.handleToggle()}
+                data-test="TODO"
+              >
+                <MenuItem>Spotify Profiles</MenuItem>
+              </NavLink>
+            </Drawer>
           </Toolbar>
         </AppBar>
       </div>

@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\"",
+    "install-deps": "rm -rf node_modules && cd client && rm -rf node_modules && cd ../server rm -rf node_modules && cd ../ && yarn install && cd client && yarn install && cd ../server && yarn install && cd ../",
+    "start": "concurrently \"cd server && yarn start\" \"cd client && yarn start\"",
     "lint": "eslint .",
     "test:client": "cd client && npm test",
     "test:client:coverage": "cd client && npm run coverage",
@@ -17,6 +18,7 @@
     "eslint": "^5.4.0",
     "eslint-config-airbnb": "^16",
     "eslint-import-resolver-babel-module": "^4.0.0",
+    "eslint-plugin-babel": "^5.3.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jest": "^21.22.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",

@@ -11,7 +11,7 @@ import HomeContainer from './Home';
 import AuthHub from './authentication/AuthHub';
 import AuthSuccess from './authentication/AuthSuccess';
 import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticated';
-import PageNotFound from './PageNotFound';
+// TODO import PageNotFound from './PageNotFound';
 import isSpotifyAuthorized from '../utils/auth/spotify';
 import Header from '../components/Header';
 
@@ -31,7 +31,7 @@ export const App = () => (
   <div>
     <Grid spacing={0} container>
       <Grid item xs>
-        <Header dispatch={dispatch}/>
+        <Header />
       </Grid>
     </Grid>
 
@@ -46,20 +46,28 @@ export const App = () => (
           path="/spotify-authentication-success/:accessToken/:refreshToken"
           component={SpotifyAuthenticatedContainer}
         />
-        <Route component={PageNotFound} />
+        {/* TODO <Route component={PageNotFound} /> */}
       </Switch>
     </main>
 
-    <div>
-      <a href="/">
-        HOME &gt; (todo - write a test for this in app.spec)
-      </a>
-    </div>
+    <div style={{ marginTop: '40px' }}>
+      <div>
+        <a href="/">
+          HOME &gt; (todo - write a test for this in app.spec)
+        </a>
+      </div>
 
-    <div>
-      <a href="/spotify-profiles">
-        VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
-      </a>
+      <div>
+        <a href="/spotify-profiles">
+          VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
+        </a>
+      </div>
+
+      <div>
+        <a href="/spotify-user-playlists">
+          VIEW SPOTIFY USER PLAYLISTS &gt; (todo - write a test for this in app.spec)
+        </a>
+      </div>
     </div>
   </div>
 );
