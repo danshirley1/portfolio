@@ -7,9 +7,9 @@ import { ConnectedRouter } from 'connected-react-router';
 import { PersistGate } from 'redux-persist/lib/integration/react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import './styles/main.css';
 
-import './index.css';
-import App from './containers/App';
+import AppContainer from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
 import store, { persistor, history } from './store/';
 
@@ -23,7 +23,7 @@ ReactDOM.render(
       <ApolloProvider client={apolloClient}>
         <PersistGate persistor={persistor}>
           <ConnectedRouter history={history}>
-            <App />
+            <AppContainer />
           </ConnectedRouter>
         </PersistGate>
       </ApolloProvider>

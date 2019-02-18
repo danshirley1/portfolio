@@ -1,0 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.app-root-container {
+  margin-left: auto; // TODO not needed?
+  margin-right: auto; // TODO not needed?
+  min-height: calc(100vh - #{$footer-height} - #{$header-height});
+  position: relative;
+  top: $header-height;
+  padding: $standard-spacing $standard-spacing ($standard-spacing + $header-height) $standard-spacing;
+}
+
+@media (min-width: 1440px) {
+  .app-root-container {
+    max-width: 1360px;
+  }
+}

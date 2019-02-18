@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Switch, Route, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
@@ -28,48 +28,54 @@ const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
 });
 
 export const App = () => (
-  <div>
+  <Fragment>
+    {/* Header */}
     <Grid spacing={0} container>
       <Grid item xs>
         <Header />
       </Grid>
     </Grid>
 
-    <main>
-      <Switch>
-        <Route path="/" exact component={HomeContainer} />
-        <Route path="/auth-hub" component={AuthHub} />
-        <Route path="/auth-success" component={AuthSuccess} />
-        <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
-        <Route path="/spotify-user-playlists" component={doSpotifyAuthenticatedCheck(SpotifyUserPlaylistsContainer)} />
-        <Route
-          path="/spotify-authentication-success/:accessToken/:refreshToken"
-          component={SpotifyAuthenticatedContainer}
-        />
-        {/* TODO <Route component={PageNotFound} /> */}
-      </Switch>
-    </main>
+    {/* Main content */}
+    <Grid spacing={0} container>
+      <Grid item xs>
+        <main className="app-root-container">
+          <Switch>
+            <Route path="/" exact component={HomeContainer} />
+            <Route path="/auth-hub" component={AuthHub} />
+            <Route path="/auth-success" component={AuthSuccess} />
+            <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
+            <Route path="/spotify-user-playlists" component={doSpotifyAuthenticatedCheck(SpotifyUserPlaylistsContainer)} />
+            <Route
+              path="/spotify-authentication-success/:accessToken/:refreshToken"
+              component={SpotifyAuthenticatedContainer}
+            />
+            {/* TODO <Route component={PageNotFound} /> */}
+          </Switch>
+        </main>
 
-    <div style={{ marginTop: '40px' }}>
-      <div>
-        <a href="/">
-          HOME &gt; (todo - write a test for this in app.spec)
-        </a>
-      </div>
+        <div style={{ marginTop: '40px' }}>
+          <div>
+            <a href="/">
+              HOME &gt; (todo - write a test for this in app.spec)
+            </a>
+          </div>
 
-      <div>
-        <a href="/spotify-profiles">
-          VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
-        </a>
-      </div>
+          <div>
+            <a href="/spotify-profiles">
+              VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
+            </a>
+          </div>
 
-      <div>
-        <a href="/spotify-user-playlists">
-          VIEW SPOTIFY USER PLAYLISTS &gt; (todo - write a test for this in app.spec)
-        </a>
-      </div>
-    </div>
-  </div>
+          <div>
+            <a href="/spotify-user-playlists">
+              VIEW SPOTIFY USER PLAYLISTS &gt; (todo - write a test for this in app.spec)
+            </a>
+          </div>
+        </div>
+      </Grid>
+    </Grid>
+  </Fragment>
 );
 
 export default withRouter(connect(state => ({
