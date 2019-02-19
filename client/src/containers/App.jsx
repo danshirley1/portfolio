@@ -13,7 +13,9 @@ import AuthSuccess from './authentication/AuthSuccess';
 import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticated';
 // TODO import PageNotFound from './PageNotFound';
 import isSpotifyAuthorized from '../utils/auth/spotify';
+
 import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 /* SEE: https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/react-router-4/auth.js */
 /* Maybe I need to use loading, as per the above example, and/ or connectedAuthWrapper? */
@@ -37,8 +39,8 @@ export const App = () => (
     </Grid>
 
     {/* Main content */}
-    <Grid spacing={0} container>
-      <Grid item xs>
+    <Grid spacing={0} container justify="center">
+      <Grid item>
         <main className="app-root-container">
           <Switch>
             <Route path="/" exact component={HomeContainer} />
@@ -53,26 +55,13 @@ export const App = () => (
             {/* TODO <Route component={PageNotFound} /> */}
           </Switch>
         </main>
+      </Grid>
+    </Grid>
 
-        <div style={{ marginTop: '40px' }}>
-          <div>
-            <a href="/">
-              HOME &gt; (todo - write a test for this in app.spec)
-            </a>
-          </div>
-
-          <div>
-            <a href="/spotify-profiles">
-              VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
-            </a>
-          </div>
-
-          <div>
-            <a href="/spotify-user-playlists">
-              VIEW SPOTIFY USER PLAYLISTS &gt; (todo - write a test for this in app.spec)
-            </a>
-          </div>
-        </div>
+    {/* Footer */}
+    <Grid spacing={0} container>
+      <Grid item xs>
+        <Footer />
       </Grid>
     </Grid>
   </Fragment>

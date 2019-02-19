@@ -3,16 +3,22 @@ import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/styles';
-import Typography from '@material-ui/core/Typography';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import AppBar from '@material-ui/core/AppBar';
-import Drawer from '@material-ui/core/Drawer';
-import CloseIcon from '@material-ui/icons/Close';
-import MenuIcon from '@material-ui/icons/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 
-const styles = theme => ({
+import {
+  Close as CloseIcon,
+  Menu as MenuIcon,
+} from '@material-ui/icons';
+
+import {
+  Typography,
+  Toolbar,
+  IconButton,
+  AppBar,
+  Drawer,
+  MenuItem,
+} from '@material-ui/core';
+
+const styles = () => ({
   appBar: {
     // zIndex: theme.zIndex.modal + 1,
   },
@@ -22,7 +28,7 @@ const styles = theme => ({
   },
 });
 
-class Menu extends React.Component {
+class Header extends React.Component {
   static propTypes = {
     classes: PropTypes.object.isRequired,
   };
@@ -98,4 +104,4 @@ class Menu extends React.Component {
   }
 }
 
-export default withStyles(styles)(Menu);
+export default withStyles(styles)(Header);
