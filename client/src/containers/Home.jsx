@@ -1,28 +1,14 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid, Button } from '@material-ui/core';
 
 const Home = () => (
-  <Grid container justify="center">
+  <Grid container>
     <Grid item>
-      This is the HOME PAGE!!sx
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
-      This is the HOME PAGE!
+      <Button component={Link} to="/spotify-profiles" color="primary">
+        Spotify Profiles!222
+      </Button>
     </Grid>
   </Grid>
 );

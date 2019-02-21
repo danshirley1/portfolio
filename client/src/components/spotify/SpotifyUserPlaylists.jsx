@@ -9,7 +9,7 @@ function SpotifyUserPlaylists(props) {
   } = props;
 
   return (
-    <div>
+    <Fragment>
       <UserSummary user={user} playlists={userPlaylists}/>
 
       <h1>PLAYLISTS TABLE:</h1>
@@ -44,7 +44,7 @@ function SpotifyUserPlaylists(props) {
           ))}
         </tbody>
       </table>
-    </div>
+    </Fragment>
   );
 }
 

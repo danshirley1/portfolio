@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { Grid, Typography } from '@material-ui/core';
-import { Restore as RestoreIcon } from '@material-ui/icons';
+// import { Restore as RestoreIcon } from '@material-ui/icons';
 import { withStyles } from '@material-ui/styles';
 
 const styles = () => ({
