@@ -29,79 +29,15 @@ const styles = () => ({
 });
 
 class Header extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
-
-  constructor(props) {
-    super(props);
-    this.state = { open: false };
-  }
-
-  logout = () => {
-    window.location.replace('/whp/logout');
-  };
-
   handleToggle = () => this.setState({ open: !this.state.open });
 
   render() {
-    const { classes } = this.props;
-
     return (
       <div>  {/* TODO use Fragment */}
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            {this.state.open ?
-              <IconButton
-                data-test="menu-btn"
-                color="inherit"
-                aria-label="Menu"
-                onClick={this.handleToggle}
-              >
-                <CloseIcon data-test="menu-nav-close" />
-              </IconButton>
-              :
-              <IconButton
-                data-test="menu-bth"
-                color="inherit"
-                aria-label="Menu"
-                onClick={this.handleToggle}
-              >
-                <MenuIcon data-test="menu-nav-open" />
-              </IconButton>
-            }
-
-            <Typography variant="headline" color="inherit" style={{ flex: 1 }}>
-              PORTFOLIO APP
-            </Typography>
-
-            <Drawer
-              open={this.state.open}
-              onBackdropClick={this.handleToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
-            >
-              <NavLink
-                to="/"
-                onClick={() => this.handleToggle()}
-                data-test="TODO"
-              >
-                <MenuItem>Home</MenuItem>
-              </NavLink>
-              <NavLink
-                to="/spotify-profiles"
-                onClick={() => this.handleToggle()}
-                data-test="TODO"
-              >
-                <MenuItem>Spotify Profiles</MenuItem>
-              </NavLink>
-            </Drawer>
-          </Toolbar>
-        </AppBar>
+        YO
       </div>
     );
   }
 }
 
-export default withStyles(styles)(Header);
+export default Header;
