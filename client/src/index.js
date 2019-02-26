@@ -11,25 +11,36 @@ import './styles/main.css';
 
 import AppContainer from './containers/App';
 import registerServiceWorker from './registerServiceWorker';
-import store, { persistor, history } from './store/';
+import store, { persistor, history } from './store';
 
 const apolloClient = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
 });
 
-ReactDOM.render(
-  (
-    <Provider store={store}>
-      <ApolloProvider client={apolloClient}>
-        <PersistGate persistor={persistor}>
-          <ConnectedRouter history={history}>
-            <AppContainer />
-          </ConnectedRouter>
-        </PersistGate>
-      </ApolloProvider>
-    </Provider>
-  ),
-  document.getElementById('root'),
-);
+function render(Component) {
+  ReactDOM.render(
+    (
+      <Provider store={store}>
+        <ApolloProvider client={apolloClient}>
+          <PersistGate persistor={persistor}>
+            <ConnectedRouter history={history}>
+              <Component />
+            </ConnectedRouter>
+          </PersistGate>
+        </ApolloProvider>
+      </Provider>
+    ),
+    document.getElementById('root'),
+  );
+}
+
+render(AppContainer);
+
+if (module.hot) {
+  module.hot.accept('./containers/App', () => {
+    const NextApp = require('./containers/App').default; // eslint-disable-line global-require
+    render(NextApp);
+  });
+}
 
 registerServiceWorker();

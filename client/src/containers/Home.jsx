@@ -6,8 +6,8 @@ import { Grid, Button } from '@material-ui/core';
 const Home = () => (
   <Grid container>
     <Grid item>
-      <Button component={Link} to="/spotify-profiles" color="primary">
-        Spotify Profiles!222§!!ss44
+      <Button variant="contained" color="primary" component={Link} to="/spotify-profiles">
+        Spotify Profiles!
       </Button>
     </Grid>
   </Grid>
