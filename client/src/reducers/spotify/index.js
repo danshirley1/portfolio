@@ -1,7 +1,5 @@
 import { REHYDRATE } from 'redux-persist';
-import {
-  SPOTIFY_TOKENS,
-} from '../../actions/spotify/';
+import { SPOTIFY_TOKENS } from '../../actions/spotify';
 
 const spotifyUserInitialState = {
   loading: false,

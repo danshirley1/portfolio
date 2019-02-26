@@ -30,7 +30,7 @@ export function SpotifyProfiles(props) {
             return <Redirect to="/auth-hub" />;
           }
 
-          return 'Error!';
+          return 'Unhandled error!';
         }
 
         return (

@@ -1,11 +1,16 @@
-import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
+import {
+  combineReducers,
+  createStore,
+  applyMiddleware,
+  compose,
+} from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { createEpicMiddleware } from 'redux-observable';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import createBrowserHistory from 'history/createBrowserHistory';
 
-import spotifyReducer from '../reducers/spotify/';
+import spotifyReducer from '../reducers/spotify';
 import rootEpic from '../epics';
 
 export const history = createBrowserHistory();
@@ -21,7 +26,7 @@ const middleware = [
 
 // dev tools
 if (process.env.NODE_ENV === 'development') {
-  const devToolsExtension = window.devToolsExtension;
+  const { devToolsExtension } = window;
 
   if (typeof devToolsExtension === 'function') {
     enhancers.push(devToolsExtension());

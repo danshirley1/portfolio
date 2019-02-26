@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 
-import { showError } from '../../actions/app/';
+import { showError } from '../../actions/app';
 import { errorHandler } from '../../utils/errorHandler';
 import { AUTHORIZE_SPOTIFY_USER } from '../../actions/spotify';
 

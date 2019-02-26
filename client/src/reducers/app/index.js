@@ -1,6 +1,4 @@
-import {
-  SHOW_ALERT,
-} from '../../actions/app/';
+import { SHOW_ALERT } from '../../actions/app';
 
 const initialState = {
   notifications: {
