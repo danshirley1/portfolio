@@ -20,7 +20,14 @@ export default {
     visitingSpotifyUser: async (root, args) => {
       spotifyApi.setAccessToken(args.accessToken);
 
-      const user = await spotifyApi.getMe();
+      const user = await spotifyApi.getMe()
+        .catch((err) => {
+          if (err.statusCode === 401) {
+            return new SpotifyUnauthenticatedError();
+          }
+
+          return err;
+        });
 
       return {
         ...user.body,

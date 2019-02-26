@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "jest --config config/jest.json",
     "test:watch": "npm run test -- --watch",
     "coverage": "npm run test -- --coverage"
@@ -23,6 +23,7 @@
     "spotify-web-api-node": "^3.1.1"
   },
   "devDependencies": {
+    "nodemon": "^1.18.10",
     "regenerator-runtime": "^0.12.1",
     "supertest": "^3.3.0"
   }

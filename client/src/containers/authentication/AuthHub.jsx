@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { authorizeSpotifyUser } from '../../actions/spotify/';
+import { authorizeSpotifyUser } from '../../actions/spotify';
 import AuthHubView from '../../components/authentication/AuthHub';
 
 const AuthHub = props => <AuthHubView onAuthorize={props.authorizeSpotifyUser} />;
+
+// TODO - do something with eth redirect query param being passed through (http://localhost:3000/auth-hub?redirect=%2Fspotify-profiles)
+// alternatively scrap that, it might be better to have the user reodtrect to the 'auth success' to be fair.
 
 export default connect(null, { authorizeSpotifyUser })(AuthHub);
