@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-// import { isEmpty } from 'lodash';
+import { Link } from 'react-router-dom';
 
 function UserSummary(props) {
   const { user, playlists } = props;
@@ -21,7 +21,10 @@ function UserSummary(props) {
           Playlists
         </dt>
         <dd>
-          User has <span data-test="playlists-length">{ playlists.length }</span> playlists
+          User has&nbsp;
+          <span data-test="playlists-length">{ playlists.length }</span>
+          &nbsp;playlists.
+          <Link to="/spotify-user-playlists">View playlists</Link>
         </dd>
       </dl>
     </Fragment>
