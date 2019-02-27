@@ -22,11 +22,13 @@ export default {
 
       const user = await spotifyApi.getMe()
         .catch((err) => {
+          console.log('ERROR XXXX', err);
+
           if (err.statusCode === 401) {
-            return new SpotifyUnauthenticatedError();
+            throw new SpotifyUnauthenticatedError();
           }
 
-          return err;
+          throw err;
         });
 
       return {
@@ -38,10 +40,10 @@ export default {
       const user = await spotifyApi.getUser('cowboyfromhull')
         .catch((err) => {
           if (err.statusCode === 401) {
-            return new SpotifyUnauthenticatedError();
+            throw new SpotifyUnauthenticatedError();
           }
 
-          return err;
+          throw err;
         });
 
       return {
@@ -55,10 +57,10 @@ export default {
       const user = await spotifyApi.getMe()
         .catch((err) => {
           if (err.statusCode === 401) {
-            return new SpotifyUnauthenticatedError();
+            throw new SpotifyUnauthenticatedError();
           }
 
-          return err;
+          throw err;
         });
 
       const playlists = await spotifyApi.getUserPlaylists(user.id);
@@ -92,10 +94,10 @@ export default {
       const user = await spotifyApi.getUser('cowboyfromhull')
         .catch((err) => {
           if (err.statusCode === 401) {
-            return new SpotifyUnauthenticatedError();
+            throw new SpotifyUnauthenticatedError();
           }
 
-          return err;
+          throw err;
         });
 
       const playlists = await spotifyApi.getUserPlaylists(user.id);

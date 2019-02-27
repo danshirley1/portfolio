@@ -1,10 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { Switch, Route, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 
-import Grid from '@material-ui/core/Grid';
+import { Grid, CssBaseline } from '@material-ui/core';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
+import MuiStylesheet from '../styles/mui-theme';
 import SpotifyProfilesContainer from './spotify/SpotifyProfiles';
 import SpotifyUserPlaylistsContainer from './spotify/SpotifyUserPlaylists';
 import HomeContainer from './Home';
@@ -30,7 +32,9 @@ const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
 });
 
 export const App = () => (
-  <Fragment>
+  <MuiThemeProvider theme={MuiStylesheet}>
+    <CssBaseline />
+
     {/* Header */}
     <Grid spacing={0} container>
       <Grid item xs>
@@ -39,8 +43,8 @@ export const App = () => (
     </Grid>
 
     {/* Main content */}
-    <Grid spacing={0} container justify="center">
-      <Grid item>
+    <Grid spacing={0} container>
+      <Grid item xs>
         <main className="app-root-container">
           <Switch>
             <Route path="/" exact component={HomeContainer} />
@@ -64,7 +68,7 @@ export const App = () => (
         <Footer />
       </Grid>
     </Grid>
-  </Fragment>
+  </MuiThemeProvider>
 );
 
 export default withRouter(connect(state => ({

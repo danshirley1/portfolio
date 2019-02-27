@@ -42,64 +42,64 @@ class Menu extends React.Component {
     window.location.replace('/whp/logout');
   };
 
-  handleToggle = () => this.setState({ open: !this.state.open });
+  handleToggle = () => this.setState(state => ({ open: !state.open }));
 
   render() {
     const { classes } = this.props;
+    const { open } = this.state;
 
     return (
-      <div>  {/* TODO use Fragment */}
-        <AppBar className={classes.appBar}>
-          <Toolbar>
-            {this.state.open ?
+      <AppBar className={classes.appBar}>
+        <Toolbar>
+          {open
+            ? (
               <IconButton
                 data-test="menu-btn"
-                color="inherit"
                 aria-label="Menu"
                 onClick={this.handleToggle}
               >
                 <CloseIcon data-test="menu-nav-close" />
               </IconButton>
-              :
+            )
+            : (
               <IconButton
                 data-test="menu-bth"
-                color="inherit"
                 aria-label="Menu"
                 onClick={this.handleToggle}
               >
                 <MenuIcon data-test="menu-nav-open" />
               </IconButton>
-            }
+            )
+          }
 
-            <Typography variant="headline" color="inherit" style={{ flex: 1 }}>
-              PORTFOLIO APP
-            </Typography>
+          <Typography variant="h6" component="h1" style={{ flex: 1 }}>
+            PORTFOLIO APP
+          </Typography>
 
-            <Drawer
-              open={this.state.open}
-              onBackdropClick={this.handleToggle}
-              classes={{
-                paper: classes.drawerPaper,
-              }}
+          <Drawer
+            open={open}
+            onBackdropClick={this.handleToggle}
+            classes={{
+              paper: classes.drawerPaper,
+            }}
+          >
+            <NavLink
+              to="/"
+              onClick={() => this.handleToggle()}
+              data-test="TODO"
             >
-              <NavLink
-                to="/"
-                onClick={() => this.handleToggle()}
-                data-test="TODO"
-              >
-                <MenuItem>Home</MenuItem>
-              </NavLink>
-              <NavLink
-                to="/spotify-profiles"
-                onClick={() => this.handleToggle()}
-                data-test="TODO"
-              >
-                <MenuItem>Spotify Profiles</MenuItem>
-              </NavLink>
-            </Drawer>
-          </Toolbar>
-        </AppBar>
-      </div>
+              <MenuItem>Home</MenuItem>
+            </NavLink>
+            <NavLink
+              to="/spotify-profiles"
+              onClick={() => this.handleToggle()}
+              data-test="TODO"
+            >
+              <MenuItem>Spotify Profiles</MenuItem>
+            </NavLink>
+          </Drawer>
+        </Toolbar>
+      </AppBar>
     );
   }
 }

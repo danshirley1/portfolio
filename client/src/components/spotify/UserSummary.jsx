@@ -6,7 +6,7 @@ function UserSummary(props) {
 
   return (
     <Fragment>
-      <h2 data-test="summary-display-name-header">{`Logged in as ${user.display_name}`}</h2>
+      <h2 data-test="summary-display-name-header">{`${user.display_name}`}</h2>
       <img data-test="summary-user-avatar" src={user.profileImage.url} alt="User avatar" />
       <dl>
         <dt>

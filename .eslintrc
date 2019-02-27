@@ -24,6 +24,7 @@
   rules: {
     "max-len": [2, {code: 125}],
     "no-multi-str": 0,
-    "react/forbid-prop-types": 1
+    "react/forbid-prop-types": 1,
+    "react/no-unescaped-entities": 0
   }
 }
