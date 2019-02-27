@@ -20,14 +20,22 @@ const MuiStylesheet = createMuiTheme({
     MuiPaper: {
       root: {
         padding: 20,
-        background: {
-          color: 'white',
-        },
+        backgroundColor: '#232323',
       },
     },
     MuiButton: {
       label: {
         color: 'white',
+      },
+    },
+    MuiMenuItem: {
+      root: {
+        color: '#bbb',
+      },
+    },
+    MuiTypography: {
+      caption: {
+        color: '#bbb',
       },
     },
   },
