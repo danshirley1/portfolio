@@ -1,6 +1,9 @@
 import React, { Fragment } from 'react';
 
+import { Grid, Paper, Typography } from '@material-ui/core';
+
 import UserSummary from './UserSummary';
+import UserPlaylistsTable from './UserPlaylistsTable';
 
 function SpotifyUserPlaylists(props) {
   const {
@@ -10,40 +13,26 @@ function SpotifyUserPlaylists(props) {
 
   return (
     <Fragment>
-      <UserSummary user={user} playlists={userPlaylists}/>
+      <Grid container spacing={24}>
 
-      <h1>PLAYLISTS TABLE:</h1>
+        <Grid item xs={12}>
+          <Paper>
+            <Typography variant="h6">
+              You
+            </Typography>
+            <UserSummary user={user} showPlaylists={false} />
+          </Paper>
+        </Grid>
 
-      <table cellSpacing="20">
-        <thead align="left">
-          <tr>
-            <th>Playlist Name</th>
-            <th>Track Count</th>
-            <th>Tracks</th>
-          </tr>
-        </thead>
-        <tbody>
-          {userPlaylists.map(row => (
-            <tr vAlign="top">
-              <td>{row.name}</td>
-              <td>{row.tracks.length}</td>
-              <td>
-                {row.tracks.map(track => (
-                  <table>
-                    <tbody>
-                      <tr>
-                        <td>
-                          {track.name}
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                ))}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+        <Grid item xs>
+          <Paper>
+            <Typography variant="h6" gutterBottom>
+              User playlists
+            </Typography>
+            <UserPlaylistsTable playlists={userPlaylists} />
+          </Paper>
+        </Grid>
+      </Grid>
     </Fragment>
   );
 }

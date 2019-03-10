@@ -1,5 +1,8 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { green, pink } from '@material-ui/core/colors';
+import { pink } from '@material-ui/core/colors';
+
+
+// TODO define colours as vriables somewhere
 
 const MuiStylesheet = createMuiTheme({
   typography: {
@@ -8,7 +11,9 @@ const MuiStylesheet = createMuiTheme({
   palette: {
     type: 'dark',
     default: 'white',
-    primary: green,
+    primary: {
+      main: '#1DB954',
+    },
     secondary: pink,
   },
   overrides: {
@@ -36,6 +41,21 @@ const MuiStylesheet = createMuiTheme({
     MuiTypography: {
       caption: {
         color: '#bbb',
+      },
+    },
+    MuiExpansionPanel: {
+      root: {
+        padding: 0,
+        marginBottom: 10,
+      },
+      expanded: {
+        marginTop: 10,
+        marginBottom: 10,
+      },
+    },
+    MuiExpansionPanelSummary: {
+      root: {
+        backgroundColor: '#1DB954',
       },
     },
   },

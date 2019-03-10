@@ -2,7 +2,11 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 function UserSummary(props) {
-  const { user, playlists } = props;
+  const {
+    user,
+    playlists,
+    showPlaylists = true,
+  } = props;
 
   return (
     <Fragment>
@@ -17,15 +21,21 @@ function UserSummary(props) {
             {user.external_urls.spotify}
           </a>
         </dd>
-        <dt>
-          Playlists
-        </dt>
-        <dd>
-          User has&nbsp;
-          <span data-test="playlists-length">{ playlists.length }</span>
-          &nbsp;playlists.
-          <Link to="/spotify-user-playlists">View playlists</Link>
-        </dd>
+        {showPlaylists &&
+          (
+            <Fragment>
+              <dt>
+                Playlists
+              </dt>
+              <dd>
+                User has&nbsp;
+                <span data-test="playlists-length">{ playlists.length }</span>
+                &nbsp;playlists.
+                <Link to="/spotify-user-playlists">View playlists</Link>
+              </dd>
+            </Fragment>
+          )
+        }
       </dl>
     </Fragment>
   );
