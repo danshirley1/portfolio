@@ -43,8 +43,8 @@ export const App = () => (
     </Grid>
 
     {/* Main content */}
-    <Grid spacing={0} container alignItems="center">
-      <Grid item xs alignItems="center">
+    <Grid spacing={0} container>
+      <Grid item xs>
         <main className="app-root-container">
           <Switch>
             <Route path="/" exact component={HomeContainer} />

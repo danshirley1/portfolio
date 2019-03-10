@@ -11,12 +11,16 @@ a {
 .app-root-container {
   position: relative;
   top: 48px;
-  padding: 60px 20px 128px 20px; }
+  padding: 20px 20px 128px 20px; }
+  .app-root-container .space-content-vertical {
+    padding-top: 60px; }
 
 @media (min-width: 600px) {
   .app-root-container {
     top: 64px;
-    padding: 100px 20px 144px 20px; } }
+    padding: 20px 20px 144px 20px; }
+    .app-root-container .space-content-vertical {
+      padding-top: 100px; } }
 
 @media (min-width: 1440px) {
   .app-root-container {

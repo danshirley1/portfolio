@@ -1,13 +1,21 @@
 .app-root-container {
   position: relative;
   top: $header-height-mobile;
-  padding: $main-top-spacing-mobile $standard-spacing ($header-height-mobile + $standard-spacing * 4) $standard-spacing;
+  padding: $standard-spacing $standard-spacing ($header-height-mobile + $standard-spacing * 4) $standard-spacing;
+
+  .space-content-vertical {
+    padding-top: $centered-top-spacing-mobile;
+  }
 }
 
 @media (min-width: 600px) {
   .app-root-container {
     top: $header-height-desktop;
-    padding: $main-top-spacing-desktop $standard-spacing ($header-height-desktop + $standard-spacing * 4) $standard-spacing;
+    padding: $standard-spacing $standard-spacing ($header-height-desktop + $standard-spacing * 4) $standard-spacing;
+
+    .space-content-vertical {
+      padding-top: $centered-top-spacing-desktop;
+    }
   }
 }
 
