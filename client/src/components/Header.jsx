@@ -19,9 +19,6 @@ import {
 } from '@material-ui/icons';
 
 const styles = () => ({
-  appBar: {
-    // zIndex: theme.zIndex.modal + 1,
-  },
   drawerPaper: {
     paddingTop: 20, // todo: use default-spacing class when available
     width: 240,
@@ -49,7 +46,7 @@ class Menu extends React.Component {
     const { open } = this.state;
 
     return (
-      <AppBar className={classes.appBar}>
+      <AppBar>
         <Toolbar>
           {open
             ? (
