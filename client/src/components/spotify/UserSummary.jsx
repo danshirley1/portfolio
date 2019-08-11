@@ -1,44 +1,54 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  Grid,
+  Typography,
+  Link,
+} from '@material-ui/core';
+import { unstable_Box as Box } from '@material-ui/core/Box';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = () => ({
+  'avatar-image': {
+    width: '100%',
+  },
+});
 
 function UserSummary(props) {
   const {
+    classes,
     user,
     playlists,
     showPlaylists = true,
   } = props;
 
   return (
-    <Fragment>
-      <h2 data-test="summary-display-name-header">{`${user.display_name}`}</h2>
-      <img data-test="summary-user-avatar" src={user.profileImage.url} alt="User avatar" />
-      <dl>
-        <dt>
-          Spotify URI
-        </dt>
-        <dd>
-          <a data-test="summary-spotify-uri" href={user.external_urls.spotify}>
-            {user.external_urls.spotify}
-          </a>
-        </dd>
-        {showPlaylists &&
-          (
-            <Fragment>
-              <dt>
-                Playlists
-              </dt>
-              <dd>
-                User has&nbsp;
-                <span data-test="playlists-length">{ playlists.length }</span>
-                &nbsp;playlists.
-                <Link to="/spotify-user-playlists">View playlists</Link>
-              </dd>
-            </Fragment>
-          )
-        }
-      </dl>
-    </Fragment>
+    <Grid container spacing={24}>
+      <Grid item xs={8}>
+        <Typography component="h5" variant="h5">
+          {`${user.display_name}`}
+        </Typography>
+        {showPlaylists && (
+          <Box mt={2}>
+            <Typography paragraph>
+              Playlists&nbsp;
+              { `(${playlists.length})` }
+              &nbsp;
+              <Link to="/spotify-user-playlists" component={RouterLink}>view</Link>
+            </Typography>
+          </Box>
+        )}
+      </Grid>
+      <Grid item xs={4}>
+        <img src={user.profileImage.url} alt="Profile avatar" className={classes['avatar-image']} />
+      </Grid>
+    </Grid>
   );
 }
 
-export default UserSummary;
+UserSummary.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(UserSummary);
