@@ -17,7 +17,7 @@ function SpotifyUserPlaylists(props) {
 
         <Grid item xs={12}>
           <Paper>
-            <UserSummaryWide user={user} showPlaylists={true} playlists={userPlaylists} />
+            <UserSummaryWide user={user} showPlaylistsLink={false} playlists={userPlaylists} />
           </Paper>
         </Grid>
 

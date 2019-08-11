@@ -1,80 +1,50 @@
-import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { Grid, Typography } from '@material-ui/core';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Grid, Typography, Link } from '@material-ui/core';
+import { unstable_Box as Box } from '@material-ui/core/Box';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = () => ({
+  'avatar-image': {
+    width: '100%',
+  },
+});
 
 function UserSummaryWide(props) {
   const {
+    classes,
     user,
     playlists,
-    showPlaylists = true,
+    showPlaylistsLink = true,
   } = props;
 
   return (
-    <Fragment>
-      <Grid container>
-        <Grid item xs={10}>
-          <Typography variant="h5" data-test="summary-display-name-header">
-            {`${user.display_name}`}
+    <Grid container spacing={24}>
+      <Grid item xs={10}>
+        <Typography component="h5" variant="h5">
+          {`${user.display_name}`}
+        </Typography>
+        <Box mt={2}>
+          <Typography paragraph>
+            Playlists&nbsp;
+            { `(${playlists.length})` }
+            &nbsp;
+            {showPlaylistsLink && (
+              <Link to="/spotify-user-playlists" component={RouterLink}>view</Link>
+            )}
           </Typography>
-          <Grid item xs>
-            <Typography variant="body1">
-              Spotify URI
-            </Typography>
-            <Typography variant="body2">
-              <a data-test="summary-spotify-uri" href={user.external_urls.spotify}>
-                {user.external_urls.spotify}
-              </a>
-            </Typography>
-            {showPlaylists &&
-              (
-                <Fragment>
-                  <Typography variant="body1">
-                    Playlists
-                  </Typography>
-                  <Typography variant="body2">
-                    User has&nbsp;
-                    <span data-test="playlists-length">{ playlists.length }</span>
-                    &nbsp;playlists.&nbsp;
-                    <Link to="/spotify-user-playlists">View playlists</Link>
-                  </Typography>
-                </Fragment>
-              )
-            }
-          </Grid>
-        </Grid>
-        <Grid item xs={2}>
-          <img data-test="summary-user-avatar" src={user.profileImage.url} alt="User avatar" width="100%" />
-        </Grid>
+        </Box>
       </Grid>
-    </Fragment>
+      <Grid item xs={2}>
+        <img src={user.profileImage.url} alt="Profile avatar" className={classes['avatar-image']} />
+      </Grid>
+    </Grid>
   );
 }
 
-export default UserSummaryWide;
+UserSummaryWide.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
 
-
-/*
-import { Grid, Paper, Typography } from '@material-ui/core';
-<Fragment>
-  <Grid container spacing={24}>
-
-    <Grid item xs={12}>
-      <Paper>
-        <Typography variant="h6">
-          You
-        </Typography>
-        <UserSummaryWide user={user} showPlaylists={false} />
-      </Paper>
-    </Grid>
-
-    <Grid item xs>
-      <Paper>
-        <Typography variant="h6" gutterBottom>
-          User playlists
-        </Typography>
-        <UserPlaylistsTable playlists={userPlaylists} />
-      </Paper>
-    </Grid>
-  </Grid>
-</Fragment>
-*/
+export default withStyles(styles)(UserSummaryWide);

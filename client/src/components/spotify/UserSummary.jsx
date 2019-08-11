@@ -20,7 +20,7 @@ function UserSummary(props) {
     classes,
     user,
     playlists,
-    showPlaylists = true,
+    showPlaylistsLink = true,
   } = props;
 
   return (
@@ -29,7 +29,7 @@ function UserSummary(props) {
         <Typography component="h5" variant="h5">
           {`${user.display_name}`}
         </Typography>
-        {showPlaylists && (
+        {showPlaylistsLink && (
           <Box mt={2}>
             <Typography paragraph>
               Playlists&nbsp;
