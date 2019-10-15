@@ -17,6 +17,7 @@ function UserSummaryWide(props) {
     user,
     playlists,
     showPlaylistsLink = true,
+    children,
   } = props;
 
   return (
@@ -35,6 +36,7 @@ function UserSummaryWide(props) {
             )}
           </Typography>
         </Box>
+        { children }
       </Grid>
       <Grid item xs={2}>
         <img src={user.profileImage.url} alt="Profile avatar" className={classes['avatar-image']} />

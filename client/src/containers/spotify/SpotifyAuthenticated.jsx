@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-import { setTokens } from '../../actions/spotify/';
+import { setTokens } from '../../actions/spotify';
 
 export class SpotifyAuthenticated extends Component {
   componentDidMount() {

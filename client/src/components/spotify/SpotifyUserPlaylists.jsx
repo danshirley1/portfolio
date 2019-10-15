@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react';
 
-import { Grid, Paper, Typography } from '@material-ui/core';
+import {
+  Grid,
+  Paper,
+  Typography,
+  Link,
+  Button,
+} from '@material-ui/core';
 
 import UserSummaryWide from './UserSummaryWide';
 import UserPlaylistsTable from './UserPlaylistsTable';
@@ -17,7 +23,11 @@ function SpotifyUserPlaylists(props) {
 
         <Grid item xs={12}>
           <Paper>
-            <UserSummaryWide user={user} showPlaylistsLink={false} playlists={userPlaylists} />
+            <UserSummaryWide user={user} showPlaylistsLink={false} playlists={userPlaylists}>
+              <Button variant="contained" color="secondary" component={Link} to="/spotify-profiles">
+                TEXT HERE
+              </Button>
+            </UserSummaryWide>
           </Paper>
         </Grid>
 
