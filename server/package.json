@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "apollo-errors": "^1.9.0",
-    "apollo-server-express": "^2.0.5",
+    "apollo-server-express": "^2.14.2",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "cookie-parser": "~1.4.3",
