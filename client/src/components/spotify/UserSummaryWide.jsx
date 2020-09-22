@@ -1,8 +1,12 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Grid, Typography, Link } from '@material-ui/core';
-import { unstable_Box as Box } from '@material-ui/core/Box';
+import {
+  Grid,
+  Typography,
+  Link,
+  Box,
+} from '@material-ui/core';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
@@ -21,7 +25,7 @@ function UserSummaryWide(props) {
   } = props;
 
   return (
-    <Grid container spacing={24}>
+    <Grid container spacing={10}>
       <Grid item xs={10}>
         <Typography component="h5" variant="h5">
           {`${user.display_name}`}

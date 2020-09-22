@@ -43,17 +43,18 @@ const MuiStylesheet = createMuiTheme({
         color: '#bbb',
       },
     },
-    MuiExpansionPanel: {
+    MuiAccordion: {
       root: {
         padding: 0,
         marginBottom: 10,
-      },
-      expanded: {
-        marginTop: 10,
-        marginBottom: 10,
+
+        '&$expanded': {
+          marginTop: 10,
+          marginBottom: 10,
+        },
       },
     },
-    MuiExpansionPanelSummary: {
+    MuiAccordionSummary: {
       root: {
         backgroundColor: '#1DB954',
       },

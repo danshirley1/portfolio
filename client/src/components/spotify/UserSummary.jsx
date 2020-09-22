@@ -5,8 +5,8 @@ import {
   Grid,
   Typography,
   Link,
+  Box,
 } from '@material-ui/core';
-import { unstable_Box as Box } from '@material-ui/core/Box';
 import { withStyles } from '@material-ui/core/styles';
 
 const styles = () => ({
@@ -24,7 +24,7 @@ function UserSummary(props) {
   } = props;
 
   return (
-    <Grid container spacing={24}>
+    <Grid container spacing={10}>
       <Grid item xs={8}>
         <Typography component="h5" variant="h5">
           {`${user.display_name}`}

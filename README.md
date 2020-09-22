@@ -29,11 +29,11 @@ yarn start
 ```
 
 ## What is it?
-The application allows users to log in to Spotify (and ultimately other provideers such as SoundCloud, iTunes etc.) and view their music preferences alongside mine. Similar artists, generes etc. will be represented in graphical format alongside mine and then suggestions can be made etc.
+The application allows users to log in to Spotify (and ultimately other providers such as SoundCloud, iTunes etc.) and view their music preferences alongside mine. Similar artists, genres etc. will be represented in graphical format alongside mine and then suggestions can be made etc.
 
 Long term plans include embedded media player with subtitle for karaoke and other such things, even perhaps a single application for browsing and playing media from a collection of providers (Spotify, iTunes in a single media place).
 
 ## Why?
 An opportunity to demonstrate my technical skills, by presenting various aspects of my development experience all in one place.
 
-Also it's a great way to learn and apply new technolgies against an evolving, continous piece of work.
+Also it's a great way to learn and apply new technologies against an evolving, continuous piece of work.

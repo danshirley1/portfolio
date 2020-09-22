@@ -6,7 +6,7 @@ function CommonalityResults(props) {
   const { commonality } = props;
 
   return (
-    <Grid container spacing={24}>
+    <Grid container spacing={10}>
       <Grid item xs={12}>
         <Paper>
           <Typography variant="h6" component="h2">
@@ -14,12 +14,12 @@ function CommonalityResults(props) {
           </Typography>
           <div style={{ color: 'white' }}>
             visitingUserTopArtists:<br />
-            { JSON.stringify(commonality.visitingUserTopArtists) }
+            { commonality ? JSON.stringify(commonality.visitingUserTopArtists) : 'Nothing to show' }
           </div>
           <br />
           <div style={{ color: 'white' }}>
             myUserTopArtists:<br />
-            { JSON.stringify(commonality.myUserTopArtists) }
+            { commonality ? JSON.stringify(commonality.myUserTopArtists) : 'Nothing to show' }
           </div>
         </Paper>
       </Grid>

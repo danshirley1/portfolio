@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 
 import { Grid, CssBaseline } from '@material-ui/core';
-import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
 
 import MuiStylesheet from '../styles/mui-theme';
 import SpotifyProfilesContainer from './spotify/SpotifyProfiles';

@@ -19,7 +19,7 @@ function SpotifyUserPlaylists(props) {
 
   return (
     <Fragment>
-      <Grid container spacing={24}>
+      <Grid container spacing={10}>
 
         <Grid item xs={12}>
           <Paper>

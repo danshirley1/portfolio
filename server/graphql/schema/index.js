@@ -1,11 +1,19 @@
-import { makeExecutableSchema } from 'graphql-tools';
+import { join } from 'path';
+import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader';
+import { loadSchemaSync } from '@graphql-tools/load';
+import { addResolversToSchema } from '@graphql-tools/schema';
 
-import spotifyTypeDefs from './spotify/typeDefs';
-import spotifyResolvers from './spotify/resolvers';
+import resolvers from './spotify/resolvers';
 
-const schema = makeExecutableSchema({
-  typeDefs: [spotifyTypeDefs],
-  resolvers: [spotifyResolvers],
+const schema = loadSchemaSync(join(__dirname, './spotify/schema.graphql'), {
+  loaders: [
+    new GraphQLFileLoader(),
+  ]
 });
 
-export default schema;
+const schemaWithResolvers = addResolversToSchema({
+  schema,
+  resolvers,
+});
+
+export default schemaWithResolvers;

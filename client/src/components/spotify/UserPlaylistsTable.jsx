@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/styles';
 import {
   Grid,
-  ExpansionPanel,
-  ExpansionPanelSummary,
-  ExpansionPanelDetails,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails,
   Typography,
   Table,
   TableHead,
@@ -51,8 +51,8 @@ function UserPlaylistsTable(props) {
   return (
     <Fragment>
       {playlists.map(playlist => (
-        <ExpansionPanel key={playlist.id}>
-          <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
+        <Accordion key={playlist.id}>
+          <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Grid item xs={8} md={10}>
               <Typography>{playlist.name}</Typography>
             </Grid>
@@ -62,8 +62,8 @@ function UserPlaylistsTable(props) {
                 &nbsp;tracks
               </Typography>
             </Grid>
-          </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
+          </AccordionSummary>
+          <AccordionDetails>
             <Table>
               <TableHead>
                 <TableRow>
@@ -80,8 +80,8 @@ function UserPlaylistsTable(props) {
                 ))}
               </TableBody>
             </Table>
-          </ExpansionPanelDetails>
-        </ExpansionPanel>
+          </AccordionDetails>
+        </Accordion>
       ))}
     </Fragment>
   );

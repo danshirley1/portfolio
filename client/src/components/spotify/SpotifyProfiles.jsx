@@ -15,7 +15,7 @@ function SpotifyProfiles(props) {
   } = props;
 
   return (
-    <Grid container spacing={24}>
+    <Grid container spacing={10}>
       <Grid item xs={12}>
         <Paper>
           <Typography variant="h6" component="h2">

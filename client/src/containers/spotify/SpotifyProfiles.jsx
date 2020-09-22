@@ -21,7 +21,7 @@ export function SpotifyProfiles(props) {
   const { accessToken, commonalityResults } = spotifySession;
 
   const doSetCommonalityResults = ({ visitingSpotifyUserPlaylists, mySpotifyUserPlaylists }) => {
-    onSetCommonalityResults({ visitingSpotifyUserPlaylists, mySpotifyUserPlaylists });
+    // onSetCommonalityResults({ visitingSpotifyUserPlaylists, mySpotifyUserPlaylists });
   };
 
   return (

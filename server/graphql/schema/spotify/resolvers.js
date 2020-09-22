@@ -22,8 +22,6 @@ export default {
 
       const user = await spotifyApi.getMe()
         .catch((err) => {
-          console.log('ERROR XXXX', err);
-
           if (err.statusCode === 401) {
             throw new SpotifyUnauthenticatedError();
           }
@@ -70,7 +68,7 @@ export default {
           name: playlist.name,
           tracks: [],
         };
-        const playlistTracks = await spotifyApi.getPlaylistTracks(user.id, playlist.id);
+        const playlistTracks = await spotifyApi.getPlaylistTracks(playlist.id);
 
         playlistTracks.body.items.forEach((trackData) => {
           // TODO: log if null?
@@ -87,7 +85,10 @@ export default {
         return playlistData;
       });
 
-      return Promise.all(playlistCalls);
+      return Promise.all(playlistCalls)
+        .catch((err) => {
+          console.log('visitingSpotifyUserPlaylists() ERROR', err);
+        });
     },
     // TODO: visitingSpotifyUserPlaylists() and mySpotifyUserPlaylists() have alot of commonality - refactor
     mySpotifyUserPlaylists: async () => {
@@ -107,7 +108,7 @@ export default {
           name: playlist.name,
           tracks: [],
         };
-        const playlistTracks = await spotifyApi.getPlaylistTracks(user.id, playlist.id);
+        const playlistTracks = await spotifyApi.getPlaylistTracks(playlist.id);
 
         playlistTracks.body.items.forEach((trackData) => {
           // TODO: log if null?
@@ -124,7 +125,10 @@ export default {
         return playlistData;
       });
 
-      return Promise.all(playlistCalls);
+      return Promise.all(playlistCalls)
+        .catch((err) => {
+          console.log('mySpotifyUserPlaylists()', err);
+        });
     },
   },
 };
