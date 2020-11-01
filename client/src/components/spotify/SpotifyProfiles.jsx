@@ -1,47 +1,73 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Grid, Paper, Typography } from '@material-ui/core';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import { Redirect } from 'react-router-dom';
+
+import { GET_SPOTIFY_PROFILES_USER_DATA } from '../../graphql/queries/spotify';
 
 import UserSummary from './UserSummary';
 import CommonalityResults from './CommonalityResults';
 
 function SpotifyProfiles(props) {
   const {
-    visitingUser,
-    myUser,
-    visitingUserPlaylists,
-    myUserPlaylists,
-    commonalityResults,
+    accessToken,
+    userArtists,
+    doProfilesDataLoaded,
   } = props;
 
   return (
     <Grid container spacing={10}>
-      <Grid item xs={12}>
-        <Paper>
-          <Typography variant="h6" component="h2">
-            Results!
-          </Typography>
-          <CommonalityResults commonality={commonalityResults} />
-        </Paper>
-      </Grid>
+      <Query query={gql(GET_SPOTIFY_PROFILES_USER_DATA)} variables={{ accessToken }} onCompleted={doProfilesDataLoaded}>
+        {({ loading, error, data }) => {
+          if (loading) {
+            return 'Loading...';
+          }
 
-      <Grid item xs={6}>
-        <Paper>
-          <Typography variant="h6" component="h2">
-            You
-          </Typography>
-          <UserSummary user={visitingUser} playlists={visitingUserPlaylists} />
-        </Paper>
-      </Grid>
+          if (error) {
+            if (error.graphQLErrors.find((err) => err.name === 'SpotifyUnauthenticatedError')) {
+              return <Redirect to="/auth-hub" />;
+            }
 
-      <Grid item xs={6}>
-        <Paper>
-          <Typography variant="h6" component="h2">
-            Me
-          </Typography>
-          <UserSummary user={myUser} playlists={myUserPlaylists} />
-        </Paper>
-      </Grid>
+            return 'Unhandled error!';
+          }
+
+          return (
+            <Fragment>
+              <Grid item xs={12}>
+                <Paper>
+                  <Typography variant="h6" component="h2">
+                    Results!
+                  </Typography>
+                  { userArtists &&
+                    <CommonalityResults userArtists={userArtists} />
+                  }
+                </Paper>
+              </Grid>
+
+              <Grid item xs={6}>
+                <Paper>
+                  <Typography variant="h6" component="h2">
+                    You
+                  </Typography>
+                  <UserSummary user={data.visitingSpotifyUser} playlists={data.visitingSpotifyUserPlaylists} />
+                </Paper>
+              </Grid>
+
+              <Grid item xs={6}>
+                <Paper>
+                  <Typography variant="h6" component="h2">
+                    Me
+                  </Typography>
+                  <UserSummary user={data.mySpotifyUser} playlists={data.mySpotifyUserPlaylists} />
+                </Paper>
+              </Grid>
+            </Fragment>
+          );
+        }
+      }
+      </Query>
     </Grid>
   );
 }

@@ -5,7 +5,7 @@ import { Query } from 'react-apollo';
 import { Redirect } from 'react-router-dom';
 
 import SpotifyUserPlaylistsView from '../../components/spotify/SpotifyUserPlaylists';
-import GET_SPOTIFY_PROFILES_USER_DATA from '../../graphql/queries/spotify';
+import { GET_SPOTIFY_PROFILES_USER_DATA } from '../../graphql/queries/spotify';
 
 export function SpotifyUserPlaylists(props) {
   const { spotifySession } = props;

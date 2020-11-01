@@ -7,7 +7,7 @@ import { createError } from 'apollo-errors';
 import * as routerDomLib from 'react-router-dom';
 
 import { SpotifyProfiles } from './SpotifyProfiles';
-import GET_SPOTIFY_PROFILES_USER_DATA from '../../graphql/queries/spotify';
+import { GET_SPOTIFY_PROFILES_USER_DATA } from '../../graphql/queries/spotify';
 
 describe('SpotifyProfiles Container', () => {
   let component;

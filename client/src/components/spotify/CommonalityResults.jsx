@@ -3,7 +3,7 @@ import React from 'react';
 import { Grid, Paper, Typography } from '@material-ui/core';
 
 function CommonalityResults(props) {
-  const { commonality } = props;
+  const { userArtists } = props;
 
   return (
     <Grid container spacing={10}>
@@ -14,12 +14,12 @@ function CommonalityResults(props) {
           </Typography>
           <div style={{ color: 'white' }}>
             visitingUserTopArtists:<br />
-            { commonality ? JSON.stringify(commonality.visitingUserTopArtists) : 'Nothing to show' }
+            { userArtists ? JSON.stringify(userArtists.visitingUserTopArtists) : 'Nothing to show' }
           </div>
           <br />
           <div style={{ color: 'white' }}>
             myUserTopArtists:<br />
-            { commonality ? JSON.stringify(commonality.myUserTopArtists) : 'Nothing to show' }
+            { userArtists ? JSON.stringify(userArtists.myUserTopArtists) : 'Nothing to show' }
           </div>
         </Paper>
       </Grid>
