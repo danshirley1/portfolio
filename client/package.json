@@ -8,7 +8,7 @@
     "graphql": "^14.0.0",
     "graphql-tag": "^2.9.2",
     "history": "^4.7.2",
-    "lodash": "^4.17.10",
+    "lodash": "^4.17.21",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
     "react-apollo": "^2.1.11",
