@@ -27,7 +27,8 @@
     "redux-observable": "^1.2.0",
     "redux-persist": "^6.0.0",
     "rxjs": "^6.6.3",
-    "source-map-explorer": "^2.5.0"
+    "source-map-explorer": "^2.5.0",
+    "typescript": "^4.1.2"
   },
   "scripts": {
     "analyze": "source-map-explorer build/static/js/main.*",
@@ -42,6 +43,13 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@types/jest": "^26.0.16",
+    "@types/node": "^14.14.10",
+    "@types/react": "^17.0.0",
+    "@types/react-dom": "^17.0.0",
+    "@types/react-redux": "^7.1.18",
+    "@types/react-router-dom": "^5.1.6",
+    "@types/redux-auth-wrapper": "^2.0.10",
     "apollo-errors": "^1.9.0",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",

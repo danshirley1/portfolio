@@ -1,5 +1,5 @@
 import { REHYDRATE } from 'redux-persist';
-import { SPOTIFY_TOKENS, SET_USER_ARTISTS } from '../../actions/spotify';
+import { SpotifyActionTypes } from './spotify.types';
 import { getAggregatedArtists, getTopAggregatedArtists } from '../../lib/tracks/track-aggregator';
 
 const spotifyUserInitialState = {
@@ -20,12 +20,12 @@ export default function reduce(state = initialState, action) {
     case REHYDRATE:
       return state;
 
-    case SPOTIFY_TOKENS: {
+    case SpotifyActionTypes.SPOTIFY_TOKENS: {
       const { accessToken, refreshToken } = action;
       return { ...state, accessToken, refreshToken };
     }
 
-    case SET_USER_ARTISTS: {
+    case SpotifyActionTypes.SET_USER_ARTISTS: {
       const { visitingSpotifyUserPlaylists, mySpotifyUserPlaylists } = action;
 
       const visitingUserArtists = getAggregatedArtists(visitingSpotifyUserPlaylists.flatMap(playlist => playlist.tracks));

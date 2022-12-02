@@ -19,13 +19,17 @@ import isSpotifyAuthorized from '../utils/auth/spotify';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 
+interface State {
+  spotifySession: any,
+};
+
 /* SEE: https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/react-router-4/auth.js */
 /* Maybe I need to use loading, as per the above example, and/ or connectedAuthWrapper? */
 const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
   redirectPath: () => '/auth-hub',
 
   // Determine if the user is authenticated or not
-  authenticatedSelector: state => isSpotifyAuthorized(state.spotifySession),
+  authenticatedSelector: (state: State) => isSpotifyAuthorized(state.spotifySession),
 
   // A nice display name for this check
   wrapperDisplayName: 'UserisSpotifyAuthorized',
@@ -71,6 +75,6 @@ export const App = () => (
   </MuiThemeProvider>
 );
 
-export default withRouter(connect(state => ({
+export default withRouter(connect((state: State) => ({
   spotifySession: state.spotifySession,
 }))(App));

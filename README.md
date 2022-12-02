@@ -1,3 +1,6 @@
+Typescript conversion tips:
+https://www.sitepoint.com/how-to-migrate-a-react-app-to-typescript/
+
 # Portfolio
 
 A personal showcase portfolio demonstrating a range of techniques and technologies.

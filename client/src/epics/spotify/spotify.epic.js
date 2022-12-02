@@ -3,10 +3,10 @@ import { map, switchMap, catchError } from 'rxjs/operators';
 
 import { showError } from '../../actions/app';
 import { errorHandler } from '../../utils/errorHandler';
-import { AUTHORIZE_SPOTIFY_USER } from '../../actions/spotify';
+import { SpotifyActionTypes } from '../../reducers/spotify/spotify.types';
 
 export default function authorizeSpotifyUser(action$) {
-  return action$.ofType(AUTHORIZE_SPOTIFY_USER)
+  return action$.ofType(SpotifyActionTypes.AUTHORIZE_SPOTIFY_USER)
     .pipe(
       switchMap(() => ajax({
         url: 'http://localhost:3001/spotify/authorize',

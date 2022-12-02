@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
 
 import { withStyles } from '@material-ui/styles';
@@ -25,30 +24,34 @@ const styles = () => ({
   },
 });
 
-class Menu extends React.Component {
-  static propTypes = {
-    classes: PropTypes.object.isRequired,
-  };
+interface Props {
+  classes: any,
+};
 
-  constructor(props) {
+interface State {
+  isOpen: boolean,
+};
+
+class Header extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
-    this.state = { open: false };
+    this.state = { isOpen: false };
   }
 
   logout = () => {
     window.location.replace('/whp/logout');
   };
 
-  handleToggle = () => this.setState(state => ({ open: !state.open }));
+  handleToggle = () => this.setState(state => ({ isOpen: !state.isOpen }));
 
   render() {
     const { classes } = this.props;
-    const { open } = this.state;
+    const { isOpen } = this.state;
 
     return (
       <AppBar>
         <Toolbar>
-          {open
+          {isOpen
             ? (
               <IconButton
                 data-test="menu-btn"
@@ -74,7 +77,7 @@ class Menu extends React.Component {
           </Typography>
 
           <Drawer
-            open={open}
+            open={isOpen}
             onBackdropClick={this.handleToggle}
             classes={{
               paper: classes.drawerPaper,
@@ -101,4 +104,4 @@ class Menu extends React.Component {
   }
 }
 
-export default withStyles(styles)(Menu);
+export default withStyles(styles)(Header);

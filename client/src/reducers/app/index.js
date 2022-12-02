@@ -1,3 +1,4 @@
+import { Reducer } from 'react';
 import { SHOW_ALERT } from '../../actions/app';
 
 const initialState = {

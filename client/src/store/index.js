@@ -43,7 +43,7 @@ const rootPersistConfig = {
   storage,
 };
 
-const rootReducer = combineReducers({
+export const rootReducer = combineReducers({
   spotifySession: spotifyReducer,
   router: connectRouter(history),
 });
