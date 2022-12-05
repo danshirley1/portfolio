@@ -5,9 +5,9 @@ import mockEpic from '../../helpers';
 
 import {
   AUTHORIZE_SPOTIFY_USER,
-} from '../../store/spotify/spotify.actions';
+} from '../../../store/spotify/spotify.actions';
 
-import authorizeSpotifyUser from './spotify.epic';
+import authorizeSpotifyUser from '../../../store/spotify/spotify.epic';
 
 describe('spotify epics', () => {
   const originalAjaxGet = Observable.ajax;

@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
-import reducer from './';
-import { showAlert } from '../../store/app/app.actions';
+import reducer from '../../../store/app/app.reducer';
+import { showAlert } from '../../../store/app/app.actions';
 
 describe('app reducer', () => {
   const initialReducerState = {

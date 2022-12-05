@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { dataTestTag } from '../../test/helpers';
-import UserSummary from './UserSummary';
+import { dataTestTag } from '../../helpers';
+import UserSummary from '../../../components/spotify/UserSummary';
 
 describe('UserSummary Component', () => {
   let component;

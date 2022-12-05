@@ -9,9 +9,7 @@ serve -s build
 
 # Testing
 
-To run a unit tests on a filename match:
-
-`yarn run test -f someFileString`
+`yarn test --watch --verbose --runInBand --testPathPattern=tests/unit -t 'my test name pattern'`
 
 ---
 

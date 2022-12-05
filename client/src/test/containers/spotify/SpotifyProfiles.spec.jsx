@@ -1,12 +1,13 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { MockedProvider } from 'react-apollo/test-utils';
+
 import gql from 'graphql-tag';
 import wait from 'waait';
 import { createError } from 'apollo-errors';
 import * as routerDomLib from 'react-router-dom';
 
-import { SpotifyProfiles } from './SpotifyProfiles';
+import { SpotifyProfiles } from '../../../containers/spotify/SpotifyProfiles.tsx';
 import { GET_SPOTIFY_PROFILES_USER_DATA } from '../../graphql/queries/spotify';
 
 describe('SpotifyProfiles Container', () => {

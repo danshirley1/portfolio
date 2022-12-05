@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { dataTestTag } from '../../test/helpers';
-import AuthSuccess from './AuthSuccess';
+import { dataTestTag } from '../../helpers';
+import AuthSuccess from '../../../components/authentication/AuthSuccess';
 
 describe('AuthSuccess Component', () => {
   let component;

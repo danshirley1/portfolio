@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { PageNotFound } from './PageNotFound';
+import { PageNotFound } from '../../containers/PageNotFound';
 
 describe('PageNotFound Container', () => {
   let component;

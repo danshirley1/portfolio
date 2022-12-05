@@ -4,7 +4,7 @@ import { shallow } from 'enzyme';
 import { ConnectedRouter } from 'connected-react-router';
 import createBrowserHistory from 'history/createBrowserHistory';
 
-import { App } from './App';
+import { App } from '../../containers/App.tsx';
 
 const mockStore = configureStore();
 const history = createBrowserHistory();

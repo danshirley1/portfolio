@@ -2,7 +2,7 @@
 // import getMuiTheme from 'material-ui-v0/styles/getMuiTheme';
 // import PropTypes from 'prop-types';
 import { Observable } from 'rxjs';
-import { createEpicMiddleware } from 'redux-observable';
+import { epicMiddleware } from 'redux-observable';
 import configureMockStore from 'redux-mock-store';
 import { isEqual } from 'lodash';
 
@@ -100,7 +100,7 @@ const stubForPath = (path, method) => {
 };
 
 export default function mockEpic(epic, initialState = {}) {
-  const epicMiddleware = createEpicMiddleware(epic);
+  const epicMiddleware = epicMiddleware.run(epic);
   const mockStore = configureMockStore([epicMiddleware]);
   const store = mockStore(initialState);
   const originalAjax = Observable.ajax;

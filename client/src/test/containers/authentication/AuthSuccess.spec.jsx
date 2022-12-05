@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import AuthSuccess from './AuthSuccess';
+import AuthSuccess from '../../../containers/authentication/AuthSuccess';
 
 describe('AuthSuccess Container', () => {
   let component;

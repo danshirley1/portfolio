@@ -40,3 +40,14 @@ Long term plans include embedded media player with subtitle for karaoke and othe
 An opportunity to demonstrate my technical skills, by presenting various aspects of my development experience all in one place.
 
 Also it's a great way to learn and apply new technologies against an evolving, continuous piece of work.
+
+## Testing
+
+```
+yarn test:client
+yarn test:server
+```
+
+Or for more control:
+
+`yarn test:client --watch --verbose --runInBand --testPathPattern=tests/unit -t 'my test name pattern'`

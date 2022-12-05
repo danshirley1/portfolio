@@ -1,5 +1,5 @@
-import { chai } from '../../../../test-utils';
-import { getAggregatedArtists, getTopAggregatedArtists } from '../../../../../lib/tracks/track-aggregator';
+import { chai } from '../test-utils';
+import { getAggregatedArtists, getTopAggregatedArtists } from '../../lib/tracks/track-aggregator';
 
 const { expect } = chai;
 

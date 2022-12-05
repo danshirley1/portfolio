@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { SpotifyAuthenticated } from './SpotifyAuthenticated';
+import { SpotifyAuthenticated } from '../../../containers/spotify/SpotifyAuthenticated';
 
 describe('SpotifyAuthenticated Container', () => {
   let onSetTokens;
