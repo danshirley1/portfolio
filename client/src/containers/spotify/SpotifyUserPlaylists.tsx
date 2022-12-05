@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import gql from 'graphql-tag';
-import { Query, QueryResult } from 'react-apollo';
+import { Query } from '@apollo/client/react/components';
+import { gql, QueryResult } from '@apollo/client';
 import { Redirect } from 'react-router-dom';
-
 import { selectSpotifySession } from '../../store/spotify/spotify.selectors';
 import { State } from '../../store/root-reducer.types';
 import { GET_SPOTIFY_PROFILES_USER_DATA } from '../../graphql/queries/spotify';

@@ -1,8 +1,8 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import { MockedProvider } from 'react-apollo/test-utils';
+import { MockedProvider } from '@apollo/client/test-utils';
 
-import gql from 'graphql-tag';
+import gql from '@apollo/client';
 import wait from 'waait';
 import { createError } from 'apollo-errors';
 import * as routerDomLib from 'react-router-dom';

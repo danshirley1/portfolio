@@ -5,8 +5,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter } from 'connected-react-router';
 import { PersistGate } from 'redux-persist/lib/integration/react';
-import ApolloClient from 'apollo-boost';
-import { ApolloProvider } from 'react-apollo';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 import './styles/main.css';
 
 import AppContainer from './containers/App';
@@ -15,6 +14,7 @@ import store, { persistor, history } from './store';
 
 const apolloClient = new ApolloClient({
   uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache({}),
 });
 
 function render(Component) {

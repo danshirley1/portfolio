@@ -1,12 +1,11 @@
 import React, { Fragment } from 'react';
 
 import { Grid, Paper, Typography } from '@material-ui/core';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
+import { gql } from '@apollo/client';
+import { Query } from '@apollo/client/react/components';
 import { Redirect } from 'react-router-dom';
 
 import { GET_SPOTIFY_PROFILES_USER_DATA } from '../../graphql/queries/spotify';
-
 import UserSummary from './UserSummary';
 import CommonalityResults from './CommonalityResults';
 
