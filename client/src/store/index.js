@@ -10,8 +10,8 @@ import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { createBrowserHistory } from 'history';
 
-import spotifyReducer from '../reducers/spotify';
-import rootEpic from '../epics';
+import spotifyReducer from './spotify/spotify.reducer';
+import rootEpic from './epics';
 
 export const history = createBrowserHistory();
 

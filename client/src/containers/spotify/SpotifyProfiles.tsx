@@ -9,7 +9,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import SpotifyProfilesView from '../../components/spotify/SpotifyProfiles';
-import { setUserArtists } from '../../actions/spotify';
+import { setUserArtists } from '../../store/spotify/spotify.actions';
 
 interface SpotifyUserPlaylist {
   foo: string,

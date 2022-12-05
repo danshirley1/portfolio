@@ -1,7 +1,7 @@
 import { createStore } from 'redux';
 
 import reducer from './';
-import { setTokens } from '../../actions/spotify';
+import { setTokens } from '../../store/spotify/spotify.actions';
 
 describe('spotify reducer', () => {
   const initialReducerState = {

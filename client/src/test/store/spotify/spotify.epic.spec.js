@@ -1,11 +1,11 @@
 import { Observable } from 'rxjs';
 // import dotProps from 'dot-prop-immutable';
 
-import mockEpic from '../../test/helpers';
+import mockEpic from '../../helpers';
 
 import {
   AUTHORIZE_SPOTIFY_USER,
-} from '../../actions/spotify';
+} from '../../store/spotify/spotify.actions';
 
 import authorizeSpotifyUser from './spotify.epic';
 

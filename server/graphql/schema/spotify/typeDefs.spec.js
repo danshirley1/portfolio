@@ -6,7 +6,7 @@ import {
 
 import { graphql } from 'graphql';
 
-const typeDefs = require('./schema')();
+const typeDefs = require('./schema.graphql')();
 
 const schema = makeExecutableSchema({ typeDefs });
 

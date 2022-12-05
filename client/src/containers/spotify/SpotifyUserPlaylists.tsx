@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 import { Query, QueryResult } from 'react-apollo';
 import { Redirect } from 'react-router-dom';
 
-import { selectSpotifySession } from '../../reducers/spotify/spotify.selectors';
+import { selectSpotifySession } from '../../store/spotify/spotify.selectors';
 import { State } from '../../store/root-reducer.types';
 import { GET_SPOTIFY_PROFILES_USER_DATA } from '../../graphql/queries/spotify';
 import SpotifyUserPlaylistsView from '../../components/spotify/SpotifyUserPlaylists';

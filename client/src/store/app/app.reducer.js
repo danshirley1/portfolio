@@ -1,5 +1,5 @@
 import { Reducer } from 'react';
-import { SHOW_ALERT } from '../../actions/app';
+import { SHOW_ALERT } from '../../store/app/app.actions';
 
 const initialState = {
   notifications: {

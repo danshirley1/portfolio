@@ -1,9 +1,9 @@
 import { ajax } from 'rxjs/ajax';
 import { map, switchMap, catchError } from 'rxjs/operators';
 
-import { showError } from '../../actions/app';
+import { showError } from '../app/app.actions';
 import { errorHandler } from '../../utils/errorHandler';
-import { SpotifyActionTypes } from '../../reducers/spotify/spotify.types';
+import { SpotifyActionTypes } from './spotify.types';
 
 export default function authorizeSpotifyUser(action$) {
   return action$.ofType(SpotifyActionTypes.AUTHORIZE_SPOTIFY_USER)

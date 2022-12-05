@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import { authorizeSpotifyUser } from '../../actions/spotify';
+import { authorizeSpotifyUser } from '../../store/spotify/spotify.actions';
 import AuthHubView from '../../components/authentication/AuthHub';
 
 const AuthHub = props => <AuthHubView onAuthorize={props.authorizeSpotifyUser} />;

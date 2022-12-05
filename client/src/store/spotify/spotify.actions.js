@@ -1,4 +1,4 @@
-import { SpotifyActionTypes } from '../../reducers/spotify/spotify.types';
+import { SpotifyActionTypes } from './spotify.types';
 
 export function setTokens({ accessToken, refreshToken }) {
   return { type: SpotifyActionTypes.SPOTIFY_TOKENS, accessToken, refreshToken };

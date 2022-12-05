@@ -3,7 +3,7 @@ import { shallow } from 'enzyme';
 import configureStore from 'redux-mock-store';
 
 import AuthHub from './AuthHub';
-import { authorizeSpotifyUser } from '../../actions/spotify/';
+import { authorizeSpotifyUser } from '../../store/spotify/spotify.actions';
 
 describe('AuthHub Container', () => {
   let component;
