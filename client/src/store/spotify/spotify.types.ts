@@ -6,15 +6,18 @@ export const SpotifyActionTypes = {
 } as const;
 
 export interface iSpotifyState {
-  accessToken: string,
-  refreshToken: string,
+  accessToken: string | null,
+  refreshToken: string | null,
   visitingUser: {
     loading: boolean,
   },
   myUser: {
     loading: boolean,
   },
-  userArtists: any[] | null, // TODO
+  userArtists: {
+    visitingUserTopArtists: any[],
+    myUserTopArtists: any[],
+  } | null, // TODO
 }
 
 export interface iSetTokensAction {

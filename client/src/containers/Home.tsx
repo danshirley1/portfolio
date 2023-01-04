@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 
 const Home = () => (
-  <Grid container justify="center">
+  <Grid container justifyContent="center">
     <Grid item sm={6} md={5} lg={4}>
       <div className="space-content-vertical">
         <Paper>

@@ -14,7 +14,7 @@ const initialState = {
   userArtists: null,
 };
 
-export default function reduce(action, state = initialState) {
+export default function reduce(state = initialState, action) {
   switch (action.type) {
     // redux-persist rehydration occured
     case REHYDRATE:

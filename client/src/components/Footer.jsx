@@ -16,7 +16,7 @@ const styles = () => ({
 
 function Footer({ classes }) {
   return (
-    <Grid spacing={0} container justify="center" className={classes.footerBar}>
+    <Grid spacing={0} container justifyContent="center" className={classes.footerBar}>
       <Grid item>
         <Typography variant="caption">
           &copy; Dan Shirley 2019
