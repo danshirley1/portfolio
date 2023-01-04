@@ -11,5 +11,3 @@ export function authorizeSpotifyUser() {
 export function setUserArtists({ visitingSpotifyUserPlaylists, mySpotifyUserPlaylists }) {
   return { type: SpotifyActionTypes.SET_USER_ARTISTS, visitingSpotifyUserPlaylists, mySpotifyUserPlaylists };
 }
-
-

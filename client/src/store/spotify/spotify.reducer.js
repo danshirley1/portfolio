@@ -9,12 +9,12 @@ const spotifyUserInitialState = {
 const initialState = {
   accessToken: null,
   refreshToken: null,
-  visitingUser: Object.assign({}, spotifyUserInitialState),
-  myUser: Object.assign({}, spotifyUserInitialState),
+  visitingUser: { ...spotifyUserInitialState },
+  myUser: { ...spotifyUserInitialState },
   userArtists: null,
 };
 
-export default function reduce(state = initialState, action) {
+export default function reduce(action, state = initialState) {
   switch (action.type) {
     // redux-persist rehydration occured
     case REHYDRATE:
@@ -28,8 +28,8 @@ export default function reduce(state = initialState, action) {
     case SpotifyActionTypes.SET_USER_ARTISTS: {
       const { visitingSpotifyUserPlaylists, mySpotifyUserPlaylists } = action;
 
-      const visitingUserArtists = getAggregatedArtists(visitingSpotifyUserPlaylists.flatMap(playlist => playlist.tracks));
-      const myUserArtists = getAggregatedArtists(mySpotifyUserPlaylists.flatMap(playlist => playlist.tracks));
+      const visitingUserArtists = getAggregatedArtists(visitingSpotifyUserPlaylists.flatMap((playlist) => playlist.tracks));
+      const myUserArtists = getAggregatedArtists(mySpotifyUserPlaylists.flatMap((playlist) => playlist.tracks));
 
       const visitingUserTopArtists = getTopAggregatedArtists(visitingUserArtists, 5);
       const myUserTopArtists = getTopAggregatedArtists(myUserArtists, 5);

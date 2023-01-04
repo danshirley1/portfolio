@@ -95,8 +95,7 @@ describe('Spotify schema', () => {
         expected,
       } = obj;
 
-      it(`query: ${id}`, async () =>
-        expect(graphql(schema, query, null, { ctx }, variables)).resolves.toEqual(expected));
+      it(`query: ${id}`, async () => expect(graphql(schema, query, null, { ctx }, variables)).resolves.toEqual(expected));
     });
   });
 });

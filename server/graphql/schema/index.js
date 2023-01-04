@@ -8,7 +8,7 @@ import resolvers from './spotify/resolvers';
 const schema = loadSchemaSync(join(__dirname, './spotify/schema.graphql'), {
   loaders: [
     new GraphQLFileLoader(),
-  ]
+  ],
 });
 
 const schemaWithResolvers = addResolversToSchema({

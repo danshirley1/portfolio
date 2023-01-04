@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-
 import { Grid, Paper, Typography } from '@material-ui/core';
 import { gql } from '@apollo/client';
 import { Query } from '@apollo/client/react/components';
@@ -33,15 +32,14 @@ function SpotifyProfiles(props) {
           }
 
           return (
-            <Fragment>
+            <>
               <Grid item xs={12}>
                 <Paper>
                   <Typography variant="h6" component="h2">
                     Results!
                   </Typography>
-                  { userArtists &&
-                    <CommonalityResults userArtists={userArtists} />
-                  }
+                  { userArtists
+                    && <CommonalityResults userArtists={userArtists} />}
                 </Paper>
               </Grid>
 
@@ -62,10 +60,9 @@ function SpotifyProfiles(props) {
                   <UserSummary user={data.mySpotifyUser} playlists={data.mySpotifyUserPlaylists} />
                 </Paper>
               </Grid>
-            </Fragment>
+            </>
           );
-        }
-      }
+        }}
       </Query>
     </Grid>
   );

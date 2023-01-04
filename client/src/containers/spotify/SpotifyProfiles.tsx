@@ -13,19 +13,19 @@ import { setUserArtists } from '../../store/spotify/spotify.actions';
 
 interface SpotifyUserPlaylist {
   foo: string,
-}; // TODO move out in to a library
+} // TODO move out in to a library
 
-interface UserArtist {}; // TODO move out in to a library
+interface UserArtist {} // TODO move out in to a library
 
 interface SpotifySession {
   accessToken: string,
   userArtists: UserArtist[],
-}; // TODO move out in to a library
+} // TODO move out in to a library
 
 interface Props {
   spotifySession: SpotifySession,
   onSetUserArtists: (val: { visitingSpotifyUserPlaylists: SpotifyUserPlaylist[], mySpotifyUserPlaylists: SpotifyUserPlaylist[] }) => void,
-};
+}
 
 interface State {
   spotifySession: SpotifySession,
@@ -42,7 +42,10 @@ export function SpotifyProfiles(props: Props) {
     userArtists,
   } = spotifySession;
 
-  const doProfilesDataLoaded = ({ visitingSpotifyUserPlaylists, mySpotifyUserPlaylists }: { visitingSpotifyUserPlaylists: SpotifyUserPlaylist[], mySpotifyUserPlaylists: SpotifyUserPlaylist[] }): void => {
+  const doProfilesDataLoaded = ({
+    visitingSpotifyUserPlaylists,
+    mySpotifyUserPlaylists,
+  }: { visitingSpotifyUserPlaylists: SpotifyUserPlaylist[], mySpotifyUserPlaylists: SpotifyUserPlaylist[] }): void=> {
     if (!userArtists) onSetUserArtists({ visitingSpotifyUserPlaylists, mySpotifyUserPlaylists });
   };
 

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import {
   Grid,
@@ -18,29 +18,27 @@ function SpotifyUserPlaylists(props) {
   } = props;
 
   return (
-    <Fragment>
-      <Grid container spacing={10}>
+    <Grid container spacing={10}>
 
-        <Grid item xs={12}>
-          <Paper>
-            <UserSummaryWide user={user} showPlaylistsLink={false} playlists={userPlaylists}>
-              <Button variant="contained" color="secondary" component={Link} to="/spotify-profiles">
-                TEXT HERE
-              </Button>
-            </UserSummaryWide>
-          </Paper>
-        </Grid>
-
-        <Grid item xs>
-          <Paper>
-            <Typography variant="h6" gutterBottom>
-              User playlists
-            </Typography>
-            <UserPlaylistsTable playlists={userPlaylists} />
-          </Paper>
-        </Grid>
+      <Grid item xs={12}>
+        <Paper>
+          <UserSummaryWide user={user} showPlaylistsLink={false} playlists={userPlaylists}>
+            <Button variant="contained" color="secondary" component={Link} to="/spotify-profiles">
+              TEXT HERE
+            </Button>
+          </UserSummaryWide>
+        </Paper>
       </Grid>
-    </Fragment>
+
+      <Grid item xs>
+        <Paper>
+          <Typography variant="h6" gutterBottom>
+            User playlists
+          </Typography>
+          <UserPlaylistsTable playlists={userPlaylists} />
+        </Paper>
+      </Grid>
+    </Grid>
   );
 }
 

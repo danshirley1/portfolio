@@ -1,3 +1,5 @@
+/* eslint-disable no-multi-str */
+
 import { spotifyAuthorize, spotifyAuthorizeCallback } from './spotifyAuth';
 
 describe('Spotify routes', () => {

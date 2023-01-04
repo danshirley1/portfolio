@@ -49,8 +49,8 @@ function UserPlaylistsTable(props) {
   } = props;
 
   return (
-    <Fragment>
-      {playlists.map(playlist => (
+    <>
+      {playlists.map((playlist) => (
         <Accordion key={playlist.id}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
             <Grid item xs={8} md={10}>
@@ -71,7 +71,7 @@ function UserPlaylistsTable(props) {
                 </TableRow>
               </TableHead>
               <TableBody className={classes.restrictedTableBodyHeight}>
-                {playlist.tracks.map(track => (
+                {playlist.tracks.map((track) => (
                   <TableRow key={track.id} className={classes.restrictedTableBodyHeightRow}>
                     <TableCell component="th" scope="row">
                       {track.name}
@@ -83,7 +83,7 @@ function UserPlaylistsTable(props) {
           </AccordionDetails>
         </Accordion>
       ))}
-    </Fragment>
+    </>
   );
 }
 

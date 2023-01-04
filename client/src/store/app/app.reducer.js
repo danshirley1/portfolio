@@ -1,5 +1,4 @@
-import { Reducer } from 'react';
-import { SHOW_ALERT } from '../../store/app/app.actions';
+import { SHOW_ALERT } from './app.actions';
 
 const initialState = {
   notifications: {
@@ -10,7 +9,7 @@ const initialState = {
   },
 };
 
-export default function reduce(state = initialState, action) {
+export default function reduce(action, state = initialState) {
   switch (action.type) {
     case SHOW_ALERT: {
       const notifications = {

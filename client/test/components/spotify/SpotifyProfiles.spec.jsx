@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import SpotifyProfiles from '../../../components/spotify/SpotifyProfiles';
+import SpotifyProfiles from '../../../src/components/spotify/SpotifyProfiles';
 
 describe('SpotifyProfiles Component', () => {
   let component;

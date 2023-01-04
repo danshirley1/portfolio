@@ -49,57 +49,7 @@ class Header extends React.Component<Props, State> {
     const { isOpen } = this.state;
 
     return (
-      <AppBar>
-        <Toolbar>
-          {isOpen
-            ? (
-              <IconButton
-                data-test="menu-btn"
-                aria-label="Menu"
-                onClick={this.handleToggle}
-              >
-                <CloseIcon data-test="menu-nav-close" />
-              </IconButton>
-            )
-            : (
-              <IconButton
-                data-test="menu-bth"
-                aria-label="Menu"
-                onClick={this.handleToggle}
-              >
-                <MenuIcon data-test="menu-nav-open" />
-              </IconButton>
-            )
-          }
-
-          <Typography variant="h6" component="h1" style={{ flex: 1 }}>
-            PORTFOLIO APP
-          </Typography>
-
-          <Drawer
-            open={isOpen}
-            onBackdropClick={this.handleToggle}
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-          >
-            <NavLink
-              to="/"
-              onClick={() => this.handleToggle()}
-              data-test="TODO"
-            >
-              <MenuItem>Home</MenuItem>
-            </NavLink>
-            <NavLink
-              to="/spotify-profiles"
-              onClick={() => this.handleToggle()}
-              data-test="TODO"
-            >
-              <MenuItem>Spotify Profiles</MenuItem>
-            </NavLink>
-          </Drawer>
-        </Toolbar>
-      </AppBar>
+      <h1>HELLO</h1>
     );
   }
 }

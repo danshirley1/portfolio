@@ -5,32 +5,31 @@ spotifyWebApiNode.prototype = {
 
   createAuthorizeURL: jest.fn().mockImplementation(() => 'fooBarAuthorizeURL'),
 
-  authorizationCodeGrant: jest.fn().mockImplementation(() =>
-    new Promise(resolve => resolve({
-      body: {
-        expires_in: 'expires_in_foobar',
-        access_token: 'access_token_foobar',
-        refresh_token: 'refresh_token_foobar',
-      },
-    }))),
+  authorizationCodeGrant: jest.fn().mockImplementation(() => new Promise((resolve) => resolve({
+    body: {
+      expires_in: 'expires_in_foobar',
+      access_token: 'access_token_foobar',
+      refresh_token: 'refresh_token_foobar',
+    },
+  }))),
 
   setAccessToken: jest.fn(),
 
-  getMe: jest.fn().mockImplementation(() => new Promise(resolve => resolve({
+  getMe: jest.fn().mockImplementation(() => new Promise((resolve) => resolve({
     body: {
       foo: 'bar',
       images: [{ url: 'http://ww.example.com/foobar.jpg' }],
     },
   }))),
 
-  getUser: jest.fn().mockImplementation(() => new Promise(resolve => resolve({
+  getUser: jest.fn().mockImplementation(() => new Promise((resolve) => resolve({
     body: {
       foo: 'bar',
       images: [{ url: 'http://ww.example.com/foobar.jpg' }],
     },
   }))),
 
-  getUserPlaylists: jest.fn().mockImplementation(() => new Promise(resolve => resolve({
+  getUserPlaylists: jest.fn().mockImplementation(() => new Promise((resolve) => resolve({
     body: {
       items: [
         {
@@ -45,7 +44,7 @@ spotifyWebApiNode.prototype = {
     },
   }))),
 
-  getPlaylistTracks: jest.fn().mockImplementation(() => new Promise(resolve => resolve({
+  getPlaylistTracks: jest.fn().mockImplementation(() => new Promise((resolve) => resolve({
     body: {
       items: [
         {

@@ -13,12 +13,14 @@ function CommonalityResults(props) {
             here!
           </Typography>
           <div style={{ color: 'white' }}>
-            visitingUserTopArtists:<br />
+            visitingUserTopArtists:
+            <br />
             { userArtists ? JSON.stringify(userArtists.visitingUserTopArtists) : 'Nothing to show' }
           </div>
           <br />
           <div style={{ color: 'white' }}>
-            myUserTopArtists:<br />
+            myUserTopArtists:
+            <br />
             { userArtists ? JSON.stringify(userArtists.myUserTopArtists) : 'Nothing to show' }
           </div>
         </Paper>

@@ -6,6 +6,6 @@ import { iSpotifyState } from './spotify.types';
 const select: Selector<State, iSpotifyState> = (state) => state.spotifySession;
 
 export const selectSpotifySession = createSelector(
-   [select],
-   (spotifySession) => spotifySession,
+  [select],
+  (spotifySession) => spotifySession,
 );

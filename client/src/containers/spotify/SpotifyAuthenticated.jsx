@@ -18,7 +18,7 @@ export class SpotifyAuthenticated extends Component {
 }
 
 export default connect(
-  state => ({
+  (state) => ({
     spotifySession: state.spotifySession,
   }),
   { onSetTokens: setTokens },

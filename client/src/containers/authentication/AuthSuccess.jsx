@@ -2,6 +2,8 @@ import React from 'react';
 
 import AuthSuccessView from '../../components/authentication/AuthSuccess';
 
-const AuthSuccess = () => <AuthSuccessView />;
+function AuthSuccess() {
+  return <AuthSuccessView />;
+}
 
 export default AuthSuccess;

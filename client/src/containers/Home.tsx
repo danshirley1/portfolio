@@ -20,10 +20,10 @@ const Home = () => (
             This app will reveal my Spotify tracks and show you what we have in common!
           </Typography>
           <Typography paragraph>
-            You'll be asked to login to your Spotify account - I don't store any of the information you enter, ever.
+            You&apos;ll be asked to login to your Spotify account - I don&apos;t store any of the information you enter, ever.
           </Typography>
           <Button variant="contained" color="primary" component={Link} to="/spotify-profiles">
-            LET'S GO!
+            LET&apos;S GO!
           </Button>
         </Paper>
       </div>

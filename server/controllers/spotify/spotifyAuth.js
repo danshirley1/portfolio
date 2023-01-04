@@ -8,7 +8,6 @@ const spotifyApi = new SpotifyWebApi({
   redirectUri: `${baseUrlServer}/spotify/authorize-callback`,
 });
 
-
 export const spotifyAuthorize = (req, res) => {
   const scopes = [
     'user-read-private',
@@ -26,7 +25,7 @@ export const spotifyAuthorizeCallback = (req, res) => {
 
   // Retrieve an access token and a refresh token
   return spotifyApi.authorizationCodeGrant(code).then((data) => {
-    const { expires_in, access_token, refresh_token } = data.body;
+    const { /* expires_in, */ access_token, refresh_token } = data.body;
 
     console.log('ACCESS TOKEN FROM SPOTIFY AUTHORISATION:', access_token);
 
@@ -42,7 +41,7 @@ export const spotifyAuthorizeCallback = (req, res) => {
     */
 
     return res.redirect(`${baseUrlClient}/spotify-authentication-success/${access_token}/${refresh_token}`);
-  }).catch(err => console.log('BOOM!', err));
+  }).catch((err) => console.log('BOOM!', err));
 
   // we can also pass the token to the browser to make requests from there
   // OLD NOW - DS

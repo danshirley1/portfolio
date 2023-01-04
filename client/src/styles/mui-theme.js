@@ -1,10 +1,9 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createTheme } from '@material-ui/core/styles';
 import { pink } from '@material-ui/core/colors';
-
 
 // TODO define colours as vriables somewhere
 
-const MuiStylesheet = createMuiTheme({
+const MuiStylesheet = createTheme({
   typography: {
     useNextVariants: true,
   },

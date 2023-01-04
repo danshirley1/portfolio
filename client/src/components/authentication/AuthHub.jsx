@@ -7,7 +7,7 @@ import {
   Button,
 } from '@material-ui/core';
 
-const AuthHub = (props) => {
+function AuthHub(props) {
   const { onAuthorize } = props;
 
   return (
@@ -22,7 +22,7 @@ const AuthHub = (props) => {
               So I can see your tracks, I need you to securely login to Spotify.
             </Typography>
             <Typography paragraph>
-              This is all handled directly with Spotify - I don't store anything your enter, ever.
+              This is all handled directly with Spotify - I don&apos;t store anything your enter, ever.
             </Typography>
             <Typography paragraph>
               See you in a moment, on your return!
@@ -35,6 +35,6 @@ const AuthHub = (props) => {
       </Grid>
     </Grid>
   );
-};
+}
 
 export default AuthHub;

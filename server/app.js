@@ -15,7 +15,7 @@ const spotifyRouter = require('./routes/spotify/index');
 // GRAPHQL SERVER
 const apolloServer = new ApolloServer({
   schema,
-  formatError: err => ({
+  formatError: (err) => ({
     ...err,
     name: err.extensions.exception.name,
   }),
