@@ -20,7 +20,7 @@ function AuthSuccess() {
             <Typography paragraph>
               Thanks! Now let&apos;s see what we have in common.
             </Typography>
-            <Button variant="contained" color="primary" component={Link} to="/spotify-profiles">
+            <Button variant="contained" color="primary" component={Link} to="/spotify-profiles" data-test="view-spotify-profiles-link">
               LET&apos;S GO!
             </Button>
           </Paper>

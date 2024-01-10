@@ -44,10 +44,10 @@
     "source-map-explorer": "^2.5.0"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.16",
+    "@types/enzyme": "^3.10.18",
     "@types/node": "^14.14.10",
-    "@types/react": "^16.0.0",
-    "@types/react-dom": "^16.0.0",
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.17",
     "@types/react-redux": "^7.1.18",
     "@types/react-router-dom": "^5.1.6",
     "@types/redux-auth-wrapper": "^2.0.10",
@@ -60,6 +60,10 @@
     "node-sass-chokidar": "^1.5.0",
     "test-utils": "^1.1.1",
     "waait": "^1.0.5"
+  },
+  "resolutions": {
+    "@types/react": "^16.9.56",
+    "@types/react-dom": "^16.9.17"
   },
   "browserslist": [
     ">0.2%",

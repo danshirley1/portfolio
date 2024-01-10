@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { dataTestTag } from '../../helpers';
-import AuthSuccess from '../../../components/authentication/AuthSuccess';
+import { dataTestTag } from '../../../test/helpers';
+import AuthSuccess from './AuthSuccess';
 
 describe('AuthSuccess Component', () => {
   let component;
@@ -29,6 +29,6 @@ describe('AuthSuccess Component', () => {
   it("renders a link to the 'Spotify Profiles' view", () => {
     const link = component.find(dataTestTag('view-spotify-profiles-link'));
     expect(link).toHaveLength(1);
-    expect(link.prop('href')).toBe('/spotify-profiles');
+    expect(link.prop('to')).toBe('/spotify-profiles');
   });
 });

@@ -1,8 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import { dataTestTag } from '../../helpers';
-import AuthHub from '../../../components/authentication/AuthHub';
+import { dataTestTag } from '../../../test/helpers';
+import AuthHub from './AuthHub';
 
 describe('AuthHub Component', () => {
   let component;

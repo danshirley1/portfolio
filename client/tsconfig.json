@@ -18,8 +18,7 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
   },
-  "include": ["setupTests.js", "test", "src/*",
-  ]
+  "include": ["setupTests.js", "test", "src/*", "src/components/authentication/AuthSuccess.spec.jsx", "src/components/authentication/AuthHub.spec.jsx", "jest.config.js", "src/components/spotify/SpotifyProfiles.spec.jsx"]
 }

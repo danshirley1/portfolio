@@ -27,7 +27,7 @@ function AuthHub(props) {
             <Typography paragraph>
               See you in a moment, on your return!
             </Typography>
-            <Button variant="contained" color="primary" onClick={onAuthorize}>
+            <Button variant="contained" color="primary" onClick={onAuthorize} data-test="on-authorize-button">
               LOGIN TO SPOTIFY
             </Button>
           </Paper>
