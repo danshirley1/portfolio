@@ -7,7 +7,7 @@ import { createError } from 'apollo-errors';
 import * as routerDomLib from 'react-router-dom';
 
 import { SpotifyProfiles } from './SpotifyProfiles';
-import GET_VISITING_AND_MY_SPOTIFY_USER from '../../graphql/queries/spotify';
+import { GET_SPOTIFY_PROFILES_USER_DATA } from '../../graphql/queries/spotify';
 
 describe('SpotifyProfiles Container', () => {
   let component;
@@ -19,7 +19,7 @@ describe('SpotifyProfiles Container', () => {
     graphQlMocks: [
       {
         request: {
-          query: gql(GET_VISITING_AND_MY_SPOTIFY_USER),
+          query: gql(GET_SPOTIFY_PROFILES_USER_DATA),
           variables: {
             accessToken: 'foobar',
           },
@@ -29,13 +29,89 @@ describe('SpotifyProfiles Container', () => {
             visitingSpotifyUser: {
               display_name: 'bob',
               external_urls: [],
-              images: [],
+              profileImage: {
+                url: 'http://example.com/example1.jpg',
+              },
             },
             mySpotifyUser: {
               display_name: 'john',
               external_urls: [],
-              images: [],
+              profileImage: {
+                url: 'http://example.com/example2.jpg',
+              },
             },
+            visitingSpotifyUserPlaylists: [
+              {
+                id: 1,
+                name: 'foo',
+                tracks: [
+                  {
+                    album: {
+                      id: 10,
+                      name: 'flim',
+                    },
+                    artists: [
+                      {
+                        id: 100,
+                        name: 'bruce',
+                      },
+                    ],
+                    id: 1,
+                    name: 'foo',
+                  },
+                  {
+                    album: {
+                      id: 11,
+                      name: 'flam',
+                    },
+                    artists: [
+                      {
+                        id: 101,
+                        name: 'kylie',
+                      },
+                    ],
+                    id: 2,
+                    name: 'foo',
+                  },
+                ],
+              },
+            ],
+            mySpotifyUserPlaylists: [
+              {
+                id: 10,
+                name: 'flim',
+                tracks: [
+                  {
+                    album: {
+                      id: 100,
+                      name: 'flimmer',
+                    },
+                    artists: [
+                      {
+                        id: 1000,
+                        name: 'abba',
+                      },
+                    ],
+                    id: 10,
+                    name: 'fooflam',
+                  },
+                  {
+                    album: {
+                      id: 110,
+                      name: 'flammer',
+                    },
+                    artists: [
+                      {
+                        id: 1001,
+                        name: 'jason',
+                      },
+                    ],
+                    id: 20,
+                    name: 'fooflam',
+                  },
+                ],
+              },
+            ],
           },
         },
       },
@@ -98,5 +174,9 @@ describe('SpotifyProfiles Container', () => {
     const spotifyProfilesView = component.find('SpotifyProfiles').at(1);
     expect(spotifyProfilesView.prop('visitingUser')).toEqual(defaultProps.graphQlMocks[0].result.data.visitingSpotifyUser);
     expect(spotifyProfilesView.prop('myUser')).toEqual(defaultProps.graphQlMocks[0].result.data.mySpotifyUser);
+    expect(spotifyProfilesView.prop('visitingUserPlaylists'))
+      .toEqual(defaultProps.graphQlMocks[0].result.data.visitingSpotifyUserPlaylists);
+    expect(spotifyProfilesView.prop('myUserPlaylists'))
+      .toEqual(defaultProps.graphQlMocks[0].result.data.mySpotifyUserPlaylists);
   });
 });

@@ -1,0 +1,27 @@
+body {
+  background-color: #171717 !important; }
+
+html {
+  position: relative;
+  min-height: 100%; }
+
+a {
+  text-decoration: none; }
+
+.app-root-container {
+  position: relative;
+  top: 48px;
+  padding: 20px 20px 128px 20px; }
+  .app-root-container .space-content-vertical {
+    padding-top: 60px; }
+
+@media (min-width: 600px) {
+  .app-root-container {
+    top: 64px;
+    padding: 20px 20px 144px 20px; }
+    .app-root-container .space-content-vertical {
+      padding-top: 100px; } }
+
+@media (min-width: 1440px) {
+  .app-root-container {
+    max-width: 1360px; } }

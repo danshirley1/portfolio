@@ -4,4 +4,19 @@ export const SPOTIFY_USER = `
   profileImage { url }
 `;
 
-export { SPOTIFY_USER as default };
+export const SPOTIFY_PLAYLIST = `
+  id
+  name
+  tracks {
+    id
+    name
+    album {
+      id
+      name
+    }
+    artists {
+      id
+      name
+    }
+  }
+`;

@@ -1,8 +1,8 @@
-require('babel-register');
+require('@babel/register');
 
+const express = require('express');
 const { ApolloServer } = require('apollo-server-express');
 const { createError } = require('http-errors');
-const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -12,7 +12,7 @@ const schema = require('./graphql/schema').default;
 const indexRouter = require('./routes/index');
 const spotifyRouter = require('./routes/spotify/index');
 
-/* GRAPHQL SERVER */
+// GRAPHQL SERVER
 const apolloServer = new ApolloServer({
   schema,
   formatError: err => ({
@@ -20,7 +20,6 @@ const apolloServer = new ApolloServer({
     name: err.extensions.exception.name,
   }),
 });
-/**/
 
 const app = express();
 

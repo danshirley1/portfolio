@@ -3,29 +3,28 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "jest --config config/jest.json",
     "test:watch": "npm run test -- --watch",
     "coverage": "npm run test -- --coverage"
   },
   "dependencies": {
     "apollo-errors": "^1.9.0",
-    "apollo-server-express": "^2.0.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-register": "^6.26.0",
-    "cookie-parser": "~1.4.3",
-    "cors": "^2.8.4",
-    "debug": "~2.6.9",
-    "express": "~4.16.0",
-    "graphql": "^14.0.0",
-    "graphql-tools": "^3.1.1",
-    "http-errors": "~1.6.2",
-    "morgan": "~1.9.0",
-    "pug": "2.0.0-beta11",
-    "spotify-web-api-node": "^3.1.1"
+    "apollo-server-express": "^2.18.0",
+    "cookie-parser": "~1.4.5",
+    "cors": "^2.8.5",
+    "debug": "~4.2.0",
+    "express": "~4.17.1",
+    "graphql": "^15.3.0",
+    "graphql-tools": "^6.2.3",
+    "http-errors": "~1.8.0",
+    "morgan": "~1.10.0",
+    "pug": "3.0.0",
+    "spotify-web-api-node": "^4.0.0"
   },
   "devDependencies": {
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "supertest": "^3.3.0"
+    "nodemon": "^2.0.4",
+    "regenerator-runtime": "^0.13.7",
+    "supertest": "^4.0.2"
   }
 }

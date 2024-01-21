@@ -1,0 +1,26 @@
+.app-root-container {
+  position: relative;
+  top: $header-height-mobile;
+  padding: $standard-spacing $standard-spacing ($header-height-mobile + $standard-spacing * 4) $standard-spacing;
+
+  .space-content-vertical {
+    padding-top: $centered-top-spacing-mobile;
+  }
+}
+
+@media (min-width: 600px) {
+  .app-root-container {
+    top: $header-height-desktop;
+    padding: $standard-spacing $standard-spacing ($header-height-desktop + $standard-spacing * 4) $standard-spacing;
+
+    .space-content-vertical {
+      padding-top: $centered-top-spacing-desktop;
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .app-root-container {
+    max-width: 1360px;
+  }
+}

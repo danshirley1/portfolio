@@ -1,0 +1,8 @@
+$grid-gutter-width: 20px; // TODO needs to be whatever we have for MUI, which I believe is 12 (x2 = 24), but may need to be pulled from common config, DS.
+$standard-spacing: $grid-gutter-width;
+
+$header-height-mobile: 48px;
+$header-height-desktop: 64px;
+
+$centered-top-spacing-mobile: 60px;
+$centered-top-spacing-desktop: 100px;

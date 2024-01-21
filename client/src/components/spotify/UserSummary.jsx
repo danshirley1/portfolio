@@ -1,25 +1,54 @@
-import React, { Fragment } from 'react';
-import { isEmpty } from 'lodash';
+import React from 'react';
+import { Link as RouterLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import {
+  Grid,
+  Typography,
+  Link,
+  Box,
+} from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
+
+const styles = () => ({
+  'avatar-image': {
+    width: '100%',
+  },
+});
 
 function UserSummary(props) {
-  const { user } = props;
+  const {
+    classes,
+    user,
+    playlists,
+    showPlaylistsLink = true,
+  } = props;
 
   return (
-    <Fragment>
-      <h2 data-test="summary-display-name-header">{`Logged in as ${user.display_name}`}</h2>
-      <img data-test="summary-user-avatar" src={user.profileImage.url} alt="User avatar" />
-      <dl>
-        <dt>
-          Spotify URI
-        </dt>
-        <dd>
-          <a data-test="summary-spotify-uri" href={user.external_urls.spotify}>
-            {user.external_urls.spotify}
-          </a>
-        </dd>
-      </dl>
-    </Fragment>
+    <Grid container spacing={10}>
+      <Grid item xs={8}>
+        <Typography component="h5" variant="h5">
+          {`${user.display_name}`}
+        </Typography>
+        {showPlaylistsLink && (
+          <Box mt={2}>
+            <Typography paragraph>
+              Playlists&nbsp;
+              { `(${playlists.length})` }
+              &nbsp;
+              <Link to="/spotify-user-playlists" component={RouterLink}>view</Link>
+            </Typography>
+          </Box>
+        )}
+      </Grid>
+      <Grid item xs={4}>
+        <img src={user.profileImage.url} alt="Profile avatar" className={classes['avatar-image']} />
+      </Grid>
+    </Grid>
   );
 }
 
-export default UserSummary;
+UserSummary.propTypes = {
+  classes: PropTypes.object.isRequired,
+};
+
+export default withStyles(styles)(UserSummary);

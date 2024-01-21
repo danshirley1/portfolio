@@ -3,13 +3,21 @@ import { Switch, Route, withRouter } from 'react-router';
 import { connect } from 'react-redux';
 import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
 
+import { Grid, CssBaseline } from '@material-ui/core';
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles';
+
+import MuiStylesheet from '../styles/mui-theme';
 import SpotifyProfilesContainer from './spotify/SpotifyProfiles';
+import SpotifyUserPlaylistsContainer from './spotify/SpotifyUserPlaylists';
 import HomeContainer from './Home';
 import AuthHub from './authentication/AuthHub';
 import AuthSuccess from './authentication/AuthSuccess';
 import SpotifyAuthenticatedContainer from './spotify/SpotifyAuthenticated';
-import PageNotFound from './PageNotFound';
+// TODO import PageNotFound from './PageNotFound';
 import isSpotifyAuthorized from '../utils/auth/spotify';
+
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 
 /* SEE: https://github.com/mjrussell/redux-auth-wrapper/blob/master/examples/react-router-4/auth.js */
 /* Maybe I need to use loading, as per the above example, and/ or connectedAuthWrapper? */
@@ -24,37 +32,43 @@ const doSpotifyAuthenticatedCheck = connectedRouterRedirect({
 });
 
 export const App = () => (
-  <div>
-    <header>
-      Header (todo - write a test for this in app.spec)
-    </header>
+  <MuiThemeProvider theme={MuiStylesheet}>
+    <CssBaseline />
 
-    <main>
-      <Switch>
-        <Route path="/" exact component={HomeContainer} />
-        <Route path="/auth-hub" component={AuthHub} />
-        <Route path="/auth-success" component={AuthSuccess} />
-        <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
-        <Route
-          path="/spotify-authentication-success/:accessToken/:refreshToken"
-          component={SpotifyAuthenticatedContainer}
-        />
-        <Route component={PageNotFound} />
-      </Switch>
-    </main>
+    {/* Header */}
+    <Grid spacing={0} container>
+      <Grid item xs>
+        <Header />
+      </Grid>
+    </Grid>
 
-    <div>
-      <a href="/">
-        HOME &gt; (todo - write a test for this in app.spec)
-      </a>
-    </div>
+    {/* Main content */}
+    <Grid spacing={0} container>
+      <Grid item xs>
+        <main className="app-root-container">
+          <Switch>
+            <Route path="/" exact component={HomeContainer} />
+            <Route path="/auth-hub" component={AuthHub} />
+            <Route path="/auth-success" component={AuthSuccess} />
+            <Route path="/spotify-profiles" component={doSpotifyAuthenticatedCheck(SpotifyProfilesContainer)} />
+            <Route path="/spotify-user-playlists" component={doSpotifyAuthenticatedCheck(SpotifyUserPlaylistsContainer)} />
+            <Route
+              path="/spotify-authentication-success/:accessToken/:refreshToken"
+              component={SpotifyAuthenticatedContainer}
+            />
+            {/* TODO <Route component={PageNotFound} /> */}
+          </Switch>
+        </main>
+      </Grid>
+    </Grid>
 
-    <div>
-      <a href="/spotify-profiles">
-        VIEW SPOTIFY PROFILES &gt; (todo - write a test for this in app.spec)
-      </a>
-    </div>
-  </div>
+    {/* Footer */}
+    <Grid spacing={0} container>
+      <Grid item xs>
+        <Footer />
+      </Grid>
+    </Grid>
+  </MuiThemeProvider>
 );
 
 export default withRouter(connect(state => ({
